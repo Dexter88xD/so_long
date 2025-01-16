@@ -1,30 +1,25 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sohamdan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/16 09:06:36 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/01/16 15:48:03 by sohamdan         ###   ########.fr       */
+/*   Created: 2025/01/16 11:11:35 by sohamdan          #+#    #+#             */
+/*   Updated: 2025/01/16 11:20:07 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+# ifndef SO_LONG_H
+# define SO_LONG_H
 
-int	main(void)
-{
-	int		i;
-	int		fd;
-	char	**buffer;
+#include "../include/ft_libc/get_next_line/get_next_line.h"
+#include "../include/ft_libc/ft_printf/ft_printf.h"
+#include <unistd.h>
+#include <stdio.h>
+#include <fcntl.h>
 
-	fd = open("../maps/map1.ber", O_RDWR);
-	if (fd == -1)
-		return (printf("error openning file!\n"), -1);
-	buffer = (char **)malloc(1);
-	if (!buffer)
-		return (free(buffer), -1);
-	i = \<F12>copying_map(fd, buffer);
-	if ()
-	return (0);
-}
+int checking_map(int len, char **buffer);
+int copying_map(int fd, char **buffer);
+
+# endif
