@@ -6,7 +6,7 @@
 /*   By: sohamdan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 11:10:57 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/01/16 11:16:47 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/01/16 19:34:57 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,36 +20,75 @@ int	copying_map(int fd, char **buffer)
 	buffer[i] = get_next_line(fd);
 	while (buffer[i] != NULL)
 	{
-		printf("line %d: %s", i + 1, buffer[i]);
 		i++;
 		buffer[i] = get_next_line(fd);
 	}
 	return (i);
 }
 
-int	checking_map(int len, char **buffer)
+int	checking_length(int y, char **buffer)
 {
 	int	i;
 	int	j;
 	int	l;
 
-
-	if (len == 0)
-		return (0);
 	i = 0;
-	l = 0;
-	while (buffer[l][i] != '\n')
-		i++;
-	l++;
-	while (buffer[l] != NULL)
+	j = 0;
+	while (buffer[i][j] != '\n')
+		j++;
+	i++;
+	l = j;
+	while (y >= 0)
 	{
-		j = i;
-		if (i != j)
+		j = 0;
+		while (buffer[i][j] != '\n' && buffer[i][j] != '\0')
+			j++;
+		if (j != l)
 			return (0);
-		i = 0;
-		while (buffer[l][i] != '\n' && buffer[l][i] != '\0')
-			i++;
-		l++;
+		y--;
+	}
+	return (l);
+}
+
+int	checking_wall(int x, int y, char **buffer)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i <= x)
+	{
+		j = 0;
+		while (j <= y)
+		{
+			if (i == 0 || i == x - 1 || j == 0 || j == y - 1)
+			{
+				if (buffer[i][j] != 49)
+				{
+					ft_printf("ahyaa!");
+					return (0);
+				}
+			}
+			j++;
+		}
+		i++;
 	}
 	return (1);
+}
+
+int	checking_map(int y, char **buffer)
+{
+	int	x;
+
+	if (y == 0)
+		return (0);
+	x = checking_length(y, buffer);
+	if (x == 0)
+		return (0);
+	ft_printf("x: %d, y: %d", x, y);
+	x = checking_wall(x, y, buffer);
+	if (x != 0)
+		return(1);
+	else
+		return (0);
 }

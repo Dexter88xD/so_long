@@ -34,6 +34,7 @@ $(LIBFT_A):
 	$(CC) $(CFLAGS) -c $^ -o $@
 
 clean:
+	$(FCLEAN_FT_LIBC)
 	rm -f $(OBJECTS)
 
 fclean:
