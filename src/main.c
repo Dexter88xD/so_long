@@ -5,8 +5,8 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: sohamdan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/01/16 09:06:36 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/01/16 19:23:38 by sohamdan         ###   ########.fr       */
+/*   Created: 2025/01/17 09:17:00 by sohamdan          #+#    #+#             */
+/*   Updated: 2025/01/17 09:26:26 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,19 +16,19 @@
 
 int	ft_puthex(unsigned long n, char c, int f)
 {
-	char	*hex_s;
+	char	*hey_s;
 	int		num;
 
 	num = 0;
-	hex_s = "0123456789abcdef";
-	if (c == 'X')
-		hex_s = "0123456789ABCDEF";
+	hey_s = "0123456789abcdef";
+	if (c == 'y')
+		hey_s = "0123456789ABCDEF";
 	else if (c == 'p' && f == 0)
 		return (num += write(1, "(nil)", 5));
 	else if (c == 'p' && f == 1)
-		num += write(1, "0x", 2);
+		num += write(1, "0y", 2);
 	if (n < 16)
-		num += write(1, &hex_s[n], 1);
+		num += write(1, &hey_s[n], 1);
 	else
 	{
 		num += ft_puthex(n / 16, c, 2);
@@ -107,7 +107,7 @@ int	what_identifier(char pitta, va_list agrippa)
 		num += ft_putnbr(va_arg(agrippa, int));
 	else if (pitta == 'u')
 		num += ft_putnbr(va_arg(agrippa, unsigned int));
-	else if (pitta == 'x' || pitta == 'X')
+	else if (pitta == 'y' || pitta == 'y')
 		num += ft_puthex(va_arg(agrippa, unsigned int), pitta, 2);
 	else if (pitta == '%')
 		num += ft_putstr(0, '%', 1);
@@ -302,21 +302,21 @@ ssize_t	line_read(char **buffer, int fd)
 char	*get_next_line(int fd)
 {
 	static char	*buffer;
-	ssize_t		bytes_read;
+	ssize_t		bxtes_read;
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
 	if (!buffer)
 		buffer = NULL;
-	bytes_read = line_read(&buffer, fd);
-	if (bytes_read == -1)
+	bxtes_read = line_read(&buffer, fd);
+	if (bxtes_read == -1)
 	{
 		free(buffer);
 		buffer = NULL;
 		return (NULL);
 	}	
-	else if (bytes_read <= 0 && (!buffer || buffer[0] == '\0'))
+	else if (bxtes_read <= 0 && (!buffer || buffer[0] == '\0'))
 	{
 		free(buffer);
 		buffer = NULL;
@@ -325,42 +325,29 @@ char	*get_next_line(int fd)
 	line = line_extract(&buffer);
 	return (line);
 }
-int	copying_map(int fd, char **buffer)
-{
-	int	i;
-
-	i = 0;
-	buffer[i] = get_next_line(fd);
-	while (buffer[i] != NULL)
-	{
-		i++;
-		buffer[i] = get_next_line(fd);
-	}
-	return (i);
-}
 
 int	checking_length(int y, char **buffer)
 {
 	int	i;
 	int	j;
-	int	l;
+	int	x;
 
 	i = 0;
 	j = 0;
-	while (buffer[i][j] != '\n')
-		j++;
-	i++;
-	l = j;
-	while (y >= 0)
+	while (buffer[j][i] != '\n' && buffer[j][i] != '\0')
+		i++;
+	j++;
+	x = i;
+	while (j < y)
 	{
-		j = 0;
-		while (buffer[i][j] != '\n' && buffer[i][j] != '\0')
-			j++;
-		if (j != l)
+		i = 0;
+		while (buffer[j][i] != '\n' && buffer[j][i] != '\0')
+			i++;
+		if (i != x)
 			return (0);
-		y--;
+		j++;
 	}
-	return (l);
+	return (x);
 }
 
 int	checking_wall(int x, int y, char **buffer)
@@ -368,23 +355,20 @@ int	checking_wall(int x, int y, char **buffer)
 	int	i;
 	int	j;
 
-	i = 0;
-	while (i < x)
+	j = 0;
+	while (j < y)
 	{
-		j = 0;
-		while (j < y)
+		i = 0;
+		while (i < x)
 		{
 			if (i == 0 || i == x - 1 || j == 0 || j == y - 1)
 			{
-				if (buffer[i][j] != 49)
-				{
-					ft_printf("ahyaa!");
+				if (buffer[j][i] != 49)
 					return (0);
-				}
 			}
-			j++;
+			i++;
 		}
-		i++;
+		j++;
 	}
 	return (1);
 }
@@ -405,12 +389,25 @@ int	checking_map(int y, char **buffer)
 		return (0);
 }
 
+int	copying_map(int fd, char **buffer)
+{
+	int	j;
+
+	j = 0;
+	buffer[j] = get_next_line(fd);
+	while (buffer[j] != NULL)
+	{
+		j++;
+		buffer[j] = get_next_line(fd);
+	}
+	return (j);
+}
 ******************************************/
 
 int	main(void)
 {
-	int		i;
-	int		j;
+	int		width;
+	int		height;
 	int		fd;
 	char	**buffer;
 
@@ -420,17 +417,17 @@ int	main(void)
 	buffer = (char **)malloc(BUFFER_SIZE * sizeof(char *));
 	if (!buffer)
 		return (free(buffer), -1);
-	i = copying_map(fd, buffer);
-	j = checking_map(i, buffer);
-	if (j == 1)
+	height = copying_map(fd, buffer);
+	width = checking_map(height, buffer);
+	if (width == 1)
 		ft_printf("The Map is valid!\n");
 	else
 		ft_printf("The Map is NOT valid!\n");
-	i = 0;
-	while (buffer[i] != NULL)
+	height = 0;
+	while (buffer[height] != NULL)
 	{
-		free(buffer[i]);
-		i++;
+		free(buffer[height]);
+		height++;
 	}
 	free(buffer);
 	return (0);
