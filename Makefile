@@ -9,7 +9,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 NAME = so_long.a
 
-FILES = src/main.c src/map.c 
+FILES = src/main.c src/mapping.c src/checking_map.c
 
 OBJECTS = $(FILES:%.c=%.o)
 

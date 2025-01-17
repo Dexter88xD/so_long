@@ -6,13 +6,13 @@
 /*   By: sohamdan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 09:17:00 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/01/17 09:26:26 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/01/17 11:47:11 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-/*****************************************
+/*************************LIBFT && GET_NEXT_LINE && FT_PRINTF****************
 
 int	ft_puthex(unsigned long n, char c, int f)
 {
@@ -325,82 +325,174 @@ char	*get_next_line(int fd)
 	line = line_extract(&buffer);
 	return (line);
 }
+******************************************/
 
-int	checking_length(int y, char **buffer)
-{
-	int	i;
-	int	j;
-	int	x;
-
-	i = 0;
-	j = 0;
-	while (buffer[j][i] != '\n' && buffer[j][i] != '\0')
-		i++;
-	j++;
-	x = i;
-	while (j < y)
-	{
-		i = 0;
-		while (buffer[j][i] != '\n' && buffer[j][i] != '\0')
-			i++;
-		if (i != x)
-			return (0);
-		j++;
-	}
-	return (x);
-}
-
+/********************CHECKING_MAP**********************
 int	checking_wall(int x, int y, char **buffer)
 {
-	int	i;
-	int	j;
+	int	width;
+	int	height;
 
-	j = 0;
-	while (j < y)
+	height = 0;
+	while (height < y)
 	{
-		i = 0;
-		while (i < x)
+		width = 0;
+		while (width < x)
 		{
-			if (i == 0 || i == x - 1 || j == 0 || j == y - 1)
+			if (width == 0 || width == x- 1 || height == 0 || height == y - 1)
 			{
-				if (buffer[j][i] != 49)
+				if (buffer[height][width] != 49)
 					return (0);
 			}
-			i++;
+			width++;
 		}
-		j++;
+		height++;
 	}
 	return (1);
 }
 
-int	checking_map(int y, char **buffer)
+int	checking_player(int x, int y, char **buffer)
 {
-	int	x;
+	int	width;
+	int	height;
+	int	p;
 
-	if (y == 0)
-		return (0);
-	x = checking_length(y, buffer);
-	if (x == 0)
-		return (0);
-	x = checking_wall(x, y, buffer);
-	if (x != 0)
-		return(1);
-	else
-		return (0);
+	p = 0;
+	height = 0;
+	while (height < y)
+	{
+		width = 0;
+		while (width < x)
+		{
+			if (buffer[height][width] == 'P')
+				p++;
+			if (p > 1)
+				return (0);
+			width++;
+		}
+		height++;
+	}
+	return (p);
 }
 
-int	copying_map(int fd, char **buffer)
+int	checking_exit(int x, int y, char **buffer)
 {
-	int	j;
+	int	width;
+	int	height;
+	int	e;
 
-	j = 0;
-	buffer[j] = get_next_line(fd);
-	while (buffer[j] != NULL)
+	e = 0;
+	height = 0;
+	while (height < y)
 	{
-		j++;
-		buffer[j] = get_next_line(fd);
+		width = 0;
+		while (width < x)
+		{
+			if (buffer[height][width] == 'E')
+				e++;
+			if (e > 1)
+				return (0);
+			width++;
+		}
+		height++;
 	}
-	return (j);
+	return (e);
+}
+
+int	checking_collectibles(int x, int y, char **buffer)
+{
+	int	width;
+	int	height;
+	int	c;
+
+	c = 0;
+	height = 0;
+	while (height < y)
+	{
+		width = 0;
+		while (width < x)
+		{
+			if (buffer[height][width] == 'C')
+				c++;
+
+			width++;
+		}
+		height++;
+	}
+	return (c);
+}
+
+int	checking_map(int *x, int *y, char **buffer)
+{
+	int	p;
+	int	e;
+	int	w;
+	int	c;
+
+	p = checking_player((*x), (*y), buffer);
+	if (p != 1)
+		return (0);
+	e = checking_exit((*x), (*y), buffer);
+	if (e != 1)
+		return (0);
+	w = checking_wall((*x), (*y), buffer);
+	if (w != 1)
+		return (0);
+	c = checking_collectibles((*x), (*y), buffer);
+	if (c <= 0)
+		return (0);
+	return (c);
+}
+******************************************/
+
+/*********************MAPPING**********************
+int	checking_length(int y, int *x, char **buffer)
+{
+	int	width;
+	int	height;
+
+	width = 0;
+	height = 0;
+	while (buffer[height][width] != '\n' && buffer[height][width] != '\0')
+		width++;
+	height++;
+	(*x) = width;
+	while (height < y)
+	{
+		width = 0;
+		while (buffer[height][width] != '\n' && buffer[height][width] != '\0')
+			width++;
+		if (width != (*x))
+			return (0);
+		height++;
+	}
+	return (1);
+}
+
+int	copying_map(int fd, int *height, char **buffer)
+{
+	buffer[(*height)] = get_next_line(fd);
+	while (buffer[(*height)] != NULL)
+	{
+		(*height)++;
+		buffer[(*height)] = get_next_line(fd);
+	}
+	return (1);
+}
+
+int	mapping(int fd, int *height, int *width, char **buffer)
+{
+	int	check;
+
+	check = 0;
+	copying_map(fd, height, buffer);
+	if ((*height) == 0)
+		return (check);
+	checking_length((*height), width, buffer);
+	if ((*width) == 0)
+		return (check);
+	check = checking_map(width, height, buffer);
+	return (check);
 }
 ******************************************/
 
@@ -417,9 +509,9 @@ int	main(void)
 	buffer = (char **)malloc(BUFFER_SIZE * sizeof(char *));
 	if (!buffer)
 		return (free(buffer), -1);
-	height = copying_map(fd, buffer);
-	width = checking_map(height, buffer);
-	if (width == 1)
+	width = 0;
+	height = 0;
+	if (mapping(fd, &height, &width, buffer) != 0)
 		ft_printf("The Map is valid!\n");
 	else
 		ft_printf("The Map is NOT valid!\n");
@@ -429,6 +521,5 @@ int	main(void)
 		free(buffer[height]);
 		height++;
 	}
-	free(buffer);
-	return (0);
+	return (free(buffer), 0);
 }
