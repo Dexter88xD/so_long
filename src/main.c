@@ -6,7 +6,7 @@
 /*   By: sohamdan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 09:17:00 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/01/17 11:47:11 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/01/17 21:08:50 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -498,28 +498,27 @@ int	mapping(int fd, int *height, int *width, char **buffer)
 
 int	main(void)
 {
-	int		width;
-	int		height;
 	int		fd;
-	char	**buffer;
+	t_map	map;
 
 	fd = open("../maps/map1.ber", O_RDWR);
 	if (fd == -1)
 		return (printf("error openning file!\n"), -1);
-	buffer = (char **)malloc(BUFFER_SIZE * sizeof(char *));
-	if (!buffer)
-		return (free(buffer), -1);
-	width = 0;
-	height = 0;
-	if (mapping(fd, &height, &width, buffer) != 0)
+	map.buffer = (char	**)malloc(BUFFER_SIZE * sizeof(t_map *));
+	if (!map.buffer)
+		return (free(map.buffer), -1);
+	map.width = 0;
+	map.height = 0;
+	map.collectible = mapping(fd, &(map.height), &(map.width), &(map.collectible), map.buffer);
+	if (map.collectible != 0)
 		ft_printf("The Map is valid!\n");
 	else
 		ft_printf("The Map is NOT valid!\n");
-	height = 0;
-	while (buffer[height] != NULL)
+	map.height = 0;
+	while (map.buffer[map.height] != NULL)
 	{
-		free(buffer[height]);
-		height++;
+		free(map.buffer[map.height]);
+		map.height++;
 	}
-	return (free(buffer), 0);
+	return (free(map.buffer), 0);
 }

@@ -6,7 +6,7 @@
 /*   By: sohamdan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 11:10:57 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/01/17 11:03:39 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/01/17 21:09:43 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,7 +46,7 @@ int	copying_map(int fd, int *height, char **buffer)
 	return (1);
 }
 
-int	mapping(int fd, int *height, int *width, char **buffer)
+int	mapping(int fd, int *height, int *width, int *location, char **buffer)
 {
 	int	check;
 
@@ -57,6 +57,6 @@ int	mapping(int fd, int *height, int *width, char **buffer)
 	checking_length((*height), width, buffer);
 	if ((*width) == 0)
 		return (check);
-	check = checking_map(width, height, buffer);
+	check = checking_map(width, height, location, buffer);
 	return (check);
 }
