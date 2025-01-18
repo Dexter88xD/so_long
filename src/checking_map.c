@@ -6,9 +6,11 @@
 /*   By: sohamdan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 10:13:09 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/01/17 21:17:06 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/01/18 21:24:00 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
+
+#include "so_long.h"
 
 int	checking_wall(int x, int y, char **buffer)
 {
@@ -48,7 +50,8 @@ int	checking_player(int x, int y, t_location *location, char **buffer)
 		{
 			if (buffer[height][width] == 'P')
 			{
-				location = 
+				(*location).width = width;
+				(*location).height = height;
 				p++;
 			}
 			if (p > 1)
@@ -60,7 +63,7 @@ int	checking_player(int x, int y, t_location *location, char **buffer)
 	return (p);
 }
 
-int	checking_exit(int x, int y, int location, char **buffer)
+int	checking_exit(int x, int y, t_location *location, char **buffer)
 {
 	int	width;
 	int	height;
@@ -74,7 +77,11 @@ int	checking_exit(int x, int y, int location, char **buffer)
 		while (width < x)
 		{
 			if (buffer[height][width] == 'E')
+			{
+				(*location).width = width;
+				(*location).height = height;
 				e++;
+			}
 			if (e > 1)
 				return (0);
 			width++;
@@ -84,7 +91,7 @@ int	checking_exit(int x, int y, int location, char **buffer)
 	return (e);
 }
 
-int	checking_collectibles(int x, int y, int location, char **buffer)
+int	checking_collectibles(int x, int y, char **buffer)
 {
 	int	width;
 	int	height;
@@ -106,23 +113,25 @@ int	checking_collectibles(int x, int y, int location, char **buffer)
 	return (c);
 }
 
-int	checking_map(int *x, int *y, int *location, char **buffer)
+int	checking_map(t_map *map)
 {
 	int	p;
 	int	e;
 	int	w;
 	int	c;
 
-	p = checking_player((*x), (*y), location, buffer);
+	p = checking_player((*map).width, (*map).height,
+			&((*map).player), (*map).buffer);
 	if (p != 1)
 		return (0);
-	e = checking_exit((*x), (*y), location, buffer);
+	e = checking_exit((*map).width, (*map).height,
+			&((*map).exit), (*map).buffer);
 	if (e != 1)
 		return (0);
-	w = checking_wall((*x), (*y), location, buffer);
+	w = checking_wall((*map).width, (*map).height, (*map).buffer);
 	if (w != 1)
 		return (0);
-	c = checking_collectibles((*x), (*y), location, buffer);
+	c = checking_collectibles((*map).width, (*map).height, (*map).buffer);
 	if (c <= 0)
 		return (0);
 	return (c);
