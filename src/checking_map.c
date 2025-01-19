@@ -6,7 +6,7 @@
 /*   By: sohamdan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 10:13:09 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/01/18 21:24:00 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/01/19 17:17:41 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -134,5 +134,6 @@ int	checking_map(t_map *map)
 	c = checking_collectibles((*map).width, (*map).height, (*map).buffer);
 	if (c <= 0)
 		return (0);
+	(*map).collectible = c;
 	return (c);
 }
