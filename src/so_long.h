@@ -37,11 +37,11 @@ typedef struct s_map
 }	t_map;
 
 int	checking_map(t_map *map);
-int	mapping(int fd, int *c, t_map *map);
+int	mapping(int fd, int *c, int *e ,t_map *map);
 int	checking_wall(int x, int y, char **buffer);
 int	checking_length(int y, int *x, char **buffer);
 int	copying_map(int fd, int *height, char **buffer);
-int	checking_path(t_map *map, int *c, int y, int x);
+int	checking_path(t_map *map, int *c, int *e, int y, int x);
 int	checking_collectibles(int x, int y, char **buffer);
 int	checking_exit(int x, int y, t_location *location, char **buffer);
 int	checking_player(int x, int y, t_location *location, char **buffer);

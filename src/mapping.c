@@ -6,13 +6,13 @@
 /*   By: sohamdan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 11:10:57 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/01/19 17:16:42 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/01/19 18:35:37 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-int	checking_path(t_map *map, int *c, int y, int x)
+int	checking_path(t_map *map, int *c, int *e, int y, int x)
 {
 	if ((*map).buffer[y][x] == '1' || (*map).buffer[y][x] == 'X')
 		return (*c);
@@ -26,10 +26,15 @@ int	checking_path(t_map *map, int *c, int y, int x)
 	}
 	else if ((*map).buffer[y][x] == '0')
 		(*map).buffer[y][x] = 'X';
-	*c = checking_path(map, c, y, x + 1);
-	*c = checking_path(map, c, y, x - 1);
-	*c = checking_path(map, c, y + 1, x);
-	*c = checking_path(map, c, y - 1, x);
+	else if ((*map).buffer[y][x] == 'E')
+	{
+		(*map).buffer[y][x] = 'e';
+		*e = 1;
+	}
+	checking_path(map, c, e, y, x + 1);
+	checking_path(map, c, e, y, x - 1);
+	checking_path(map, c, e, y + 1, x);
+	checking_path(map, c, e, y - 1, x);
 	return (*c);
 }
 
@@ -67,18 +72,22 @@ int	copying_map(int fd, int *height, char **buffer)
 	return (1);
 }
 
-int	mapping(int fd, int *c, t_map *map)
+int	mapping(int fd, int *c, int *e ,t_map *map)
 {
 	int	check;
 
-	check = 0;
 	copying_map(fd, &((*map).height), (*map).buffer);
 	if (((*map).height) == 0)
-		return (check);
+		return (0);
 	checking_length(((*map).height), &((*map).width), (*map).buffer);
 	if (((*map).width) == 0)
-		return (check);
+		return (0);
 	check = checking_map(map);
-	checking_path(map, c, (*map).player.height, (*map).player.width);
-	return (check);
+	if (check == 0)
+		return (0);
+	*c = 0;
+	checking_path(map, c, e, (*map).player.height, (*map).player.width);
+	if (*e != 1)
+		return (0);
+	return (*e);
 }
