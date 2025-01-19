@@ -1,18 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   main_vscode.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sohamdan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 09:17:00 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/01/19 18:39:16 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/01/19 21:38:15 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
 /*****************************CHECKING_MAP*************
+
 int	checking_wall(int x, int y, char **buffer)
 {
 	int	width;
@@ -114,6 +115,61 @@ int	checking_collectibles(int x, int y, char **buffer)
 	return (c);
 }
 
+int	checking_char(int x, int y, char **buffer)
+{
+	int	width;
+	int	height;
+
+	width = 0;
+	height = 0;
+	while (height < y)
+	{
+		width = 0;
+		while (width < x)
+		{
+			if (buffer[height][width] != 'E' &&
+					buffer[height][width] != 'C' &&
+					buffer[height][width] != 'P' &&
+					buffer[height][width] != '1' &&
+					buffer[height][width] != '0')
+				return (0);
+			width++;
+		}
+		height++;
+	}
+	return (1);
+}
+
+******************************************/
+
+/*****************************MAPPING*************
+
+int	checking_path(t_map *map, t_num *count, int y, int x)
+{
+	if ((*map).buffer[y][x] == '1' || (*map).buffer[y][x] == 'X')
+		return ((*count).coll);
+	if ((*map).buffer[y][x] != '0' && (*map).buffer[y][x] != 'C'
+			&& (*map).buffer[y][x] != 'E' && (*map).buffer[y][x] != 'P')
+		return ((*count).coll);
+	if ((*map).buffer[y][x] == 'C')
+	{
+		(*count).coll++;
+		(*map).buffer[y][x] = 'c';
+	}
+	else if ((*map).buffer[y][x] == '0')
+		(*map).buffer[y][x] = 'X';
+	else if ((*map).buffer[y][x] == 'E')
+	{
+		(*map).buffer[y][x] = 'e';
+		(*count).exit = 1;
+	}
+	checking_path(map, count, y, x + 1);
+	checking_path(map, count, y, x - 1);
+	checking_path(map, count, y + 1, x);
+	checking_path(map, count, y - 1, x);
+	return ((*count).coll);
+}
+
 int	checking_map(t_map *map)
 {
 	int	p;
@@ -121,6 +177,8 @@ int	checking_map(t_map *map)
 	int	w;
 	int	c;
 
+	if (checking_char((*map).width, (*map).height, (*map).buffer) != 1)
+		return (0);
 	p = checking_player((*map).width, (*map).height,
 			&((*map).player), (*map).buffer);
 	if (p != 1)
@@ -137,34 +195,6 @@ int	checking_map(t_map *map)
 		return (0);
 	(*map).collectible = c;
 	return (c);
-}
-******************************************/
-
-/*****************************MAPPING*************
-int	checking_path(t_map *map, int *c, int *e, int y, int x)
-{
-	if ((*map).buffer[y][x] == '1' || (*map).buffer[y][x] == 'X')
-		return (*c);
-	if ((*map).buffer[y][x] != '0' && (*map).buffer[y][x] != 'C'
-			&& (*map).buffer[y][x] != 'E' && (*map).buffer[y][x] != 'P')
-		return (*c);
-	if ((*map).buffer[y][x] == 'C')
-	{
-		(*c)++;
-		(*map).buffer[y][x] = 'c';
-	}
-	else if ((*map).buffer[y][x] == '0')
-		(*map).buffer[y][x] = 'X';
-	else if ((*map).buffer[y][x] == 'E')
-	{
-		(*map).buffer[y][x] = 'e';
-		*e = 1;
-	}
-	checking_path(map, c, e, y, x + 1);
-	checking_path(map, c, e, y, x - 1);
-	checking_path(map, c, e, y + 1, x);
-	checking_path(map, c, e, y - 1, x);
-	return (*c);
 }
 
 int	checking_length(int y, int *x, char **buffer)
@@ -201,7 +231,7 @@ int	copying_map(int fd, int *height, char **buffer)
 	return (1);
 }
 
-int	mapping(int fd, int *c, int *e ,t_map *map)
+int	mapping(int fd, t_num *count, t_map *map)
 {
 	int	check;
 
@@ -214,11 +244,11 @@ int	mapping(int fd, int *c, int *e ,t_map *map)
 	check = checking_map(map);
 	if (check == 0)
 		return (0);
-	*c = 0;
-	checking_path(map, c, e, (*map).player.height, (*map).player.width);
-	if (*e != 1)
+	(*count).coll = 0;
+	checking_path(map, count, (*map).player.height, (*map).player.width);
+	if ((*count).exit != 1)
 		return (0);
-	return (*e);
+	return ((*count).exit);
 }
 
 ******************************************/
@@ -539,12 +569,21 @@ int	ft_printf(const char *s, ...)
 }
 ******************************************/
 
+void	buffer_freeing(t_map *map)
+{
+	while ((*map).buffer[(*map).height] != NULL)
+	{
+		free((*map).buffer[(*map).height]);
+		(*map).height++;
+	}
+	free((*map).buffer);
+}
+
 int	main(void)
 {
 	int			fd;
 	int			check;
-	int	c;
-	int	e;
+	t_num		count;
 	t_map		map;
 
 	fd = open("../maps/map1.ber", O_RDWR);
@@ -555,16 +594,12 @@ int	main(void)
 		return (free(map.buffer), -1);
 	map.width = 0;
 	map.height = 0;
-	check = mapping(fd, &c, &e, &map);
-	if (map.collectible == c && e == 1 && check == 1)
+	check = mapping(fd, &count, &map);
+	if (map.collectible == count.coll && count.exit == 1 && check == 1)
 		ft_printf("The Map is valid with %d collectibles!\n", map.collectible);
 	else
 		ft_printf("The Map is NOT valid!\n");
 	map.height = 0;
-	while (map.buffer[map.height] != NULL)
-	{
-		free(map.buffer[map.height]);
-		map.height++;
-	}
-	return (free(map.buffer), 0);
+	buffer_freeing(&map);
+	return (0);
 }

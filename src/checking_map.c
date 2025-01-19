@@ -6,7 +6,7 @@
 /*   By: sohamdan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 10:13:09 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/01/19 17:17:41 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/01/19 21:34:14 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -113,27 +113,27 @@ int	checking_collectibles(int x, int y, char **buffer)
 	return (c);
 }
 
-int	checking_map(t_map *map)
+int	checking_char(int x, int y, char **buffer)
 {
-	int	p;
-	int	e;
-	int	w;
-	int	c;
+	int	width;
+	int	height;
 
-	p = checking_player((*map).width, (*map).height,
-			&((*map).player), (*map).buffer);
-	if (p != 1)
-		return (0);
-	e = checking_exit((*map).width, (*map).height,
-			&((*map).exit), (*map).buffer);
-	if (e != 1)
-		return (0);
-	w = checking_wall((*map).width, (*map).height, (*map).buffer);
-	if (w != 1)
-		return (0);
-	c = checking_collectibles((*map).width, (*map).height, (*map).buffer);
-	if (c <= 0)
-		return (0);
-	(*map).collectible = c;
-	return (c);
+	width = 0;
+	height = 0;
+	while (height < y)
+	{
+		width = 0;
+		while (width < x)
+		{
+			if (buffer[height][width] != 'E' &&
+					buffer[height][width] != 'C' &&
+					buffer[height][width] != 'P' &&
+					buffer[height][width] != '1' &&
+					buffer[height][width] != '0')
+				return (0);
+			width++;
+		}
+		height++;
+	}
+	return (1);
 }
