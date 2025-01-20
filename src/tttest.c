@@ -1,7 +1,7 @@
 #include "../lib/minilibx-linux/mlx.h"
 #include <unistd.h>
 #include <stdio.h>
-
+#include <stdlib.h>
 #define Z 512
 #define Y 512
 
@@ -9,12 +9,12 @@ int	main(void)
 {
 	void	*mlx_ptr;
 	void	*mlx_win;
-	int		*img;
-	//char	*path = "../assets/top_down_adventure/slime/slime_1.xpm";
-	//char	*path2 = "../assets/top_down_adventure/slime/slime_2.xpm";
-	//char	*path3 = "../assets/top_down_adventure/background/topDown_baseTiles.xpm";
-	char	*path4 = "../assets/The_Fantasy_Tileset/to_be_used/wall.xpm";
-	char	*path5 = "../assets/The_Fantasy_Tileset/to_be_used/Tileset_Road.xpm";
+	int		*img_ground;
+	int		*img_upper_wall;
+	int		*img_side_wall;
+	char	*ptr_ground = "../assets/map/ground.xpm";
+	char	*ptr_upper_wall = "../assets/map/upper_wall.xpm";
+	char	*ptr_side_wall = "../assets/map/side_wall.xpm";
 	int		x;
 	int		y;
 	//int		i;
@@ -23,34 +23,41 @@ int	main(void)
 
 	mlx_ptr = mlx_init();
 	mlx_win = mlx_new_window(mlx_ptr, Z, Y, "POP!");
-	img = mlx_xpm_file_to_image(mlx_ptr, path5, &x, &y);
+	
+	img_ground = mlx_xpm_file_to_image(mlx_ptr, ptr_ground, &x, &y);
 	a = 0;
 	b = 0;
 	while (a < Y)
 	{
 		while (b < Z)
 		{
-			mlx_put_image_to_window(mlx_ptr, mlx_win, img, a, b);
+			mlx_put_image_to_window(mlx_ptr, mlx_win, img_ground, a, b);
 			b += 32;
 		}
 		b = 0;
 		a += 32;
-	}	
-	img = mlx_xpm_file_to_image(mlx_ptr, path4, &x, &y);
+	}
+	
+	img_upper_wall = mlx_xpm_file_to_image(mlx_ptr, ptr_upper_wall, &x, &y);
+	img_side_wall = mlx_xpm_file_to_image(mlx_ptr, ptr_side_wall, &x, &y);
 	b = 0;
 	while (b < Y)
 	{
 		a = 0;
 		while (a < Z)
 		{
-			if (b == 0 || b + y >= Y || a == 0 || a + x >= Z)
-				mlx_put_image_to_window(mlx_ptr, mlx_win, img, a, b);
-
+			if (a + x >= Z || a == 0)
+				mlx_put_image_to_window(mlx_ptr, mlx_win, img_side_wall, a, b);
+			if (b == 0 || b + y >= Y)
+				mlx_put_image_to_window(mlx_ptr, mlx_win, img_upper_wall, a, b);
+			if ((a == 0 && b == 0) || (b == 0 && a + x >= Z))
+				mlx_put_image_to_window(mlx_ptr, mlx_win, img_side_wall, a, b);
 			a += x;
 		}
 		b += y;
 	}	
-	/*i = 0;
+	/*
+	i = 0;
 	while(i < 10000)
 	{
 		img = mlx_xpm_file_to_image(mlx_ptr, path, &x, &y);
