@@ -13,7 +13,6 @@
 #include "so_long.h"
 
 /*****************************CHECKING_MAP*************
-
 int	checking_wall(int x, int y, char **buffer)
 {
 	int	width;
@@ -143,7 +142,6 @@ int	checking_char(int x, int y, char **buffer)
 ******************************************/
 
 /*****************************MAPPING*************
-
 int	checking_path(t_map *map, t_num *count, int y, int x)
 {
 	if ((*map).buffer[y][x] == '1' || (*map).buffer[y][x] == 'X')
@@ -235,11 +233,11 @@ int	mapping(int fd, t_num *count, t_map *map)
 {
 	int	check;
 
-	copying_map(fd, &((*map).height), (*map).buffer);
-	if (((*map).height) == 0)
+	check = copying_map(fd, &((*map).height), (*map).buffer);
+	if (((*map).height) == 0 || check == 0)
 		return (0);
-	checking_length(((*map).height), &((*map).width), (*map).buffer);
-	if (((*map).width) == 0)
+	check = checking_length(((*map).height), &((*map).width), (*map).buffer);
+	if (((*map).width) == 0 || check == 0)
 		return (0);
 	check = checking_map(map);
 	if (check == 0)
@@ -579,6 +577,15 @@ void	buffer_freeing(t_map *map)
 	free((*map).buffer);
 }
 
+void	initialise(t_num *count, t_map *map)
+{
+	(*count).coll = 0;
+	(*count).exit = 0;
+	(*map).width = 0;
+	(*map).height = 0;
+	(*map).collectible = 0;
+}
+
 int	main(void)
 {
 	int			fd;
@@ -586,14 +593,13 @@ int	main(void)
 	t_num		count;
 	t_map		map;
 
-	fd = open("../maps/map1.ber", O_RDWR);
+	fd = open("../maps/map.ber", O_RDWR);
 	if (fd == -1)
-		return (printf("error openning file!\n"), -1);
+		return (perror("Error openning file!"), -1);
 	map.buffer = (char **)malloc(BUFFER_SIZE * sizeof(t_map *));
 	if (!map.buffer)
 		return (free(map.buffer), -1);
-	map.width = 0;
-	map.height = 0;
+	initialise(&count, &map);
 	check = mapping(fd, &count, &map);
 	if (map.collectible == count.coll && count.exit == 1 && check == 1)
 		ft_printf("The Map is valid with %d collectibles!\n", map.collectible);
