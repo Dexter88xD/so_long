@@ -6,7 +6,7 @@
 /*   By: sohamdan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 11:11:35 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/01/19 21:30:13 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/01/20 09:46:20 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 # define SO_LONG_H
 
 # include <unistd.h>
-# include <stdio.h>
 # include <fcntl.h>
+# include <stdio.h>
 
 # include "../include/ft_libc/get_next_line/get_next_line.h"
 # include "../include/ft_libc/ft_printf/ft_printf.h"

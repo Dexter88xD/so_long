@@ -6,7 +6,7 @@
 /*   By: sohamdan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 09:17:00 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/01/20 09:36:11 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/01/20 09:53:54 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,16 +31,18 @@ void	initialise(t_num *count, t_map *map)
 	(*map).collectible = 0;
 }
 
-int	main(void)
+int	main(int argc, char **argv)
 {
 	int			fd;
 	int			check;
 	t_num		count;
 	t_map		map;
 
-	fd = open("../maps/map2.ber", O_RDWR);
+	if (argc != 2)
+		return (ft_printf("Error: must provide a file\n"), -1);
+	fd = open(argv[1], O_RDWR);
 	if (fd == -1)
-		return (printf("error openning file!\n"), -1);
+		return (perror("Error openning file!"), -1);
 	map.buffer = (char **)malloc(BUFFER_SIZE * sizeof(t_map *));
 	if (!map.buffer)
 		return (free(map.buffer), -1);
