@@ -6,13 +6,13 @@
 /*   By: sohamdan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 23:50:08 by sohamdan          #+#    #+#             */
-/*   Updated: 2024/12/25 15:51:43 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/01/19 22:24:22 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_printf.h"
 
-int	ft_puthex(unsigned long n, char c, int f)
+static int	ft_puthex(unsigned long n, char c, int f)
 {
 	char	*hex_s;
 	int		num;
@@ -35,7 +35,7 @@ int	ft_puthex(unsigned long n, char c, int f)
 	return (num);
 }
 
-int	ft_putnbr(long n)
+static int	ft_putnbr(long n)
 {
 	char	n_out;
 	int		num;
@@ -61,7 +61,7 @@ int	ft_putnbr(long n)
 	return (num);
 }
 
-int	ft_putstr(const char *s, const char c, int n)
+static int	ft_putstr(const char *s, const char c, int n)
 {
 	int	num;
 	int	i;
@@ -83,7 +83,7 @@ int	ft_putstr(const char *s, const char c, int n)
 	return (num);
 }
 
-int	what_identifier(char pitta, va_list agrippa)
+static int	what_identifier(char pitta, va_list agrippa)
 {
 	int				num;
 	unsigned long	ptr;

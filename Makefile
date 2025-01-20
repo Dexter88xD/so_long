@@ -7,7 +7,7 @@ CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
 
-NAME = so_long.a
+NAME = src/so_long
 
 FILES = src/main.c src/mapping.c src/checking_map.c
 
@@ -22,10 +22,7 @@ LIBFT_A = include/ft_libc/libft.a
 all: $(NAME)
 
 $(NAME): $(OBJECTS) $(LIBFT_A)
-	$(MAKE_FT_LIBC)
-	ar x $(LIBFT_A)
-	ar rcs $(NAME) $(OBJECTS) *.o
-	rm -f *.o
+	$(CC) $(CFLAGS) -o $(NAME) $^
 
 $(LIBFT_A):
 	$(MAKE_FT_LIBC)

@@ -6,17 +6,15 @@
 /*   By: sohamdan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 11:20:19 by sohamdan          #+#    #+#             */
-/*   Updated: 2024/11/14 10:24:09 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/01/19 21:54:48 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LIBFT_H
 # define LIBFT_H
 
-# include <ctype.h>
 # include <unistd.h>
 # include <stdlib.h>
-# include <stdio.h>
 
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);

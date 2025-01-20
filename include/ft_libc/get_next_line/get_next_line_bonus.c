@@ -6,7 +6,7 @@
 /*   By: sohamdan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 09:03:49 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/01/04 22:59:06 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/01/19 22:25:53 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,7 +56,7 @@ static char	*join_buffer(char **temp_buffer, char **buffer, char *temp)
 	return (temp);
 }
 
-ssize_t	line_read(char **buffer, int fd)
+static ssize_t	line_read(char **buffer, int fd)
 {
 	char	*temp;
 	char	*temp_buffer;

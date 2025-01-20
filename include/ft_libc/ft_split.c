@@ -6,12 +6,11 @@
 /*   By: sohamdan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/11/11 11:39:38 by sohamdan          #+#    #+#             */
-/*   Updated: 2024/11/14 12:42:27 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/01/19 21:51:14 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
-#include <stdio.h>
 
 static int	count_words(char *s, char c)
 {
