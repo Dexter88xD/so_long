@@ -150,11 +150,11 @@ void	putting_images(char **array, int rows, int cols, void *mlx_ptr)
 			}
 			else if (array[i][j] == '0')
 			{
-				if (array[i - 1][j] == '1' && array[i][j - 1] == '1')
+				if (array[i - 1][j] == '1' && array[i][j - 1] == '1' && array[i][j + 1] != '1')
 					// Left upper corner of road
 					mlx_put_image_to_window(mlx_ptr, mlx_win,
 						img_road_corner_left_up, b, a);
-				else if (array[i - 1][j] == '1' && array[i][j + 1] == '1')
+				else if (array[i - 1][j] == '1' && array[i][j + 1] == '1' && array[i][j - 1] != '1')
 					// Right upper corner of road
 					mlx_put_image_to_window(mlx_ptr, mlx_win,
 						img_road_corner_right_up, b, a);
@@ -166,7 +166,8 @@ void	putting_images(char **array, int rows, int cols, void *mlx_ptr)
 					// Right lower corner of road
 					mlx_put_image_to_window(mlx_ptr, mlx_win,
 						img_road_corner_right_down, b, a);
-				else if (array[i - 1][j] == '1' && array[i + 1][j] == '0')
+				else if (array[i - 1][j] == '1' && array[i + 1][j] == '0'
+						&& (array[i][j - 1] != '1' || array[i][j + 1] != '1'))
 					// Upper side of road
 					mlx_put_image_to_window(mlx_ptr, mlx_win, img_road_side_up,
 						b, a);
@@ -182,19 +183,19 @@ void	putting_images(char **array, int rows, int cols, void *mlx_ptr)
 					// Right side of road
 					mlx_put_image_to_window(mlx_ptr, mlx_win,
 						img_road_side_right, b, a);
-				else if (array[i - 1][j] == '1' && array[i + 1][j] == '1')
-					// Vertical road
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						img_road_side_up_down, b, a);
-				else if (array[i][j - 1] == '1' && array[i][j + 1] == '1')
-					// Horizontal road
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						img_road_side_left_right, b, a);
 				else if (array[i][j + 1] == '1' && array[i][j - 1] == '1'
 					&& array[i - 1][j] == '1' && array[i + 1][j] == '0')
 					// Three sides up
 					mlx_put_image_to_window(mlx_ptr, mlx_win,
 							img_road_three_side_up, b, a);
+				else if (array[i - 1][j] == '1' && array[i + 1][j] == '1')
+					// Horizontal road
+					mlx_put_image_to_window(mlx_ptr, mlx_win,
+						img_road_side_up_down, b, a);
+				else if (array[i][j - 1] == '1' && array[i][j + 1] == '1')
+					// Vertical road
+					mlx_put_image_to_window(mlx_ptr, mlx_win,
+						img_road_side_left_right, b, a);
 				else // Inside road
 					mlx_put_image_to_window(mlx_ptr, mlx_win, img_inside_road,
 						b, a);
