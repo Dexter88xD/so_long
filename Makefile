@@ -7,9 +7,13 @@ CC = cc
 
 CFLAGS = -Wall -Wextra -Werror
 
+LIB_FLAGS = -lXext -lX11
+
+MINILIB = lib/minilibx-linux/libmlx*
+
 NAME = src/so_long
 
-FILES = src/main.c src/mapping.c src/checking_map.c
+FILES = src/main.c src/mapping.c src/checking_map.c src/putting_map.c
 
 OBJECTS = $(FILES:%.c=%.o)
 
@@ -21,8 +25,8 @@ LIBFT_A = include/ft_libc/libft.a
 
 all: $(NAME)
 
-$(NAME): $(OBJECTS) $(LIBFT_A)
-	$(CC) $(CFLAGS) -o $(NAME) $^
+$(NAME): $(OBJECTS) $(LIBFT_A) $(MINILIB)
+	$(CC) $(CFLAGS) $(LIB_FLAGS) -o $(NAME) $^
 
 $(LIBFT_A):
 	$(MAKE_FT_LIBC)

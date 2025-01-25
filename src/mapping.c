@@ -6,7 +6,7 @@
 /*   By: sohamdan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 11:10:57 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/01/20 10:17:51 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/01/24 22:14:40 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,7 @@ int	checking_map(t_map *map)
 	if (w != 1)
 		return (0);
 	c = checking_collectibles((*map).width, (*map).height, (*map).buffer);
-	if (c <= 0)
+	if (c == 0)
 		return (0);
 	(*map).collectible = c;
 	return (c);
@@ -114,7 +114,5 @@ int	mapping(int fd, t_num *count, t_map *map)
 		return (0);
 	(*count).coll = 0;
 	checking_path(map, count, (*map).player.height, (*map).player.width);
-	if ((*count).exit != 1)
-		return (0);
 	return ((*count).exit);
 }
