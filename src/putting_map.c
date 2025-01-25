@@ -78,7 +78,6 @@ void	putting_images(char **array, int rows, int cols, void *mlx_ptr)
 	ptr_road_side_up_down = "../assets/map_parts/road/side/two/up_down.xpm";
 	ptr_road_side_left_right = "../assets/map_parts/road/side/two/left_right.xpm";
 	ptr_inside_road = "../assets/map_parts/road/inside_road.xpm";
-	ptr_road_three_side_up = "../assets/map_parts/road/side/three/up.xpm";
 	ptr_road_three_side_up = "../assets/map_parts/road/side/three/down.xpm";
 	mlx_win = mlx_new_window(mlx_ptr, X, Y, "POP!");
 	img_corner_left_up = mlx_xpm_file_to_image(mlx_ptr, ptr_corner_left_up, &x,
@@ -163,11 +162,13 @@ void	putting_images(char **array, int rows, int cols, void *mlx_ptr)
 					// Left lower corner of road
 					mlx_put_image_to_window(mlx_ptr, mlx_win,
 						img_road_corner_left_down, b, a);
-				else if (array[i + 1][j] == '1' && array[i][j - 1] == '1' && array[i][j + 1] != '1')
+				else if (array[i + 1][j] == '1' && array[i][j - 1] == '1'
+						&& array[i][j + 1] == '0' && array[i - 1][j] == '0')
 					// Left lower corner of road
 					mlx_put_image_to_window(mlx_ptr, mlx_win,
 						img_road_corner_left_down, b, a);
-				else if (array[i + 1][j] == '1' && array[i][j + 1] == '1' && array[i][j - 1] != '1')
+				else if (array[i + 1][j] == '1' && array[i][j + 1] == '1'
+						&& array[i][j - 1] == '0' && array[i - 1][j] == '0')
 					// Right lower corner of road
 					mlx_put_image_to_window(mlx_ptr, mlx_win,
 						img_road_corner_right_down, b, a);
