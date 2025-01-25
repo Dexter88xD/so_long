@@ -6,7 +6,7 @@
 /*   By: sohamdan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 09:17:00 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/01/20 09:53:54 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/01/25 11:32:41 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,6 +31,15 @@ void	initialise(t_num *count, t_map *map)
 	(*map).collectible = 0;
 }
 
+void	putting_map(t_map *map)
+{
+	void	*mlx_ptr;
+
+	mlx_ptr = mlx_init();
+	putting_images((*map).buffer, (*map).height, (*map).width, mlx_ptr);
+	mlx_loop(mlx_ptr);
+}
+
 int	main(int argc, char **argv)
 {
 	int			fd;
@@ -48,8 +57,12 @@ int	main(int argc, char **argv)
 		return (free(map.buffer), -1);
 	initialise(&count, &map);
 	check = mapping(fd, &count, &map);
-	if (map.collectible == count.coll && count.exit == 1 && check == 1)
+	putting_map(&map);
+	if (map.collectible == count.coll && check == 1)
+	{
 		ft_printf("The Map is valid with %d collectibles!\n", map.collectible);
+		//putting_map(&map);
+	}
 	else
 		ft_printf("The Map is NOT valid!\n");
 	map.height = 0;
