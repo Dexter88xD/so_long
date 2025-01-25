@@ -163,7 +163,6 @@ void	putting_images(char **array, int rows, int cols, void *mlx_ptr)
 					// Left lower corner of road
 					mlx_put_image_to_window(mlx_ptr, mlx_win,
 						img_road_corner_left_down, b, a);
-				else if (array[i + 1][j] == '1' && array[i][j + 1] == '1')
 				else if (array[i + 1][j] == '1' && array[i][j - 1] == '1' && array[i][j + 1] != '1')
 					// Left lower corner of road
 					mlx_put_image_to_window(mlx_ptr, mlx_win,
@@ -191,7 +190,7 @@ void	putting_images(char **array, int rows, int cols, void *mlx_ptr)
 					mlx_put_image_to_window(mlx_ptr, mlx_win,
 						img_road_side_right, b, a);
 				else if (array[i][j + 1] == '1' && array[i][j - 1] == '1'
-					&& array[i - 1][j] == '1' && array[i + 1][j] == '0')
+					&& array[i - 1][j] == '0' && array[i + 1][j] == '1')
 					// Three sides up
 					mlx_put_image_to_window(mlx_ptr, mlx_win,
 							img_road_three_side_up, b, a);
