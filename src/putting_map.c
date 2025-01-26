@@ -98,10 +98,10 @@ void	putting_images(char **array, int rows, int cols, void *mlx_ptr)
 	ptr_road_three_side_left = "../assets/map_parts/road/side/three/left.xpm";
 	ptr_inside_road = "../assets/map_parts/road/inside_road.xpm";
 	ptr_inside_wall = "../assets/map_parts/inside_wall.xpm";
-	ptr_char_inside_road_1 = "../assets/map_parts/character/character_inside_road_1.xpm";
-	ptr_char_inside_road_2 = "../assets/map_parts/character/character_inside_road_2.xpm";
-	ptr_char_inside_road_3 = "../assets/map_parts/character/character_inside_road_3.xpm";
-	ptr_char_inside_road_4 = "../assets/map_parts/character/character_inside_road_4.xpm";
+	ptr_char_inside_road_1 = "../assets/map_parts/character/inside_road/frame_1.xpm";
+	ptr_char_inside_road_2 = "../assets/map_parts/character/inside_road/frame_2.xpm";
+	ptr_char_inside_road_3 = "../assets/map_parts/character/inside_road/frame_3.xpm";
+	ptr_char_inside_road_4 = "../assets/map_parts/character/inside_road/frame_4.xpm";
 
 	mlx_win = mlx_new_window(mlx_ptr, X, Y, "POP!");
 	img_corner_left_up = mlx_xpm_file_to_image(mlx_ptr, ptr_corner_left_up, &x,
@@ -269,9 +269,46 @@ void	putting_images(char **array, int rows, int cols, void *mlx_ptr)
 		}
 		i++;
 	}
+	a = 96; // Start position
+    b = 416; // Fixed horizontal position
+    int frame = 0;
+    int prev_b = b; // Variable to store the previous position
 
-	a = 64;
-	b = 96;
+    while (1)
+    {
+        // Clear the previous player position by drawing the background
+        mlx_put_image_to_window(mlx_ptr, mlx_win, img_inside_road, prev_b, a);
+
+        // Display the current animation frame at the new position
+        if (frame % 4 == 0)
+            mlx_put_image_to_window(mlx_ptr, mlx_win, img_char_inside_road_1, b, a);
+        else if (frame % 4 == 1)
+            mlx_put_image_to_window(mlx_ptr, mlx_win, img_char_inside_road_2, b, a);
+        else if (frame % 4 == 2)
+            mlx_put_image_to_window(mlx_ptr, mlx_win, img_char_inside_road_3, b, a);
+        else if (frame % 4 == 3)
+            mlx_put_image_to_window(mlx_ptr, mlx_win, img_char_inside_road_4, b, a);
+
+        // Increment frame for animation
+        frame++;
+
+        // Update the player's position every 4 frames
+        if (frame % 4 == 0)
+        {
+            prev_b = b;   // Store the current position as the previous position
+            b += 32;      // Move down by 32 pixels
+            if (b > 448)  // Reset if out of range
+                b = 416;
+        }
+
+        // Delay for animation speed
+        usleep(100000); // 100ms delay per frame
+    }
+
+
+/*
+	a = 128;
+	b = 448;
 	int frame = 0;	
 	while (1)
 	{
@@ -290,6 +327,7 @@ void	putting_images(char **array, int rows, int cols, void *mlx_ptr)
    		frame++;
     	usleep(100000); // Adjust delay for animation speed
 	}
+*/
 	mlx_loop(mlx_ptr);
 	/**********************************************************************/
 }
