@@ -67,6 +67,23 @@ void	putting_images(char **array, int rows, int cols, void *mlx_ptr)
 	char	*ptr_char_inside_road_3;
 	void	*img_char_inside_road_4;
 	char	*ptr_char_inside_road_4;
+	void	*img_key_inside_road_1;
+	char	*ptr_key_inside_road_1;
+	void	*img_key_inside_road_2;
+	char	*ptr_key_inside_road_2;
+	void	*img_key_inside_road_3;
+	char	*ptr_key_inside_road_3;
+	void	*img_key_inside_road_4;
+	char	*ptr_key_inside_road_4;
+	void	*img_key_inside_road_5;
+	char	*ptr_key_inside_road_5;
+	void	*img_key_inside_road_6;
+	char	*ptr_key_inside_road_6;
+	void	*img_key_inside_road_7;
+	char	*ptr_key_inside_road_7;
+	void	*img_key_inside_road_8;
+	char	*ptr_key_inside_road_8;
+	
 	/**********************ASSIGNING IMAGES TO THE MAP*********************/
 	a = 0;
 	b = 0;
@@ -102,6 +119,14 @@ void	putting_images(char **array, int rows, int cols, void *mlx_ptr)
 	ptr_char_inside_road_2 = "../assets/map_parts/character/inside_road/frame_2.xpm";
 	ptr_char_inside_road_3 = "../assets/map_parts/character/inside_road/frame_3.xpm";
 	ptr_char_inside_road_4 = "../assets/map_parts/character/inside_road/frame_4.xpm";
+	ptr_key_inside_road_1 = "../assets/map_parts/key/inside_road/frame_1.xpm";
+	ptr_key_inside_road_2 = "../assets/map_parts/key/inside_road/frame_2.xpm";
+	ptr_key_inside_road_3 = "../assets/map_parts/key/inside_road/frame_3.xpm";
+	ptr_key_inside_road_4 = "../assets/map_parts/key/inside_road/frame_4.xpm";
+	ptr_key_inside_road_5 = "../assets/map_parts/key/inside_road/frame_5.xpm";
+	ptr_key_inside_road_6 = "../assets/map_parts/key/inside_road/frame_6.xpm";
+	ptr_key_inside_road_7 = "../assets/map_parts/key/inside_road/frame_7.xpm";
+	ptr_key_inside_road_8 = "../assets/map_parts/key/inside_road/frame_8.xpm";
 
 	mlx_win = mlx_new_window(mlx_ptr, X, Y, "POP!");
 	img_corner_left_up = mlx_xpm_file_to_image(mlx_ptr, ptr_corner_left_up, &x,
@@ -149,6 +174,14 @@ void	putting_images(char **array, int rows, int cols, void *mlx_ptr)
 	img_char_inside_road_2 = mlx_xpm_file_to_image(mlx_ptr, ptr_char_inside_road_2, &x, &y);
 	img_char_inside_road_3 = mlx_xpm_file_to_image(mlx_ptr, ptr_char_inside_road_3, &x, &y);
 	img_char_inside_road_4 = mlx_xpm_file_to_image(mlx_ptr, ptr_char_inside_road_4, &x, &y);
+	img_key_inside_road_1 = mlx_xpm_file_to_image(mlx_ptr, ptr_key_inside_road_1, &x, &y);
+	img_key_inside_road_2 = mlx_xpm_file_to_image(mlx_ptr, ptr_key_inside_road_2, &x, &y);
+	img_key_inside_road_3 = mlx_xpm_file_to_image(mlx_ptr, ptr_key_inside_road_3, &x, &y);
+	img_key_inside_road_4 = mlx_xpm_file_to_image(mlx_ptr, ptr_key_inside_road_4, &x, &y);
+	img_key_inside_road_5 = mlx_xpm_file_to_image(mlx_ptr, ptr_key_inside_road_5, &x, &y);
+	img_key_inside_road_6 = mlx_xpm_file_to_image(mlx_ptr, ptr_key_inside_road_6, &x, &y);
+	img_key_inside_road_7 = mlx_xpm_file_to_image(mlx_ptr, ptr_key_inside_road_7, &x, &y);
+	img_key_inside_road_8 = mlx_xpm_file_to_image(mlx_ptr, ptr_key_inside_road_8, &x, &y);
 	while (i < rows)
 	{
 		a = i * x;
@@ -269,6 +302,39 @@ void	putting_images(char **array, int rows, int cols, void *mlx_ptr)
 		}
 		i++;
 	}
+/*
+	a = 128;
+    b = 448;
+    int frame = 0;  
+    while (1) 
+    {   
+        if (frame % 8 == 0)
+            mlx_put_image_to_window(mlx_ptr, mlx_win,
+                    img_key_inside_road_1, b, a); 
+        else if (frame % 8 == 1)
+            mlx_put_image_to_window(mlx_ptr, mlx_win,
+                    img_key_inside_road_2, b, a); 
+        else if (frame % 8 == 2)
+            mlx_put_image_to_window(mlx_ptr, mlx_win,
+                    img_key_inside_road_3, b, a); 
+        else if (frame % 8 == 3)
+            mlx_put_image_to_window(mlx_ptr, mlx_win,
+                    img_key_inside_road_4, b, a); 
+        else if (frame % 8 == 4)
+            mlx_put_image_to_window(mlx_ptr, mlx_win,
+                    img_key_inside_road_5, b, a); 
+        else if (frame % 8 == 5)
+            mlx_put_image_to_window(mlx_ptr, mlx_win,
+                    img_key_inside_road_6, b, a); 
+        else if (frame % 8 == 6)
+            mlx_put_image_to_window(mlx_ptr, mlx_win,
+                    img_key_inside_road_7, b, a); 
+        else if (frame % 8 == 7)
+            mlx_put_image_to_window(mlx_ptr, mlx_win,
+                    img_key_inside_road_8, b, a); 
+        frame++;
+        usleep(100000); // Adjust delay for animation speed
+    } 
 	a = 96; // Start position
     b = 416; // Fixed horizontal position
     int frame = 0;
@@ -304,9 +370,7 @@ void	putting_images(char **array, int rows, int cols, void *mlx_ptr)
         // Delay for animation speed
         usleep(100000); // 100ms delay per frame
     }
-
-
-/*
+*/
 	a = 128;
 	b = 448;
 	int frame = 0;	
@@ -327,7 +391,6 @@ void	putting_images(char **array, int rows, int cols, void *mlx_ptr)
    		frame++;
     	usleep(100000); // Adjust delay for animation speed
 	}
-*/
 	mlx_loop(mlx_ptr);
 	/**********************************************************************/
 }
