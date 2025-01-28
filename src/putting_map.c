@@ -371,6 +371,7 @@ void	putting_images(char **array, int rows, int cols, void *mlx_ptr)
         usleep(100000); // 100ms delay per frame
     }
 */
+	/*
 	a = 128;
 	b = 448;
 	int frame = 0;	
@@ -391,6 +392,7 @@ void	putting_images(char **array, int rows, int cols, void *mlx_ptr)
    		frame++;
     	usleep(100000); // Adjust delay for animation speed
 	}
+	*/
 	mlx_loop(mlx_ptr);
 	/**********************************************************************/
 }
