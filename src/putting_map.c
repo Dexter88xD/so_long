@@ -91,42 +91,42 @@ void	putting_images(char **array, int rows, int cols, void *mlx_ptr)
 	j = 0;
 	Y = rows * 32;
 	X = cols * 32;
-	ptr_corner_left_up = "../assets/map_parts/outside/left_up.xpm";
-	ptr_corner_left_down = "../assets/map_parts/outside/left_down.xpm";
-	ptr_corner_right_up = "../assets/map_parts/outside/right_up.xpm";
-	ptr_corner_right_down = "../assets/map_parts/outside/right_down.xpm";
-	ptr_side_left = "../assets/map_parts/outside/left.xpm";
-	ptr_side_right = "../assets/map_parts/outside/right.xpm";
-	ptr_side_up = "../assets/map_parts/outside/up.xpm";
-	ptr_side_down = "../assets/map_parts/outside/down.xpm";
-	ptr_road_corner_left_up = "../assets/map_parts/road/corner/left_up.xpm";
-	ptr_road_side_up = "../assets/map_parts/road/side/one/up.xpm";
-	ptr_road_corner_right_up = "../assets/map_parts/road/corner/right_up.xpm";
-	ptr_road_side_right = "../assets/map_parts/road/side/one/right.xpm";
-	ptr_road_corner_right_down = "../assets/map_parts/road/corner/right_down.xpm";
-	ptr_road_side_down = "../assets/map_parts/road/side/one/down.xpm";
-	ptr_road_corner_left_down = "../assets/map_parts/road/corner/left_down.xpm";
-	ptr_road_side_left = "../assets/map_parts/road/side/one/left.xpm";
-	ptr_road_side_up_down = "../assets/map_parts/road/side/two/up_down.xpm";
-	ptr_road_side_left_right = "../assets/map_parts/road/side/two/left_right.xpm";
-	ptr_road_three_side_down = "../assets/map_parts/road/side/three/down.xpm";
-	ptr_road_three_side_up = "../assets/map_parts/road/side/three/up.xpm";
-	ptr_road_three_side_right = "../assets/map_parts/road/side/three/right.xpm";
-	ptr_road_three_side_left = "../assets/map_parts/road/side/three/left.xpm";
-	ptr_inside_road = "../assets/map_parts/road/inside_road.xpm";
-	ptr_inside_wall = "../assets/map_parts/inside_wall.xpm";
-	ptr_char_inside_road_1 = "../assets/map_parts/character/inside_road/frame_1.xpm";
-	ptr_char_inside_road_2 = "../assets/map_parts/character/inside_road/frame_2.xpm";
-	ptr_char_inside_road_3 = "../assets/map_parts/character/inside_road/frame_3.xpm";
-	ptr_char_inside_road_4 = "../assets/map_parts/character/inside_road/frame_4.xpm";
-	ptr_key_inside_road_1 = "../assets/map_parts/key/inside_road/frame_1.xpm";
-	ptr_key_inside_road_2 = "../assets/map_parts/key/inside_road/frame_2.xpm";
-	ptr_key_inside_road_3 = "../assets/map_parts/key/inside_road/frame_3.xpm";
-	ptr_key_inside_road_4 = "../assets/map_parts/key/inside_road/frame_4.xpm";
-	ptr_key_inside_road_5 = "../assets/map_parts/key/inside_road/frame_5.xpm";
-	ptr_key_inside_road_6 = "../assets/map_parts/key/inside_road/frame_6.xpm";
-	ptr_key_inside_road_7 = "../assets/map_parts/key/inside_road/frame_7.xpm";
-	ptr_key_inside_road_8 = "../assets/map_parts/key/inside_road/frame_8.xpm";
+	ptr_corner_left_up = "../assets/wall/left_up.xpm";
+	ptr_corner_left_down = "../assets/wall/left_down.xpm";
+	ptr_corner_right_up = "../assets/wall/right_up.xpm";
+	ptr_corner_right_down = "../assets/wall/right_down.xpm";
+	ptr_side_left = "../assets/wall/left.xpm";
+	ptr_side_right = "../assets/wall/right.xpm";
+	ptr_side_up = "../assets/wall/up.xpm";
+	ptr_side_down = "../assets/wall/down.xpm";
+	ptr_road_corner_left_up = "../assets/road/corner/left_up.xpm";
+	ptr_road_side_up = "../assets/road/side/one/up.xpm";
+	ptr_road_corner_right_up = "../assets/road/corner/right_up.xpm";
+	ptr_road_side_right = "../assets/road/side/one/right.xpm";
+	ptr_road_corner_right_down = "../assets/road/corner/right_down.xpm";
+	ptr_road_side_down = "../assets/road/side/one/down.xpm";
+	ptr_road_corner_left_down = "../assets/road/corner/left_down.xpm";
+	ptr_road_side_left = "../assets/road/side/one/left.xpm";
+	ptr_road_side_up_down = "../assets/road/side/two/up_down.xpm";
+	ptr_road_side_left_right = "../assets/road/side/two/left_right.xpm";
+	ptr_road_three_side_down = "../assets/road/side/three/down.xpm";
+	ptr_road_three_side_up = "../assets/road/side/three/up.xpm";
+	ptr_road_three_side_right = "../assets/road/side/three/right.xpm";
+	ptr_road_three_side_left = "../assets/road/side/three/left.xpm";
+	ptr_inside_road = "../assets/road/inside_road.xpm";
+	ptr_inside_wall = "../assets/wall/inside_wall.xpm";
+	ptr_char_inside_road_1 = "../assets/sprites/look_right/character/inside_road/frame_1.xpm";
+	ptr_char_inside_road_2 = "../assets/sprites/look_right/character/inside_road/frame_2.xpm";
+	ptr_char_inside_road_3 = "../assets/sprites/look_right/character/inside_road/frame_3.xpm";
+	ptr_char_inside_road_4 = "../assets/sprites/look_right/character/inside_road/frame_4.xpm";
+	ptr_key_inside_road_1 = "../assets/key/inside_road/frame_1.xpm";
+	ptr_key_inside_road_2 = "../assets/key/inside_road/frame_2.xpm";
+	ptr_key_inside_road_3 = "../assets/key/inside_road/frame_3.xpm";
+	ptr_key_inside_road_4 = "../assets/key/inside_road/frame_4.xpm";
+	ptr_key_inside_road_5 = "../assets/key/inside_road/frame_5.xpm";
+	ptr_key_inside_road_6 = "../assets/key/inside_road/frame_6.xpm";
+	ptr_key_inside_road_7 = "../assets/key/inside_road/frame_7.xpm";
+	ptr_key_inside_road_8 = "../assets/key/inside_road/frame_8.xpm";
 
 	mlx_win = mlx_new_window(mlx_ptr, X, Y, "POP!");
 	img_corner_left_up = mlx_xpm_file_to_image(mlx_ptr, ptr_corner_left_up, &x,
@@ -302,7 +302,7 @@ void	putting_images(char **array, int rows, int cols, void *mlx_ptr)
 		}
 		i++;
 	}
-/*
+	/*
 	a = 128;
     b = 448;
     int frame = 0;  
@@ -334,7 +334,8 @@ void	putting_images(char **array, int rows, int cols, void *mlx_ptr)
                     img_key_inside_road_8, b, a); 
         frame++;
         usleep(100000); // Adjust delay for animation speed
-    } 
+    }
+
 	a = 96; // Start position
     b = 416; // Fixed horizontal position
     int frame = 0;
@@ -370,8 +371,7 @@ void	putting_images(char **array, int rows, int cols, void *mlx_ptr)
         // Delay for animation speed
         usleep(100000); // 100ms delay per frame
     }
-*/
-	/*
+	*/
 	a = 128;
 	b = 448;
 	int frame = 0;	
@@ -392,7 +392,7 @@ void	putting_images(char **array, int rows, int cols, void *mlx_ptr)
    		frame++;
     	usleep(100000); // Adjust delay for animation speed
 	}
-	*/
+	
 	mlx_loop(mlx_ptr);
 	/**********************************************************************/
 }

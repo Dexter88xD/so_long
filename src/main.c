@@ -6,7 +6,7 @@
 /*   By: sohamdan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 09:17:00 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/01/26 10:12:15 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/01/29 14:28:41 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,7 +48,7 @@ int	main(int argc, char **argv)
 	t_map		map;
 
 	if (argc != 2)
-		return (ft_printf("Error: must provide a file\n"), -1);
+		return (ft_printf("so_long: must provide a file\n"), -1);
 	fd = open(argv[1], O_RDWR);
 	if (fd == -1)
 		return (perror("Error openning file!"), -1);
