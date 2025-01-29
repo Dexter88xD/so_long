@@ -6,7 +6,7 @@
 /*   By: sohamdan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 11:10:57 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/01/24 22:14:40 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/01/29 15:12:18 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,21 +46,22 @@ int	checking_map(t_map *map)
 	int	c;
 
 	if (checking_char((*map).width, (*map).height, (*map).buffer) != 1)
-		return (0);
+		return (ft_printf("Error:\nThe Map contains invalid characters!\n"), 0);
 	p = checking_player((*map).width, (*map).height,
 			&((*map).player), (*map).buffer);
 	if (p != 1)
-		return (0);
+		return (ft_printf("Error:\nThe Map must contain one player!\n"), 0);
 	e = checking_exit((*map).width, (*map).height,
 			&((*map).exit), (*map).buffer);
 	if (e != 1)
-		return (0);
+		return (ft_printf("Error:\nThe map must contain one exit!\n"), 0);
 	w = checking_wall((*map).width, (*map).height, (*map).buffer);
 	if (w != 1)
-		return (0);
+		return (ft_printf("Error:\nThe map must be surrounded by walls!\n"), 0);
 	c = checking_collectibles((*map).width, (*map).height, (*map).buffer);
 	if (c == 0)
-		return (0);
+		return (ft_printf("Error:\n") \
+		, ft_printf("The map must contain multiple collectibles!\n"), 0);
 	(*map).collectible = c;
 	return (c);
 }
@@ -82,7 +83,7 @@ int	checking_length(int y, int *x, char **buffer)
 		while (buffer[height][width] != '\n' && buffer[height][width] != '\0')
 			width++;
 		if (width != (*x))
-			return (0);
+			return (ft_printf("Error:\nThe map must be rectangular!\n"), 0);
 		height++;
 	}
 	return (1);
@@ -105,7 +106,7 @@ int	mapping(int fd, t_num *count, t_map *map)
 
 	check = copying_map(fd, &((*map).height), (*map).buffer);
 	if (((*map).height) == 0 || check == 0)
-		return (0);
+		return (ft_printf("Error:\n"), 0);
 	check = checking_length(((*map).height), &((*map).width), (*map).buffer);
 	if (((*map).width) == 0 || check == 0)
 		return (0);

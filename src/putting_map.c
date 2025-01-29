@@ -11,6 +11,7 @@ void	putting_images(char **array, int rows, int cols, void *mlx_ptr)
 	int		Y;
 	int		X;
 	void	*mlx_win;
+
 	void	*img_corner_left_up;
 	char	*ptr_corner_left_up;
 	void	*img_corner_left_down;
@@ -19,6 +20,7 @@ void	putting_images(char **array, int rows, int cols, void *mlx_ptr)
 	char	*ptr_corner_right_up;
 	void	*img_corner_right_down;
 	char	*ptr_corner_right_down;
+
 	void	*img_side_left;
 	char	*ptr_side_left;
 	void	*img_side_right;
@@ -27,26 +29,30 @@ void	putting_images(char **array, int rows, int cols, void *mlx_ptr)
 	char	*ptr_side_up;
 	void	*img_side_down;
 	char	*ptr_side_down;
+
 	void	*img_road_corner_left_up;
 	char	*ptr_road_corner_left_up;
-	void	*img_road_side_up;
-	char	*ptr_road_side_up;
-	void	*img_road_corner_right_up;
-	char	*ptr_road_corner_right_up;
-	void	*img_road_side_right;
-	char	*ptr_road_side_right;
-	void	*img_road_corner_right_down;
-	char	*ptr_road_corner_right_down;
-	void	*img_road_side_down;
-	char	*ptr_road_side_down;
 	void	*img_road_corner_left_down;
 	char	*ptr_road_corner_left_down;
+	void	*img_road_corner_right_up;
+	char	*ptr_road_corner_right_up;
+	void	*img_road_corner_right_down;
+	char	*ptr_road_corner_right_down;
+
+	void	*img_road_side_up;
+	char	*ptr_road_side_up;
+	void	*img_road_side_right;
+	char	*ptr_road_side_right;
+	void	*img_road_side_down;
+	char	*ptr_road_side_down;
 	void	*img_road_side_left;
 	char	*ptr_road_side_left;
+
 	void	*img_road_side_up_down;
 	char	*ptr_road_side_up_down;
 	void	*img_road_side_left_right;
 	char	*ptr_road_side_left_right;
+
 	void	*img_road_three_side_up;
 	char	*ptr_road_three_side_up;
 	void	*img_road_three_side_down;
@@ -55,35 +61,125 @@ void	putting_images(char **array, int rows, int cols, void *mlx_ptr)
 	char	*ptr_road_three_side_left;
 	void	*img_road_three_side_right;
 	char	*ptr_road_three_side_right;
+
 	void	*img_inside_road;
 	char	*ptr_inside_road;
+	void	*img_inside_road_shadows;
+	char	*ptr_inside_road_shadows;
+
 	void	*img_inside_wall;
 	char	*ptr_inside_wall;
-	void	*img_char_inside_road_1;
-	char	*ptr_char_inside_road_1;
-	void	*img_char_inside_road_2;
-	char	*ptr_char_inside_road_2;
-	void	*img_char_inside_road_3;
-	char	*ptr_char_inside_road_3;
-	void	*img_char_inside_road_4;
-	char	*ptr_char_inside_road_4;
-	void	*img_key_inside_road_1;
-	char	*ptr_key_inside_road_1;
-	void	*img_key_inside_road_2;
-	char	*ptr_key_inside_road_2;
-	void	*img_key_inside_road_3;
-	char	*ptr_key_inside_road_3;
-	void	*img_key_inside_road_4;
-	char	*ptr_key_inside_road_4;
-	void	*img_key_inside_road_5;
-	char	*ptr_key_inside_road_5;
-	void	*img_key_inside_road_6;
-	char	*ptr_key_inside_road_6;
-	void	*img_key_inside_road_7;
-	char	*ptr_key_inside_road_7;
-	void	*img_key_inside_road_8;
-	char	*ptr_key_inside_road_8;
-	
+
+	void	*img_char_inside_road;
+	char	*ptr_char_inside_road;
+
+	void	*img_char_corner_left_down;
+	char	*ptr_char_corner_left_down;
+	void	*img_char_corner_left_up;
+	char	*ptr_char_corner_left_up;
+	void	*img_char_corner_right_down;
+	char	*ptr_char_corner_right_down;
+	void	*img_char_corner_right_up;
+	char	*ptr_char_corner_right_up;
+
+	void	*img_char_side_one_down;
+	char	*ptr_char_side_one_down;
+	void	*img_char_side_one_left;
+	char	*ptr_char_side_one_left;
+	void	*img_char_side_one_right;
+	char	*ptr_char_side_one_right;
+	void	*img_char_side_one_up;
+	char	*ptr_char_side_one_up;
+
+	void	*img_char_side_three_down;
+	char	*ptr_char_side_three_down;
+	void	*img_char_side_three_left;
+	char	*ptr_char_side_three_left;
+	void	*img_char_side_three_right;
+	char	*ptr_char_side_three_right;
+	void	*img_char_side_three_up;
+	char	*ptr_char_side_three_up;
+
+	void	*img_char_side_two_left_right;
+	char	*ptr_char_side_two_left_right;
+	void	*img_char_side_two_up_down;
+	char	*ptr_char_side_two_up_down;
+
+	void	*img_enemy_inside_road;
+	char	*ptr_enemy_inside_road;
+	void	*img_enemy_inside_road_shadows;
+	char	*ptr_enemy_inside_road_shadows;
+
+	void	*img_enemy_corner_left_down;
+	char	*ptr_enemy_corner_left_down;
+	void	*img_enemy_corner_left_up;
+	char	*ptr_enemy_corner_left_up;
+	void	*img_enemy_corner_right_down;
+	char	*ptr_enemy_corner_right_down;
+	void	*img_enemy_corner_right_up;
+	char	*ptr_enemy_corner_right_up;
+
+	void	*img_enemy_side_one_down;
+	char	*ptr_enemy_side_one_down;
+	void	*img_enemy_side_one_left;
+	char	*ptr_enemy_side_one_left;
+	void	*img_enemy_side_one_right;
+	char	*ptr_enemy_side_one_right;
+	void	*img_enemy_side_one_up;
+	char	*ptr_enemy_side_one_up;
+
+	void	*img_enemy_side_three_down;
+	char	*ptr_enemy_side_three_down;
+	void	*img_enemy_side_three_left;
+	char	*ptr_enemy_side_three_left;
+	void	*img_enemy_side_three_right;
+	char	*ptr_enemy_side_three_right;
+	void	*img_enemy_side_three_up;
+	char	*ptr_enemy_side_three_up;
+
+	void	*img_enemy_side_two_left_right;
+	char	*ptr_enemy_side_two_left_right;
+	void	*img_enemy_side_two_up_down;
+	char	*ptr_enemy_side_two_up_down;
+
+	void	*img_key_inside_road;
+	char	*ptr_key_inside_road;
+
+	void	*img_key_corner_left_down;
+	char	*ptr_key_corner_left_down;
+	void	*img_key_corner_left_up;
+	char	*ptr_key_corner_left_up;
+	void	*img_key_corner_right_down;
+	char	*ptr_key_corner_right_down;
+	void	*img_key_corner_right_up;
+	char	*ptr_key_corner_right_up;
+
+	void	*img_key_side_one_down;
+	char	*ptr_key_side_one_down;
+	void	*img_key_side_one_left;
+	char	*ptr_key_side_one_left;
+	void	*img_key_side_one_right;
+	char	*ptr_key_side_one_right;
+	void	*img_key_side_one_up;
+	char	*ptr_key_side_one_up;
+
+	void	*img_key_side_three_down;
+	char	*ptr_key_side_three_down;
+	void	*img_key_side_three_left;
+	char	*ptr_key_side_three_left;
+	void	*img_key_side_three_right;
+	char	*ptr_key_side_three_right;
+	void	*img_key_side_three_up;
+	char	*ptr_key_side_three_up;
+
+	void	*img_key_side_two_left_right;
+	char	*ptr_key_side_two_left_right;
+	void	*img_key_side_two_up_down;
+	char	*ptr_key_side_two_up_down;
+
+	void	*img_gate;
+	char	*ptr_gate;
+
 	/**********************ASSIGNING IMAGES TO THE MAP*********************/
 	a = 0;
 	b = 0;
@@ -91,42 +187,104 @@ void	putting_images(char **array, int rows, int cols, void *mlx_ptr)
 	j = 0;
 	Y = rows * 32;
 	X = cols * 32;
+
 	ptr_corner_left_up = "../assets/wall/left_up.xpm";
 	ptr_corner_left_down = "../assets/wall/left_down.xpm";
 	ptr_corner_right_up = "../assets/wall/right_up.xpm";
 	ptr_corner_right_down = "../assets/wall/right_down.xpm";
+
 	ptr_side_left = "../assets/wall/left.xpm";
 	ptr_side_right = "../assets/wall/right.xpm";
 	ptr_side_up = "../assets/wall/up.xpm";
 	ptr_side_down = "../assets/wall/down.xpm";
+
 	ptr_road_corner_left_up = "../assets/road/corner/left_up.xpm";
-	ptr_road_side_up = "../assets/road/side/one/up.xpm";
-	ptr_road_corner_right_up = "../assets/road/corner/right_up.xpm";
-	ptr_road_side_right = "../assets/road/side/one/right.xpm";
-	ptr_road_corner_right_down = "../assets/road/corner/right_down.xpm";
-	ptr_road_side_down = "../assets/road/side/one/down.xpm";
 	ptr_road_corner_left_down = "../assets/road/corner/left_down.xpm";
+	ptr_road_corner_right_up = "../assets/road/corner/right_up.xpm";
+	ptr_road_corner_right_down = "../assets/road/corner/right_down.xpm";
+
+	ptr_road_side_up = "../assets/road/side/one/up.xpm";
+	ptr_road_side_right = "../assets/road/side/one/right.xpm";
+	ptr_road_side_down = "../assets/road/side/one/down.xpm";
 	ptr_road_side_left = "../assets/road/side/one/left.xpm";
+	
 	ptr_road_side_up_down = "../assets/road/side/two/up_down.xpm";
 	ptr_road_side_left_right = "../assets/road/side/two/left_right.xpm";
+
 	ptr_road_three_side_down = "../assets/road/side/three/down.xpm";
 	ptr_road_three_side_up = "../assets/road/side/three/up.xpm";
 	ptr_road_three_side_right = "../assets/road/side/three/right.xpm";
 	ptr_road_three_side_left = "../assets/road/side/three/left.xpm";
+
 	ptr_inside_road = "../assets/road/inside_road.xpm";
+	ptr_inside_road_shadows = "../assets/road/inside_road_shadows.xpm";
 	ptr_inside_wall = "../assets/wall/inside_wall.xpm";
-	ptr_char_inside_road_1 = "../assets/sprites/look_right/character/inside_road/frame_1.xpm";
-	ptr_char_inside_road_2 = "../assets/sprites/look_right/character/inside_road/frame_2.xpm";
-	ptr_char_inside_road_3 = "../assets/sprites/look_right/character/inside_road/frame_3.xpm";
-	ptr_char_inside_road_4 = "../assets/sprites/look_right/character/inside_road/frame_4.xpm";
-	ptr_key_inside_road_1 = "../assets/key/inside_road/frame_1.xpm";
-	ptr_key_inside_road_2 = "../assets/key/inside_road/frame_2.xpm";
-	ptr_key_inside_road_3 = "../assets/key/inside_road/frame_3.xpm";
-	ptr_key_inside_road_4 = "../assets/key/inside_road/frame_4.xpm";
-	ptr_key_inside_road_5 = "../assets/key/inside_road/frame_5.xpm";
-	ptr_key_inside_road_6 = "../assets/key/inside_road/frame_6.xpm";
-	ptr_key_inside_road_7 = "../assets/key/inside_road/frame_7.xpm";
-	ptr_key_inside_road_8 = "../assets/key/inside_road/frame_8.xpm";
+
+
+	ptr_char_inside_road = "../assets/sprites/look_right/character/inside_road/frame_1.xpm";
+	
+	ptr_char_corner_left_down = "../assets/sprites/look_right/character/corner/left_down/frame_1.xpm";
+	ptr_char_corner_left_up = "../assets/sprites/look_right/character/corner/left_up/frame_1.xpm";
+	ptr_char_corner_right_down = "../assets/sprites/look_right/character/corner/right_down/frame_1.xpm";
+	ptr_char_corner_right_up = "../assets/sprites/look_right/character/corner/right_up/frame_1.xpm";
+
+	ptr_char_side_one_down = "../assets/sprites/look_right/character/side/one/down/frame_1.xpm";
+	ptr_char_side_one_left = "../assets/sprites/look_right/character/side/one/left/frame_1.xpm";
+	ptr_char_side_one_right = "../assets/sprites/look_right/character/side/one/right/frame_1.xpm";
+	ptr_char_side_one_up = "../assets/sprites/look_right/character/side/one/up/frame_1.xpm";
+
+	ptr_char_side_three_down = "../assets/sprites/look_right/character/side/three/down/frame_1.xpm";
+	ptr_char_side_three_left = "../assets/sprites/look_right/character/side/three/right/frame_1.xpm";
+	ptr_char_side_three_right = "../assets/sprites/look_right/character/side/three/left/frame_1.xpm";
+	ptr_char_side_three_up = "../assets/sprites/look_right/character/side/three/up/frame_1.xpm";
+
+	ptr_char_side_two_up_down = "../assets/sprites/look_right/character/side/two/left_right/frame_1.xpm";
+	ptr_char_side_two_left_right = "../assets/sprites/look_right/character/side/two/up_down/frame_1.xpm";
+
+
+	ptr_enemy_inside_road = "../assets/sprites/look_right/enemy/inside_road/frame_1.xpm";
+	ptr_enemy_inside_road_shadows = "../assets/sprites/look_right/enemy/inside_road_shadows/frame_1.xpm";
+
+	ptr_enemy_corner_left_down = "../assets/sprites/look_right/enemy/corner/left_down/frame_1.xpm";
+	ptr_enemy_corner_left_up = "../assets/sprites/look_right/enemy/corner/left_up/frame_1.xpm";
+	ptr_enemy_corner_right_down = "../assets/sprites/look_right/enemy/corner/right_down/frame_1.xpm";
+	ptr_enemy_corner_right_up = "../assets/sprites/look_right/enemy/corner/right_up/frame_1.xpm";
+
+	ptr_enemy_side_one_down = "../assets/sprites/look_right/enemy/side/one/down/frame_1.xpm";
+	ptr_enemy_side_one_left = "../assets/sprites/look_right/enemy/side/one/left/frame_1.xpm";
+	ptr_enemy_side_one_right = "../assets/sprites/look_right/enemy/side/one/right/frame_1.xpm";
+	ptr_enemy_side_one_up = "../assets/sprites/look_right/enemy/side/one/up/frame_1.xpm";
+
+	ptr_enemy_side_three_down = "../assets/sprites/look_right/enemy/side/three/down/frame_1.xpm";
+	ptr_enemy_side_three_left = "../assets/sprites/look_right/enemy/side/three/right/frame_1.xpm";
+	ptr_enemy_side_three_right = "../assets/sprites/look_right/enemy/side/three/left/frame_1.xpm";
+	ptr_enemy_side_three_up = "../assets/sprites/look_right/enemy/side/three/up/frame_1.xpm";
+
+	ptr_enemy_side_two_up_down = "../assets/sprites/look_right/enemy/side/two/left_right/frame_1.xpm";
+	ptr_enemy_side_two_left_right = "../assets/sprites/look_right/enemy/side/two/up_down/frame_1.xpm";
+
+
+	ptr_key_inside_road = "../assets/key/inside_road/frame_1.xpm";
+	
+	ptr_key_corner_left_down = "../assets/key/corner/left_down/frame_1.xpm";
+	ptr_key_corner_left_up = "../assets/key/corner/left_up/frame_1.xpm";
+	ptr_key_corner_right_down = "../assets/key/corner/right_down/frame_1.xpm";
+	ptr_key_corner_right_up = "../assets/key/corner/right_up/frame_1.xpm";
+
+	ptr_key_side_one_down = "../assets/key/side/one/down/frame_1.xpm";
+	ptr_key_side_one_left = "../assets/key/side/one/left/frame_1.xpm";
+	ptr_key_side_one_right = "../assets/key/side/one/right/frame_1.xpm";
+	ptr_key_side_one_up = "../assets/key/side/one/up/frame_1.xpm";
+
+	ptr_key_side_three_down = "../assets/key/side/three/down/frame_1.xpm";
+	ptr_key_side_three_left = "../assets/key/side/three/right/frame_1.xpm";
+	ptr_key_side_three_right = "../assets/key/side/three/left/frame_1.xpm";
+	ptr_key_side_three_up = "../assets/key/side/three/up/frame_1.xpm";
+
+	ptr_key_side_two_up_down = "../assets/key/side/two/up_down/frame_1.xpm";
+	ptr_key_side_two_left_right = "../assets/key/side/two/left_right/frame_1.xpm";
+
+	ptr_gate = "../assets/gate/frame_1.xpm";
 
 	mlx_win = mlx_new_window(mlx_ptr, X, Y, "POP!");
 	img_corner_left_up = mlx_xpm_file_to_image(mlx_ptr, ptr_corner_left_up, &x,
@@ -137,10 +295,12 @@ void	putting_images(char **array, int rows, int cols, void *mlx_ptr)
 			&x, &y);
 	img_corner_right_down = mlx_xpm_file_to_image(mlx_ptr,
 			ptr_corner_right_down, &x, &y);
+	
 	img_side_left = mlx_xpm_file_to_image(mlx_ptr, ptr_side_left, &x, &y);
 	img_side_right = mlx_xpm_file_to_image(mlx_ptr, ptr_side_right, &x, &y);
 	img_side_up = mlx_xpm_file_to_image(mlx_ptr, ptr_side_up, &x, &y);
 	img_side_down = mlx_xpm_file_to_image(mlx_ptr, ptr_side_down, &x, &y);
+	
 	img_road_corner_left_up = mlx_xpm_file_to_image(mlx_ptr,
 			ptr_road_corner_left_up, &x, &y);
 	img_road_side_up = mlx_xpm_file_to_image(mlx_ptr, ptr_road_side_up, &x, &y);
@@ -168,20 +328,122 @@ void	putting_images(char **array, int rows, int cols, void *mlx_ptr)
 			ptr_road_three_side_left, &x, &y);
 	img_road_three_side_right= mlx_xpm_file_to_image(mlx_ptr,
 			ptr_road_three_side_right, &x, &y);
+
 	img_inside_road = mlx_xpm_file_to_image(mlx_ptr, ptr_inside_road, &x, &y);
+	img_inside_road_shadows = mlx_xpm_file_to_image(mlx_ptr, ptr_inside_road_shadows, &x, &y);
 	img_inside_wall = mlx_xpm_file_to_image(mlx_ptr, ptr_inside_wall, &x, &y);
-	img_char_inside_road_1 = mlx_xpm_file_to_image(mlx_ptr, ptr_char_inside_road_1, &x, &y);
-	img_char_inside_road_2 = mlx_xpm_file_to_image(mlx_ptr, ptr_char_inside_road_2, &x, &y);
-	img_char_inside_road_3 = mlx_xpm_file_to_image(mlx_ptr, ptr_char_inside_road_3, &x, &y);
-	img_char_inside_road_4 = mlx_xpm_file_to_image(mlx_ptr, ptr_char_inside_road_4, &x, &y);
-	img_key_inside_road_1 = mlx_xpm_file_to_image(mlx_ptr, ptr_key_inside_road_1, &x, &y);
-	img_key_inside_road_2 = mlx_xpm_file_to_image(mlx_ptr, ptr_key_inside_road_2, &x, &y);
-	img_key_inside_road_3 = mlx_xpm_file_to_image(mlx_ptr, ptr_key_inside_road_3, &x, &y);
-	img_key_inside_road_4 = mlx_xpm_file_to_image(mlx_ptr, ptr_key_inside_road_4, &x, &y);
-	img_key_inside_road_5 = mlx_xpm_file_to_image(mlx_ptr, ptr_key_inside_road_5, &x, &y);
-	img_key_inside_road_6 = mlx_xpm_file_to_image(mlx_ptr, ptr_key_inside_road_6, &x, &y);
-	img_key_inside_road_7 = mlx_xpm_file_to_image(mlx_ptr, ptr_key_inside_road_7, &x, &y);
-	img_key_inside_road_8 = mlx_xpm_file_to_image(mlx_ptr, ptr_key_inside_road_8, &x, &y);
+
+	img_char_corner_left_down = mlx_xpm_file_to_image(mlx_ptr
+			, ptr_char_corner_left_down, &x, &y);
+	img_char_corner_left_up = mlx_xpm_file_to_image(mlx_ptr
+			, ptr_char_corner_left_up, &x, &y);
+	img_char_corner_right_down = mlx_xpm_file_to_image(mlx_ptr
+			, ptr_char_corner_right_down, &x, &y);
+	img_char_corner_right_up = mlx_xpm_file_to_image(mlx_ptr
+			, ptr_char_corner_right_up, &x, &y);
+
+	img_char_inside_road = mlx_xpm_file_to_image(mlx_ptr
+			, ptr_char_inside_road, &x, &y);
+
+	img_char_side_one_down = mlx_xpm_file_to_image(mlx_ptr
+			, ptr_char_side_one_down, &x, &y);
+	img_char_side_one_left = mlx_xpm_file_to_image(mlx_ptr
+			, ptr_char_side_one_left, &x, &y);
+	img_char_side_one_up = mlx_xpm_file_to_image(mlx_ptr
+			, ptr_char_side_one_up, &x, &y);
+	img_char_side_one_right = mlx_xpm_file_to_image(mlx_ptr
+			, ptr_char_side_one_right, &x, &y);
+
+	img_char_side_three_down = mlx_xpm_file_to_image(mlx_ptr
+	, ptr_char_side_three_down, &x, &y);
+	img_char_side_three_left = mlx_xpm_file_to_image(mlx_ptr
+	, ptr_char_side_three_left, &x, &y);
+	img_char_side_three_right = mlx_xpm_file_to_image(mlx_ptr
+	, ptr_char_side_three_right, &x, &y);
+	img_char_side_three_up = mlx_xpm_file_to_image(mlx_ptr
+	, ptr_char_side_three_up, &x, &y);
+
+	img_char_side_two_left_right = mlx_xpm_file_to_image(mlx_ptr
+	, ptr_char_side_two_left_right, &x, &y);
+	img_char_side_two_up_down = mlx_xpm_file_to_image(mlx_ptr
+	, ptr_char_side_two_up_down, &x, &y);
+
+	img_enemy_corner_left_down = mlx_xpm_file_to_image(mlx_ptr
+			, ptr_enemy_corner_left_down, &x, &y);
+	img_enemy_corner_left_up = mlx_xpm_file_to_image(mlx_ptr
+			, ptr_enemy_corner_left_up, &x, &y);
+	img_enemy_corner_right_down = mlx_xpm_file_to_image(mlx_ptr
+			, ptr_enemy_corner_right_down, &x, &y);
+	img_enemy_corner_right_up = mlx_xpm_file_to_image(mlx_ptr
+			, ptr_enemy_corner_right_up, &x, &y);
+
+	img_enemy_inside_road = mlx_xpm_file_to_image(mlx_ptr
+			, ptr_enemy_inside_road, &x, &y);
+	img_enemy_inside_road_shadows = mlx_xpm_file_to_image(mlx_ptr
+			, ptr_enemy_inside_road_shadows, &x, &y);
+
+	
+	img_enemy_side_one_down = mlx_xpm_file_to_image(mlx_ptr
+			, ptr_enemy_side_one_down, &x, &y);
+	img_enemy_side_one_left = mlx_xpm_file_to_image(mlx_ptr
+			, ptr_enemy_side_one_left, &x, &y);
+	img_enemy_side_one_up = mlx_xpm_file_to_image(mlx_ptr
+			, ptr_enemy_side_one_up, &x, &y);
+	img_enemy_side_one_right = mlx_xpm_file_to_image(mlx_ptr
+			, ptr_enemy_side_one_right, &x, &y);
+
+	img_enemy_side_three_down = mlx_xpm_file_to_image(mlx_ptr
+	, ptr_enemy_side_three_down, &x, &y);
+	img_enemy_side_three_left = mlx_xpm_file_to_image(mlx_ptr
+	, ptr_enemy_side_three_left, &x, &y);
+	img_enemy_side_three_right = mlx_xpm_file_to_image(mlx_ptr
+	, ptr_enemy_side_three_right, &x, &y);
+	img_enemy_side_three_up = mlx_xpm_file_to_image(mlx_ptr
+	, ptr_enemy_side_three_up, &x, &y);
+
+	img_enemy_side_two_left_right = mlx_xpm_file_to_image(mlx_ptr
+	, ptr_enemy_side_two_left_right, &x, &y);
+	img_enemy_side_two_up_down = mlx_xpm_file_to_image(mlx_ptr
+	, ptr_enemy_side_two_up_down, &x, &y);
+
+	img_key_corner_left_down = mlx_xpm_file_to_image(mlx_ptr
+			, ptr_key_corner_left_down, &x, &y);
+	img_key_corner_left_up = mlx_xpm_file_to_image(mlx_ptr
+			, ptr_key_corner_left_up, &x, &y);
+	img_key_corner_right_down = mlx_xpm_file_to_image(mlx_ptr
+			, ptr_key_corner_right_down, &x, &y);
+	img_key_corner_right_up = mlx_xpm_file_to_image(mlx_ptr
+			, ptr_key_corner_right_up, &x, &y);
+
+	img_key_inside_road = mlx_xpm_file_to_image(mlx_ptr
+			, ptr_key_inside_road, &x, &y);
+
+	img_key_side_one_down = mlx_xpm_file_to_image(mlx_ptr
+			, ptr_key_side_one_down, &x, &y);
+	img_key_side_one_left = mlx_xpm_file_to_image(mlx_ptr
+			, ptr_key_side_one_left, &x, &y);
+	img_key_side_one_up = mlx_xpm_file_to_image(mlx_ptr
+			, ptr_key_side_one_up, &x, &y);
+	img_key_side_one_right = mlx_xpm_file_to_image(mlx_ptr
+			, ptr_key_side_one_right, &x, &y);
+
+	img_key_side_three_down = mlx_xpm_file_to_image(mlx_ptr
+	, ptr_key_side_three_down, &x, &y);
+	img_key_side_three_left = mlx_xpm_file_to_image(mlx_ptr
+	, ptr_key_side_three_left, &x, &y);
+	img_key_side_three_right = mlx_xpm_file_to_image(mlx_ptr
+	, ptr_key_side_three_right, &x, &y);
+	img_key_side_three_up = mlx_xpm_file_to_image(mlx_ptr
+	, ptr_key_side_three_up, &x, &y);
+
+	img_key_side_two_left_right = mlx_xpm_file_to_image(mlx_ptr
+	, ptr_key_side_two_left_right, &x, &y);
+	img_key_side_two_up_down = mlx_xpm_file_to_image(mlx_ptr
+	, ptr_key_side_two_up_down, &x, &y);
+
+	img_gate = mlx_xpm_file_to_image(mlx_ptr
+	, ptr_gate, &x, &y);
+
 	while (i < rows)
 	{
 		a = i * x;
@@ -296,103 +558,261 @@ void	putting_images(char **array, int rows, int cols, void *mlx_ptr)
 						&& array[i][j - 1] != '1' && array[i][j + 1] != '1')
 					mlx_put_image_to_window(mlx_ptr, mlx_win,
 							img_inside_road, b, a);
+					//inside road with walls around
+				else if (array[i - 1][j] == '1' && array[i + 1][j] == '1'
+						&& array[i][j - 1] == '1' && array[i][j + 1] == '1')
+					mlx_put_image_to_window(mlx_ptr, mlx_win,
+							img_inside_road_shadows, b, a);
+			}
+			else if (array[i][j] == 'P')
+			{
+					// Left upper corner
+				if (array[i - 1][j] == '1' && array[i][j - 1] == '1'
+						&& array[i][j + 1] != '1' && array[i + 1][j] != '1')
+					mlx_put_image_to_window(mlx_ptr, mlx_win,
+						img_char_corner_left_up, b, a);
+					// Right upper corner
+				else if (array[i - 1][j] == '1' && array[i][j + 1] == '1'
+						&& array[i][j - 1] != '1' && array[i + 1][j] != '1')
+					mlx_put_image_to_window(mlx_ptr, mlx_win,
+						img_char_corner_right_up, b, a);
+					// Left lower corner
+				else if (array[i + 1][j] == '1' && array[i][j - 1] == '1'
+						&& array[i][j + 1] != '1' && array[i - 1][j] != '1')
+					mlx_put_image_to_window(mlx_ptr, mlx_win,
+						img_char_corner_left_down, b, a);
+					// Right lower corner
+				else if (array[i + 1][j] == '1' && array[i][j + 1] == '1'
+						&& array[i][j - 1] != '1' && array[i - 1][j] != '1')
+					mlx_put_image_to_window(mlx_ptr, mlx_win,
+						img_char_corner_right_down, b, a);
+					// Upper side of road
+				else if (array[i - 1][j] == '1' && array[i + 1][j] != '1'
+						&& (array[i][j - 1] != '1' || array[i][j + 1] != '1'))
+					mlx_put_image_to_window(mlx_ptr, mlx_win,
+							img_char_side_one_up, b, a);
+					// Lower side of road
+				else if (array[i + 1][j] == '1' && array[i - 1][j] != '1'
+						&& array [i][j - 1] != '1' && array[i][j + 1] != '1')
+					mlx_put_image_to_window(mlx_ptr, mlx_win,
+						img_char_side_one_down, b, a);
+					// Left side of road
+				else if (array[i][j - 1] == '1' && array[i][j + 1] != '1'
+						&& array[i - 1][j] != '1' && array[i + 1][j] != '1')
+					mlx_put_image_to_window(mlx_ptr, mlx_win,
+						img_char_side_one_left, b, a);
+					// Right side of road
+				else if (array[i][j + 1] == '1' && array[i][j - 1] != '1'
+						&& array[i - 1][j] != '1' && array[i + 1][j] != '1')
+					mlx_put_image_to_window(mlx_ptr, mlx_win,
+						img_char_side_one_right, b, a);
+					// One way up
+				else if (array[i][j + 1] == '1' && array[i][j - 1] == '1'
+					&& array[i - 1][j] != '1' && array[i + 1][j] == '1')
+					mlx_put_image_to_window(mlx_ptr, mlx_win,
+							img_char_side_three_down, b, a);
+					// One way down
+				else if (array[i][j + 1] == '1' && array[i][j - 1] == '1'
+					&& array[i - 1][j] == '1' && array[i + 1][j] != '1')
+					mlx_put_image_to_window(mlx_ptr, mlx_win,
+							img_char_side_three_up, b, a);
+					// One way left
+				else if (array[i][j + 1] != '1' && array[i][j - 1] == '1'
+					&& array[i - 1][j] == '1' && array[i + 1][j] == '1')
+					mlx_put_image_to_window(mlx_ptr, mlx_win,
+							img_char_side_three_right, b, a);
+					// One way right
+				else if (array[i][j + 1] == '1' && array[i][j - 1] != '1'
+					&& array[i - 1][j] == '1' && array[i + 1][j] == '1')
+					mlx_put_image_to_window(mlx_ptr, mlx_win,
+							img_char_side_three_left, b, a);
+					// Horizontal road
+				else if (array[i - 1][j] == '1' && array[i + 1][j] == '1'
+						&& array[i][j - 1] != '1' && array[i][j + 1] != '1')
+					mlx_put_image_to_window(mlx_ptr, mlx_win,
+						img_char_side_two_up_down, b, a);
+					// Vertical road
+				else if (array[i][j - 1] == '1' && array[i][j + 1] == '1'
+						&& array[i - 1][j] != '1' && array[i + 1][j] != '1')
+					mlx_put_image_to_window(mlx_ptr, mlx_win,
+						img_char_side_two_left_right, b, a);
+					//inside road
+				else if (array[i - 1][j] != '1' && array[i + 1][j] != '1'
+						&& array[i][j - 1] != '1' && array[i][j + 1] != '1')
+					mlx_put_image_to_window(mlx_ptr, mlx_win,
+							img_char_inside_road, b, a);
+			}
+			else if (array[i][j] == 'N')
+			{
+					// Left upper corner
+				if (array[i - 1][j] == '1' && array[i][j - 1] == '1'
+						&& array[i][j + 1] != '1' && array[i + 1][j] != '1')
+					mlx_put_image_to_window(mlx_ptr, mlx_win,
+						img_enemy_corner_left_up, b, a);
+					// Right upper corner
+				else if (array[i - 1][j] == '1' && array[i][j + 1] == '1'
+						&& array[i][j - 1] != '1' && array[i + 1][j] != '1')
+					mlx_put_image_to_window(mlx_ptr, mlx_win,
+						img_enemy_corner_right_up, b, a);
+					// Left lower corner
+				else if (array[i + 1][j] == '1' && array[i][j - 1] == '1'
+						&& array[i][j + 1] != '1' && array[i - 1][j] != '1')
+					mlx_put_image_to_window(mlx_ptr, mlx_win,
+						img_enemy_corner_left_down, b, a);
+					// Right lower corner
+				else if (array[i + 1][j] == '1' && array[i][j + 1] == '1'
+						&& array[i][j - 1] != '1' && array[i - 1][j] != '1')
+					mlx_put_image_to_window(mlx_ptr, mlx_win,
+						img_enemy_corner_right_down, b, a);
+					// Upper side of road
+				else if (array[i - 1][j] == '1' && array[i + 1][j] != '1'
+						&& (array[i][j - 1] != '1' || array[i][j + 1] != '1'))
+					mlx_put_image_to_window(mlx_ptr, mlx_win,
+						img_enemy_side_one_up, b, a);
+					// Lower side of road
+				else if (array[i + 1][j] == '1' && array[i - 1][j] != '1'
+						&& array [i][j - 1] != '1' && array[i][j + 1] != '1')
+					mlx_put_image_to_window(mlx_ptr, mlx_win,
+						img_enemy_side_one_down, b, a);
+					// Left side of road
+				else if (array[i][j - 1] == '1' && array[i][j + 1] != '1'
+						&& array[i - 1][j] != '1' && array[i + 1][j] != '1')
+					mlx_put_image_to_window(mlx_ptr, mlx_win,
+						img_enemy_side_one_left, b, a);
+					// Right side of road
+				else if (array[i][j + 1] == '1' && array[i][j - 1] != '1'
+						&& array[i - 1][j] != '1' && array[i + 1][j] != '1')
+					mlx_put_image_to_window(mlx_ptr, mlx_win,
+						img_enemy_side_one_right, b, a);
+					// One way up
+				else if (array[i][j + 1] == '1' && array[i][j - 1] == '1'
+					&& array[i - 1][j] != '1' && array[i + 1][j] == '1')
+					mlx_put_image_to_window(mlx_ptr, mlx_win,
+						img_enemy_side_three_down, b, a);
+					// One way down
+				else if (array[i][j + 1] == '1' && array[i][j - 1] == '1'
+					&& array[i - 1][j] == '1' && array[i + 1][j] != '1')
+					mlx_put_image_to_window(mlx_ptr, mlx_win,
+						img_enemy_side_three_up, b, a);
+					// One way left
+				else if (array[i][j + 1] != '1' && array[i][j - 1] == '1'
+					&& array[i - 1][j] == '1' && array[i + 1][j] == '1')
+					mlx_put_image_to_window(mlx_ptr, mlx_win,
+						img_enemy_side_three_right, b, a);
+					// One way right
+				else if (array[i][j + 1] == '1' && array[i][j - 1] != '1'
+					&& array[i - 1][j] == '1' && array[i + 1][j] == '1')
+					mlx_put_image_to_window(mlx_ptr, mlx_win,
+						img_enemy_side_three_left, b, a);
+					// Horizontal road
+				else if (array[i - 1][j] == '1' && array[i + 1][j] == '1'
+						&& array[i][j - 1] != '1' && array[i][j + 1] != '1')
+					mlx_put_image_to_window(mlx_ptr, mlx_win,
+						img_enemy_side_two_up_down, b, a);
+					// Vertical road
+				else if (array[i][j - 1] == '1' && array[i][j + 1] == '1'
+						&& array[i - 1][j] != '1' && array[i + 1][j] != '1')
+					mlx_put_image_to_window(mlx_ptr, mlx_win,
+						img_enemy_side_two_left_right, b, a);
+					//inside road
+				else if (array[i - 1][j] != '1' && array[i + 1][j] != '1'
+						&& array[i][j - 1] != '1' && array[i][j + 1] != '1')
+					mlx_put_image_to_window(mlx_ptr, mlx_win,
+						img_enemy_inside_road, b, a);
+				else if (array[i - 1][j] == '1' && array[i + 1][j] == '1'
+						&& array[i][j - 1] == '1' && array[i][j + 1] == '1')
+					mlx_put_image_to_window(mlx_ptr, mlx_win,
+						img_enemy_inside_road_shadows, b, a);
+			}
+			else if (array[i][j] == 'C')
+			{
+					// Left upper corner
+				if (array[i - 1][j] == '1' && array[i][j - 1] == '1'
+						&& array[i][j + 1] != '1' && array[i + 1][j] != '1')
+					mlx_put_image_to_window(mlx_ptr, mlx_win,
+						img_key_corner_left_up, b, a);
+					// Right upper corner
+				else if (array[i - 1][j] == '1' && array[i][j + 1] == '1'
+						&& array[i][j - 1] != '1' && array[i + 1][j] != '1')
+					mlx_put_image_to_window(mlx_ptr, mlx_win,
+						img_key_corner_right_up, b, a);
+					// Left lower corner
+				else if (array[i + 1][j] == '1' && array[i][j - 1] == '1'
+						&& array[i][j + 1] != '1' && array[i - 1][j] != '1')
+					mlx_put_image_to_window(mlx_ptr, mlx_win,
+						img_key_corner_left_down, b, a);
+					// Right lower corner
+				else if (array[i + 1][j] == '1' && array[i][j + 1] == '1'
+						&& array[i][j - 1] != '1' && array[i - 1][j] != '1')
+					mlx_put_image_to_window(mlx_ptr, mlx_win,
+						img_key_corner_right_down, b, a);
+					// Upper side of road
+				else if (array[i - 1][j] == '1' && array[i + 1][j] != '1'
+						&& (array[i][j - 1] != '1' || array[i][j + 1] != '1'))
+					mlx_put_image_to_window(mlx_ptr, mlx_win,
+						img_key_side_one_up, b, a);
+					// Lower side of road
+				else if (array[i + 1][j] == '1' && array[i - 1][j] != '1'
+						&& array [i][j - 1] != '1' && array[i][j + 1] != '1')
+					mlx_put_image_to_window(mlx_ptr, mlx_win,
+						img_key_side_one_down, b, a);
+					// Left side of road
+				else if (array[i][j - 1] == '1' && array[i][j + 1] != '1'
+						&& array[i - 1][j] != '1' && array[i + 1][j] != '1')
+					mlx_put_image_to_window(mlx_ptr, mlx_win,
+						img_key_side_one_left, b, a);
+					// Right side of road
+				else if (array[i][j + 1] == '1' && array[i][j - 1] != '1'
+						&& array[i - 1][j] != '1' && array[i + 1][j] != '1')
+					mlx_put_image_to_window(mlx_ptr, mlx_win,
+						img_key_side_one_right, b, a);
+					// One way up
+				else if (array[i][j + 1] == '1' && array[i][j - 1] == '1'
+					&& array[i - 1][j] != '1' && array[i + 1][j] == '1')
+					mlx_put_image_to_window(mlx_ptr, mlx_win,
+						img_key_side_three_down, b, a);
+					// One way down
+				else if (array[i][j + 1] == '1' && array[i][j - 1] == '1'
+					&& array[i - 1][j] == '1' && array[i + 1][j] != '1')
+					mlx_put_image_to_window(mlx_ptr, mlx_win,
+						img_key_side_three_up, b, a);
+					// One way left
+				else if (array[i][j + 1] != '1' && array[i][j - 1] == '1'
+					&& array[i - 1][j] == '1' && array[i + 1][j] == '1')
+					mlx_put_image_to_window(mlx_ptr, mlx_win,
+						img_key_side_three_right, b, a);
+					// One way right
+				else if (array[i][j + 1] == '1' && array[i][j - 1] != '1'
+					&& array[i - 1][j] == '1' && array[i + 1][j] == '1')
+					mlx_put_image_to_window(mlx_ptr, mlx_win,
+						img_key_side_three_left, b, a);
+					// Horizontal road
+				else if (array[i - 1][j] == '1' && array[i + 1][j] == '1'
+						&& array[i][j - 1] != '1' && array[i][j + 1] != '1')
+					mlx_put_image_to_window(mlx_ptr, mlx_win,
+						img_key_side_two_up_down, b, a);
+					// Vertical road
+				else if (array[i][j - 1] == '1' && array[i][j + 1] == '1'
+						&& array[i - 1][j] != '1' && array[i + 1][j] != '1')
+					mlx_put_image_to_window(mlx_ptr, mlx_win,
+						img_key_side_two_left_right, b, a);
+					//inside road
+				else if (array[i - 1][j] != '1' && array[i + 1][j] != '1'
+						&& array[i][j - 1] != '1' && array[i][j + 1] != '1')
+					mlx_put_image_to_window(mlx_ptr, mlx_win,
+						img_key_inside_road, b, a);
+			}
+			else if (array[i][j] == 'E')
+			{
+				mlx_put_image_to_window(mlx_ptr, mlx_win,
+						img_gate, b, a);
 			}
 			j++;
-			b += y;
+			b = j * y;
 		}
 		i++;
 	}
-	/*
-	a = 128;
-    b = 448;
-    int frame = 0;  
-    while (1) 
-    {   
-        if (frame % 8 == 0)
-            mlx_put_image_to_window(mlx_ptr, mlx_win,
-                    img_key_inside_road_1, b, a); 
-        else if (frame % 8 == 1)
-            mlx_put_image_to_window(mlx_ptr, mlx_win,
-                    img_key_inside_road_2, b, a); 
-        else if (frame % 8 == 2)
-            mlx_put_image_to_window(mlx_ptr, mlx_win,
-                    img_key_inside_road_3, b, a); 
-        else if (frame % 8 == 3)
-            mlx_put_image_to_window(mlx_ptr, mlx_win,
-                    img_key_inside_road_4, b, a); 
-        else if (frame % 8 == 4)
-            mlx_put_image_to_window(mlx_ptr, mlx_win,
-                    img_key_inside_road_5, b, a); 
-        else if (frame % 8 == 5)
-            mlx_put_image_to_window(mlx_ptr, mlx_win,
-                    img_key_inside_road_6, b, a); 
-        else if (frame % 8 == 6)
-            mlx_put_image_to_window(mlx_ptr, mlx_win,
-                    img_key_inside_road_7, b, a); 
-        else if (frame % 8 == 7)
-            mlx_put_image_to_window(mlx_ptr, mlx_win,
-                    img_key_inside_road_8, b, a); 
-        frame++;
-        usleep(100000); // Adjust delay for animation speed
-    }
 
-	a = 96; // Start position
-    b = 416; // Fixed horizontal position
-    int frame = 0;
-    int prev_b = b; // Variable to store the previous position
-
-    while (1)
-    {
-        // Clear the previous player position by drawing the background
-        mlx_put_image_to_window(mlx_ptr, mlx_win, img_inside_road, prev_b, a);
-
-        // Display the current animation frame at the new position
-        if (frame % 4 == 0)
-            mlx_put_image_to_window(mlx_ptr, mlx_win, img_char_inside_road_1, b, a);
-        else if (frame % 4 == 1)
-            mlx_put_image_to_window(mlx_ptr, mlx_win, img_char_inside_road_2, b, a);
-        else if (frame % 4 == 2)
-            mlx_put_image_to_window(mlx_ptr, mlx_win, img_char_inside_road_3, b, a);
-        else if (frame % 4 == 3)
-            mlx_put_image_to_window(mlx_ptr, mlx_win, img_char_inside_road_4, b, a);
-
-        // Increment frame for animation
-        frame++;
-
-        // Update the player's position every 4 frames
-        if (frame % 4 == 0)
-        {
-            prev_b = b;   // Store the current position as the previous position
-            b += 32;      // Move down by 32 pixels
-            if (b > 448)  // Reset if out of range
-                b = 416;
-        }
-
-        // Delay for animation speed
-        usleep(100000); // 100ms delay per frame
-    }
-	*/
-	a = 128;
-	b = 448;
-	int frame = 0;	
-	while (1)
-	{
-    	if (frame % 4 == 0)
-     		mlx_put_image_to_window(mlx_ptr, mlx_win,
-					img_char_inside_road_1, b, a);
-    	else if (frame % 4 == 1)
-			mlx_put_image_to_window(mlx_ptr, mlx_win,
-					img_char_inside_road_2, b, a);
-		else if (frame % 4 == 2)
-			mlx_put_image_to_window(mlx_ptr, mlx_win,
-					img_char_inside_road_3, b, a);
-		else if (frame % 4 == 3)
-			mlx_put_image_to_window(mlx_ptr, mlx_win,
-					img_char_inside_road_4, b, a);
-   		frame++;
-    	usleep(100000); // Adjust delay for animation speed
-	}
-	
 	mlx_loop(mlx_ptr);
 	/**********************************************************************/
 }

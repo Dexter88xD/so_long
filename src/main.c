@@ -6,7 +6,7 @@
 /*   By: sohamdan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 09:17:00 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/01/29 14:28:41 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/01/29 15:02:34 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,21 +51,24 @@ int	main(int argc, char **argv)
 		return (ft_printf("so_long: must provide a file\n"), -1);
 	fd = open(argv[1], O_RDWR);
 	if (fd == -1)
-		return (perror("Error openning file!"), -1);
+		return (ft_printf("Error\n"), perror("Reason: "), -1);
 	map.buffer = (char **)malloc(BUFFER_SIZE * sizeof(t_map *));
 	if (!map.buffer)
 		return (free(map.buffer), -1);
 	initialise(&count, &map);
 	check = mapping(fd, &count, &map);
+	
 	putting_map(&map);
-	if (map.collectible == count.coll && check == 1)
-	{
-		ft_printf("The Map is valid with %d collectibles!\n", map.collectible);
-		//putting_map(&map);
-	}
+	/*
+	if (map.collectible != count.coll)
+		return (ft_printf("Error:\n") \
+		, ft_printf("The player must reach all collectibles and exit"), 0);
+	else if (check != 1)
+		exit(EXIT_FAILURE);
 	else
-		ft_printf("The Map is NOT valid!\n");
+		putting_map(&map);
+	*/
 	map.height = 0;
 	buffer_freeing(&map);
-	return (0);
+	exit(EXIT_SUCCESS);
 }
