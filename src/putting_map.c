@@ -451,7 +451,10 @@ void	putting_images(char **array, int rows, int cols, void *mlx_ptr)
 		b = 0;
 		while (j < cols)
 		{
-			if (array[i][j] == '1')
+			if (array[i][j] == 'E')
+				mlx_put_image_to_window(mlx_ptr, mlx_win,
+						img_gate, b, a);
+			else if (array[i][j] == '1')
 			{
 				if (i == 0 && j == 0) 					// Left upper corner
 					mlx_put_image_to_window(mlx_ptr, mlx_win,
@@ -801,11 +804,6 @@ void	putting_images(char **array, int rows, int cols, void *mlx_ptr)
 						&& array[i][j - 1] != '1' && array[i][j + 1] != '1')
 					mlx_put_image_to_window(mlx_ptr, mlx_win,
 						img_key_inside_road, b, a);
-			}
-			else if (array[i][j] == 'E')
-			{
-				mlx_put_image_to_window(mlx_ptr, mlx_win,
-						img_gate, b, a);
 			}
 			j++;
 			b = j * y;

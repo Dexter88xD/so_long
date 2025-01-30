@@ -6,7 +6,7 @@
 /*   By: sohamdan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 11:11:35 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/01/25 11:11:07 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/01/30 05:37:08 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ typedef struct s_map
 	int			height;
 	int			width;
 	int			collectible;
-	t_location	exit;
+	int			exit;
 	t_location	player;
 }	t_map;
 
@@ -51,7 +51,7 @@ int		copying_map(int fd, int *height, char **buffer);
 int		checking_path(t_map *map, t_num *count, int y, int x);
 int		checking_char(int x, int y, char **buffer);
 int		checking_collectibles(int x, int y, char **buffer);
-int		checking_exit(int x, int y, t_location *location, char **buffer);
+int		checking_exit(int x, int y, char **buffer);
 int		checking_player(int x, int y, t_location *location, char **buffer);
 void	putting_map(t_map *map);
 void	putting_images(char	**array, int rows, int cols, void *mlx_ptr);

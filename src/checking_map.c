@@ -6,7 +6,7 @@
 /*   By: sohamdan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 10:13:09 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/01/20 10:18:08 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/01/30 05:36:15 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,7 +63,7 @@ int	checking_player(int x, int y, t_location *location, char **buffer)
 	return (p);
 }
 
-int	checking_exit(int x, int y, t_location *location, char **buffer)
+int	checking_exit(int x, int y, char **buffer)
 {
 	int	width;
 	int	height;
@@ -77,11 +77,7 @@ int	checking_exit(int x, int y, t_location *location, char **buffer)
 		while (width < x)
 		{
 			if (buffer[height][width] == 'E')
-			{
-				(*location).width = width;
-				(*location).height = height;
 				e++;
-			}
 			if (e > 1)
 				return (0);
 			width++;

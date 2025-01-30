@@ -6,7 +6,7 @@
 /*   By: sohamdan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 11:10:57 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/01/29 15:12:18 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/01/30 05:37:55 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,8 +51,7 @@ int	checking_map(t_map *map)
 			&((*map).player), (*map).buffer);
 	if (p != 1)
 		return (ft_printf("Error:\nThe Map must contain one player!\n"), 0);
-	e = checking_exit((*map).width, (*map).height,
-			&((*map).exit), (*map).buffer);
+	e = checking_exit((*map).width, (*map).height, (*map).buffer);
 	if (e != 1)
 		return (ft_printf("Error:\nThe map must contain one exit!\n"), 0);
 	w = checking_wall((*map).width, (*map).height, (*map).buffer);
