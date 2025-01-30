@@ -43,7 +43,7 @@ void	putting_map(t_map *map)
 int	main(int argc, char **argv)
 {
 	int			fd;
-	int			check;
+	//int			check;
 	t_num		count;
 	t_map		map;
 
@@ -56,7 +56,8 @@ int	main(int argc, char **argv)
 	if (!map.buffer)
 		return (free(map.buffer), -1);
 	initialise(&count, &map);
-	check = mapping(fd, &count, &map);
+	//check = 
+	mapping(fd, &count, &map);
 	
 	putting_map(&map);
 	/*
