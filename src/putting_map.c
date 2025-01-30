@@ -556,16 +556,15 @@ void	putting_images(char **array, int rows, int cols, void *mlx_ptr)
 						&& array[i - 1][j] != '1' && array[i + 1][j] != '1')
 					mlx_put_image_to_window(mlx_ptr, mlx_win,
 						img_road_side_left_right, b, a);
-					//inside road
-				else if (array[i - 1][j] != '1' && array[i + 1][j] != '1'
-						&& array[i][j - 1] != '1' && array[i][j + 1] != '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-							img_inside_road, b, a);
 					//inside road with walls around
 				else if (array[i - 1][j] == '1' && array[i + 1][j] == '1'
 						&& array[i][j - 1] == '1' && array[i][j + 1] == '1')
 					mlx_put_image_to_window(mlx_ptr, mlx_win,
 							img_inside_road_shadows, b, a);
+					//inside road
+				else
+					mlx_put_image_to_window(mlx_ptr, mlx_win,
+							img_inside_road, b, a);
 			}
 			if (array[i][j] == 'P')
 			{
@@ -640,8 +639,7 @@ void	putting_images(char **array, int rows, int cols, void *mlx_ptr)
 					mlx_put_image_to_window(mlx_ptr, mlx_win,
 						img_char_side_two_left_right, b, a);
 					//inside road
-				else if (array[i - 1][j] != '1' && array[i + 1][j] != '1'
-						&& array[i][j - 1] != '1' && array[i][j + 1] != '1')
+				else
 					mlx_put_image_to_window(mlx_ptr, mlx_win,
 							img_char_inside_road, b, a);
 			}
@@ -717,15 +715,14 @@ void	putting_images(char **array, int rows, int cols, void *mlx_ptr)
 						&& array[i - 1][j] != '1' && array[i + 1][j] != '1')
 					mlx_put_image_to_window(mlx_ptr, mlx_win,
 						img_enemy_side_two_left_right, b, a);
-					//inside road
-				else if (array[i - 1][j] != '1' && array[i + 1][j] != '1'
-						&& array[i][j - 1] != '1' && array[i][j + 1] != '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						img_enemy_inside_road, b, a);
+					//inside road with walls
 				else if (array[i - 1][j] == '1' && array[i + 1][j] == '1'
 						&& array[i][j - 1] == '1' && array[i][j + 1] == '1')
 					mlx_put_image_to_window(mlx_ptr, mlx_win,
 						img_enemy_inside_road_shadows, b, a);
+				else
+					mlx_put_image_to_window(mlx_ptr, mlx_win,
+						img_enemy_inside_road, b, a);
 			}
 			if (array[i][j] == 'C')
 			{
@@ -800,8 +797,7 @@ void	putting_images(char **array, int rows, int cols, void *mlx_ptr)
 					mlx_put_image_to_window(mlx_ptr, mlx_win,
 						img_key_side_two_left_right, b, a);
 					//inside road
-				else if (array[i - 1][j] != '1' && array[i + 1][j] != '1'
-						&& array[i][j - 1] != '1' && array[i][j + 1] != '1')
+				else
 					mlx_put_image_to_window(mlx_ptr, mlx_win,
 						img_key_inside_road, b, a);
 			}
