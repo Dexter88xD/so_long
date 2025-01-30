@@ -17,9 +17,10 @@
 # include <fcntl.h>
 # include <stdio.h>
 
-# include "../include/ft_libc/get_next_line/get_next_line.h"
-# include "../include/ft_libc/ft_printf/ft_printf.h"
+# include "assets.h"
 # include "../lib/minilibx-linux/mlx.h"
+# include "../include/ft_libc/ft_printf/ft_printf.h"
+# include "../include/ft_libc/get_next_line/get_next_line.h"
 
 typedef struct s_num
 {

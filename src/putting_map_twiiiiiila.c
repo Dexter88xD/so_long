@@ -1,5 +1,4 @@
 #include "so_long.h"
-#include "assets.h"
 
 void	putting_images(char **array, int rows, int cols, void *mlx_ptr)
 {
@@ -12,14 +11,182 @@ void	putting_images(char **array, int rows, int cols, void *mlx_ptr)
 	int		Y;
 	int		X;
 	void	*mlx_win;
-	t_wall	wall;
-	t_road	road;
-	t_reach	key;
-	t_exit	exit;
-	t_enemy	e_left;
-	t_enemy	e_right;
-	t_reach	p_left;
-	t_reach	p_right;
+
+/*******************      WALL      ************************/
+	void	*img_corner_left_up;
+	char	*ptr_corner_left_up;
+	void	*img_corner_left_down;
+	char	*ptr_corner_left_down;
+	void	*img_corner_right_up;
+	char	*ptr_corner_right_up;
+	void	*img_corner_right_down;
+	char	*ptr_corner_right_down;
+
+	void	*img_side_left;
+	char	*ptr_side_left;
+	void	*img_side_right;				//DONE
+	char	*ptr_side_right;
+	void	*img_side_up;
+	char	*ptr_side_up;
+	void	*img_side_down;
+	char	*ptr_side_down;
+	
+	void	*img_inside_wall;
+	char	*ptr_inside_wall;
+/*******************************************/
+/*******************      PATH      ************************/
+	void	*img_road_corner_left_up;
+	char	*ptr_road_corner_left_up;
+	void	*img_road_corner_left_down;
+	char	*ptr_road_corner_left_down;
+	void	*img_road_corner_right_up;
+	char	*ptr_road_corner_right_up;
+	void	*img_road_corner_right_down;
+	char	*ptr_road_corner_right_down;
+
+	void	*img_road_side_up;
+	char	*ptr_road_side_up;
+	void	*img_road_side_right;
+	char	*ptr_road_side_right;
+	void	*img_road_side_down;
+	char	*ptr_road_side_down;
+	void	*img_road_side_left;
+	char	*ptr_road_side_left;
+
+	void	*img_road_side_up_down;
+	char	*ptr_road_side_up_down;					//DONE
+	void	*img_road_side_left_right;
+	char	*ptr_road_side_left_right;
+
+	void	*img_road_three_side_up;
+	char	*ptr_road_three_side_up;
+	void	*img_road_three_side_down;
+	char	*ptr_road_three_side_down;
+	void	*img_road_three_side_left;
+	char	*ptr_road_three_side_left;
+	void	*img_road_three_side_right;
+	char	*ptr_road_three_side_right;
+
+	void	*img_inside_road;
+	char	*ptr_inside_road;
+	void	*img_inside_road_shadows;
+	char	*ptr_inside_road_shadows;
+
+/*******************************************/
+/*******************      PLAYER      ************************/
+
+	void	*img_char_inside_road;
+	char	*ptr_char_inside_road;
+	void	*img_char_corner_left_down;
+	char	*ptr_char_corner_left_down;
+	void	*img_char_corner_left_up;
+	char	*ptr_char_corner_left_up;
+	void	*img_char_corner_right_down;
+	char	*ptr_char_corner_right_down;
+	void	*img_char_corner_right_up;
+	char	*ptr_char_corner_right_up;
+
+	void	*img_char_side_one_down;
+	char	*ptr_char_side_one_down;
+	void	*img_char_side_one_left;
+	char	*ptr_char_side_one_left;
+	void	*img_char_side_one_right;
+	char	*ptr_char_side_one_right;			//DONE
+	void	*img_char_side_one_up;
+	char	*ptr_char_side_one_up;
+
+	void	*img_char_side_three_down;
+	char	*ptr_char_side_three_down;
+	void	*img_char_side_three_left;
+	char	*ptr_char_side_three_left;
+	void	*img_char_side_three_right;
+	char	*ptr_char_side_three_right;
+	void	*img_char_side_three_up;
+	char	*ptr_char_side_three_up;
+
+	void	*img_char_side_two_left_right;
+	char	*ptr_char_side_two_left_right;
+	void	*img_char_side_two_up_down;
+	char	*ptr_char_side_two_up_down;
+/*******************************************/
+/*******************      ENEMY      ************************/
+	void	*img_enemy_inside_road;
+	char	*ptr_enemy_inside_road;
+	void	*img_enemy_inside_road_shadows;
+	char	*ptr_enemy_inside_road_shadows;
+
+	void	*img_enemy_corner_left_down;
+	char	*ptr_enemy_corner_left_down;
+	void	*img_enemy_corner_left_up;
+	char	*ptr_enemy_corner_left_up;
+	void	*img_enemy_corner_right_down;
+	char	*ptr_enemy_corner_right_down;
+	void	*img_enemy_corner_right_up;
+	char	*ptr_enemy_corner_right_up;
+
+	void	*img_enemy_side_one_down;
+	char	*ptr_enemy_side_one_down;
+	void	*img_enemy_side_one_left;
+	char	*ptr_enemy_side_one_left;				//DONE
+	void	*img_enemy_side_one_right;
+	char	*ptr_enemy_side_one_right;
+	void	*img_enemy_side_one_up;
+	char	*ptr_enemy_side_one_up;
+
+	void	*img_enemy_side_three_down;
+	char	*ptr_enemy_side_three_down;
+	void	*img_enemy_side_three_left;
+	char	*ptr_enemy_side_three_left;
+	void	*img_enemy_side_three_right;
+	char	*ptr_enemy_side_three_right;
+	void	*img_enemy_side_three_up;
+	char	*ptr_enemy_side_three_up;
+
+	void	*img_enemy_side_two_left_right;
+	char	*ptr_enemy_side_two_left_right;
+	void	*img_enemy_side_two_up_down;
+	char	*ptr_enemy_side_two_up_down;
+/*******************************************/
+/*******************      COLLECTIBLE      ************************/
+	void	*img_key_inside_road;
+	char	*ptr_key_inside_road;
+
+	void	*img_key_corner_left_down;
+	char	*ptr_key_corner_left_down;
+	void	*img_key_corner_left_up;
+	char	*ptr_key_corner_left_up;
+	void	*img_key_corner_right_down;
+	char	*ptr_key_corner_right_down;
+	void	*img_key_corner_right_up;
+	char	*ptr_key_corner_right_up;
+
+	void	*img_key_side_one_down;
+	char	*ptr_key_side_one_down;
+	void	*img_key_side_one_left;
+	char	*ptr_key_side_one_left;
+	void	*img_key_side_one_right;
+	char	*ptr_key_side_one_right;				//DONE
+	void	*img_key_side_one_up;
+	char	*ptr_key_side_one_up;
+
+	void	*img_key_side_three_down;
+	char	*ptr_key_side_three_down;
+	void	*img_key_side_three_left;
+	char	*ptr_key_side_three_left;
+	void	*img_key_side_three_right;
+	char	*ptr_key_side_three_right;
+	void	*img_key_side_three_up;
+	char	*ptr_key_side_three_up;
+
+	void	*img_key_side_two_left_right;
+	char	*ptr_key_side_two_left_right;
+	void	*img_key_side_two_up_down;
+	char	*ptr_key_side_two_up_down;
+/*******************************************/
+/*******************      GATE      ************************/
+	void	*img_gate;							//DONE
+	char	*ptr_gate;
+/*******************************************/
 	/**********************ASSIGNING IMAGES TO THE MAP*********************/
 	a = 0;
 	b = 0;
@@ -27,98 +194,105 @@ void	putting_images(char **array, int rows, int cols, void *mlx_ptr)
 	j = 0;
 	Y = rows * 32;
 	X = cols * 32;
-/*******************      RIGHT PLAYER      ************************/
-	p_right.ptr_middle = "../assets/sprites/look_right/character/inside_road/frame_1.xpm";
-	p_right.ptr_corner_left_down = "../assets/sprites/look_right/character/corner/left_down/frame_1.xpm";
-	p_right.ptr_corner_left_up = "../assets/sprites/look_right/character/corner/left_up/frame_1.xpm";
-	p_right.ptr_corner_right_down = "../assets/sprites/look_right/character/corner/right_down/frame_1.xpm";
-	p_right.ptr_corner_right_up = "../assets/sprites/look_right/character/corner/right_up/frame_1.xpm";
-	p_right.ptr_side_one_down = "../assets/sprites/look_right/character/side/one/down/frame_1.xpm";
-	p_right.ptr_side_one_left = "../assets/sprites/look_right/character/side/one/left/frame_1.xpm";
-	p_right.ptr_side_one_right = "../assets/sprites/look_right/character/side/one/right/frame_1.xpm";
-	p_right.ptr_side_one_up = "../assets/sprites/look_right/character/side/one/up/frame_1.xpm";
-	p_right.ptr_side_three_down = "../assets/sprites/look_right/character/side/three/down/frame_1.xpm";
-	p_right.ptr_side_three_left = "../assets/sprites/look_right/character/side/three/right/frame_1.xpm";
-	p_right.ptr_side_three_right = "../assets/sprites/look_right/character/side/three/left/frame_1.xpm";
-	p_right.ptr_side_three_up = "../assets/sprites/look_right/character/side/three/up/frame_1.xpm";
-	p_right.ptr_side_two_up_down = "../assets/sprites/look_right/character/side/two/left_right/frame_1.xpm";
-	p_right.ptr_side_two_left_right = "../assets/sprites/look_right/character/side/two/up_down/frame_1.xpm";
 
-/*******************      LEFT PLAYER      ************************/
-	p_left.ptr_middle = "../assets/sprites/look_left/character/inside_road/frame_1.xpm";
-	p_left.ptr_corner_left_down = "../assets/sprites/look_left/character/corner/left_down/frame_1.xpm";
-	p_left.ptr_corner_left_up = "../assets/sprites/look_left/character/corner/left_up/frame_1.xpm";
-	p_left.ptr_corner_right_down = "../assets/sprites/look_left/character/corner/right_down/frame_1.xpm";
-	p_left.ptr_corner_right_up = "../assets/sprites/look_left/character/corner/right_up/frame_1.xpm";
-	p_left.ptr_side_one_down = "../assets/sprites/look_left/character/side/one/down/frame_1.xpm";
-	p_left.ptr_side_one_left = "../assets/sprites/look_left/character/side/one/left/frame_1.xpm";
-	p_left.ptr_side_one_right = "../assets/sprites/look_left/character/side/one/right/frame_1.xpm";
-	p_left.ptr_side_one_up = "../assets/sprites/look_left/character/side/one/up/frame_1.xpm";
-	p_left.ptr_side_three_down = "../assets/sprites/look_left/character/side/three/down/frame_1.xpm";
-	p_left.ptr_side_three_left = "../assets/sprites/look_left/character/side/three/right/frame_1.xpm";
-	p_left.ptr_side_three_right = "../assets/sprites/look_left/character/side/three/left/frame_1.xpm";
-	p_left.ptr_side_three_up = "../assets/sprites/look_left/character/side/three/up/frame_1.xpm";
-	p_left.ptr_side_two_up_down = "../assets/sprites/look_left/character/side/two/left_right/frame_1.xpm";
-	p_left.ptr_side_two_left_right = "../assets/sprites/look_left/character/side/two/up_down/frame_1.xpm";
+	ptr_corner_left_up = "../assets/wall/left_up.xpm";
+	ptr_corner_left_down = "../assets/wall/left_down.xpm";
+	ptr_corner_right_up = "../assets/wall/right_up.xpm";
+	ptr_corner_right_down = "../assets/wall/right_down.xpm";
+
+	ptr_side_left = "../assets/wall/left.xpm";
+	ptr_side_right = "../assets/wall/right.xpm";
+	ptr_side_up = "../assets/wall/up.xpm";
+	ptr_side_down = "../assets/wall/down.xpm";
+
+	ptr_road_corner_left_up = "../assets/road/corner/left_up.xpm";
+	ptr_road_corner_left_down = "../assets/road/corner/left_down.xpm";
+	ptr_road_corner_right_up = "../assets/road/corner/right_up.xpm";
+	ptr_road_corner_right_down = "../assets/road/corner/right_down.xpm";
+
+	ptr_road_side_up = "../assets/road/side/one/up.xpm";
+	ptr_road_side_right = "../assets/road/side/one/right.xpm";
+	ptr_road_side_down = "../assets/road/side/one/down.xpm";
+	ptr_road_side_left = "../assets/road/side/one/left.xpm";
+	
+	ptr_road_side_up_down = "../assets/road/side/two/up_down.xpm";
+	ptr_road_side_left_right = "../assets/road/side/two/left_right.xpm";
+
+	ptr_road_three_side_down = "../assets/road/side/three/down.xpm";
+	ptr_road_three_side_up = "../assets/road/side/three/up.xpm";
+	ptr_road_three_side_right = "../assets/road/side/three/right.xpm";
+	ptr_road_three_side_left = "../assets/road/side/three/left.xpm";
+
+	ptr_inside_road = "../assets/road/inside_road.xpm";
+	ptr_inside_road_shadows = "../assets/road/inside_road_shadows.xpm";
+	ptr_inside_wall = "../assets/wall/inside_wall.xpm";
 
 
-/*******************      RIGHT ENEMY      ************************/
-	e_right.ptr_middle = "../assets/sprites/look_right/enemy/inside_road/frame_1.xpm";
-	e_right.ptr_inside_wall = "../assets/sprites/look_right/enemy/inside_road_shadows/frame_1.xpm";
-	e_right.ptr_corner_left_down = "../assets/sprites/look_right/enemy/corner/left_down/frame_1.xpm";
-	e_right.ptr_corner_left_up = "../assets/sprites/look_right/enemy/corner/left_up/frame_1.xpm";
-	e_right.ptr_corner_right_down = "../assets/sprites/look_right/enemy/corner/right_down/frame_1.xpm";
-	e_right.ptr_corner_right_up = "../assets/sprites/look_right/enemy/corner/right_up/frame_1.xpm";
-	e_right.ptr_side_one_down = "../assets/sprites/look_right/enemy/side/one/down/frame_1.xpm";
-	e_right.ptr_side_one_left = "../assets/sprites/look_right/enemy/side/one/left/frame_1.xpm";
-	e_right.ptr_side_one_right = "../assets/sprites/look_right/enemy/side/one/right/frame_1.xpm";
-	e_right.ptr_side_one_up = "../assets/sprites/look_right/enemy/side/one/up/frame_1.xpm";
-	e_right.ptr_side_three_down = "../assets/sprites/look_right/enemy/side/three/down/frame_1.xpm";
-	e_right.ptr_side_three_left = "../assets/sprites/look_right/enemy/side/three/right/frame_1.xpm";
-	e_right.ptr_side_three_right = "../assets/sprites/look_right/enemy/side/three/left/frame_1.xpm";
-	e_right.ptr_side_three_up = "../assets/sprites/look_right/enemy/side/three/up/frame_1.xpm";
-	e_right.ptr_side_two_up_down = "../assets/sprites/look_right/enemy/side/two/left_right/frame_1.xpm";
-	e_right.ptr_side_two_left_right = "../assets/sprites/look_right/enemy/side/two/up_down/frame_1.xpm";
+	ptr_char_inside_road = "../assets/sprites/look_right/character/inside_road/frame_1.xpm";
+	
+	ptr_char_corner_left_down = "../assets/sprites/look_right/character/corner/left_down/frame_1.xpm";
+	ptr_char_corner_left_up = "../assets/sprites/look_right/character/corner/left_up/frame_1.xpm";
+	ptr_char_corner_right_down = "../assets/sprites/look_right/character/corner/right_down/frame_1.xpm";
+	ptr_char_corner_right_up = "../assets/sprites/look_right/character/corner/right_up/frame_1.xpm";
 
-/*******************      LEFT ENEMY      ************************/
-	e_left.ptr_middle = "../assets/sprites/look_left/enemy/inside_road/frame_1.xpm";
-	e_left.ptr_inside_wall = "../assets/sprites/look_left/enemy/inside_road_shadows/frame_1.xpm";
-	e_left.ptr_corner_left_down = "../assets/sprites/look_left/enemy/corner/left_down/frame_1.xpm";
-	e_left.ptr_corner_left_up = "../assets/sprites/look_left/enemy/corner/left_up/frame_1.xpm";
-	e_left.ptr_corner_right_down = "../assets/sprites/look_left/enemy/corner/right_down/frame_1.xpm";
-	e_left.ptr_corner_right_up = "../assets/sprites/look_left/enemy/corner/right_up/frame_1.xpm";
-	e_left.ptr_side_one_down = "../assets/sprites/look_left/enemy/side/one/down/frame_1.xpm";
-	e_left.ptr_side_one_left = "../assets/sprites/look_left/enemy/side/one/left/frame_1.xpm";
-	e_left.ptr_side_one_right = "../assets/sprites/look_left/enemy/side/one/right/frame_1.xpm";
-	e_left.ptr_side_one_up = "../assets/sprites/look_left/enemy/side/one/up/frame_1.xpm";
-	e_left.ptr_side_three_down = "../assets/sprites/look_left/enemy/side/three/down/frame_1.xpm";
-	e_left.ptr_side_three_left = "../assets/sprites/look_left/enemy/side/three/right/frame_1.xpm";
-	e_left.ptr_side_three_right = "../assets/sprites/look_left/enemy/side/three/left/frame_1.xpm";
-	e_left.ptr_side_three_up = "../assets/sprites/look_left/enemy/side/three/up/frame_1.xpm";
-	e_left.ptr_side_two_up_down = "../assets/sprites/look_left/enemy/side/two/left_right/frame_1.xpm";
-	e_left.ptr_side_two_left_right = "../assets/sprites/look_left/enemy/side/two/up_down/frame_1.xpm";
+	ptr_char_side_one_down = "../assets/sprites/look_right/character/side/one/down/frame_1.xpm";
+	ptr_char_side_one_left = "../assets/sprites/look_right/character/side/one/left/frame_1.xpm";
+	ptr_char_side_one_right = "../assets/sprites/look_right/character/side/one/right/frame_1.xpm";
+	ptr_char_side_one_up = "../assets/sprites/look_right/character/side/one/up/frame_1.xpm";
 
-/*******************      COLLECTIBLE      ************************/
-	key.ptr_middle = "../assets/key/inside_road/frame_1.xpm";
-	key.ptr_corner_left_down = "../assets/key/corner/left_down/frame_1.xpm";
-	key.ptr_corner_left_up = "../assets/key/corner/left_up/frame_1.xpm";
-	key.ptr_corner_right_down = "../assets/key/corner/right_down/frame_1.xpm";
-	key.ptr_corner_right_up = "../assets/key/corner/right_up/frame_1.xpm";
-	key.ptr_side_one_down = "../assets/key/side/one/down/frame_1.xpm";
-	key.ptr_side_one_left = "../assets/key/side/one/left/frame_1.xpm";
-	key.ptr_side_one_right = "../assets/key/side/one/right/frame_1.xpm";
-	key.ptr_side_one_up = "../assets/key/side/one/up/frame_1.xpm";
-	key.ptr_side_three_down = "../assets/key/side/three/down/frame_1.xpm";
-	key.ptr_side_three_left = "../assets/key/side/three/right/frame_1.xpm";
-	key.ptr_side_three_right = "../assets/key/side/three/left/frame_1.xpm";
-	key.ptr_side_three_up = "../assets/key/side/three/up/frame_1.xpm";
-	key.ptr_side_two_up_down = "../assets/key/side/two/up_down/frame_1.xpm";
-	key.ptr_side_two_left_right = "../assets/key/side/two/left_right/frame_1.xpm";
+	ptr_char_side_three_down = "../assets/sprites/look_right/character/side/three/down/frame_1.xpm";
+	ptr_char_side_three_left = "../assets/sprites/look_right/character/side/three/right/frame_1.xpm";
+	ptr_char_side_three_right = "../assets/sprites/look_right/character/side/three/left/frame_1.xpm";
+	ptr_char_side_three_up = "../assets/sprites/look_right/character/side/three/up/frame_1.xpm";
 
-/*******************      GATE      ************************/
-	exit.ptr_gate = "../assets/gate/frame_1.xpm";
+	ptr_char_side_two_up_down = "../assets/sprites/look_right/character/side/two/left_right/frame_1.xpm";
+	ptr_char_side_two_left_right = "../assets/sprites/look_right/character/side/two/up_down/frame_1.xpm";
 
-/*******************************************/
+
+	ptr_enemy_inside_road = "../assets/sprites/look_right/enemy/inside_road/frame_1.xpm";
+	ptr_enemy_inside_road_shadows = "../assets/sprites/look_right/enemy/inside_road_shadows/frame_1.xpm";
+
+	ptr_enemy_corner_left_down = "../assets/sprites/look_right/enemy/corner/left_down/frame_1.xpm";
+	ptr_enemy_corner_left_up = "../assets/sprites/look_right/enemy/corner/left_up/frame_1.xpm";
+	ptr_enemy_corner_right_down = "../assets/sprites/look_right/enemy/corner/right_down/frame_1.xpm";
+	ptr_enemy_corner_right_up = "../assets/sprites/look_right/enemy/corner/right_up/frame_1.xpm";
+
+	ptr_enemy_side_one_down = "../assets/sprites/look_right/enemy/side/one/down/frame_1.xpm";
+	ptr_enemy_side_one_left = "../assets/sprites/look_right/enemy/side/one/left/frame_1.xpm";
+	ptr_enemy_side_one_right = "../assets/sprites/look_right/enemy/side/one/right/frame_1.xpm";
+	ptr_enemy_side_one_up = "../assets/sprites/look_right/enemy/side/one/up/frame_1.xpm";
+
+	ptr_enemy_side_three_down = "../assets/sprites/look_right/enemy/side/three/down/frame_1.xpm";
+	ptr_enemy_side_three_left = "../assets/sprites/look_right/enemy/side/three/right/frame_1.xpm";
+	ptr_enemy_side_three_right = "../assets/sprites/look_right/enemy/side/three/left/frame_1.xpm";
+	ptr_enemy_side_three_up = "../assets/sprites/look_right/enemy/side/three/up/frame_1.xpm";
+
+	ptr_enemy_side_two_up_down = "../assets/sprites/look_right/enemy/side/two/left_right/frame_1.xpm";
+	ptr_enemy_side_two_left_right = "../assets/sprites/look_right/enemy/side/two/up_down/frame_1.xpm";
+
+
+	ptr_key_inside_road = "../assets/key/inside_road/frame_1.xpm";
+	
+	ptr_key_corner_left_down = "../assets/key/corner/left_down/frame_1.xpm";
+	ptr_key_corner_left_up = "../assets/key/corner/left_up/frame_1.xpm";
+	ptr_key_corner_right_down = "../assets/key/corner/right_down/frame_1.xpm";
+	ptr_key_corner_right_up = "../assets/key/corner/right_up/frame_1.xpm";
+
+	ptr_key_side_one_down = "../assets/key/side/one/down/frame_1.xpm";
+	ptr_key_side_one_left = "../assets/key/side/one/left/frame_1.xpm";
+	ptr_key_side_one_right = "../assets/key/side/one/right/frame_1.xpm";
+	ptr_key_side_one_up = "../assets/key/side/one/up/frame_1.xpm";
+
+	ptr_key_side_three_down = "../assets/key/side/three/down/frame_1.xpm";
+	ptr_key_side_three_left = "../assets/key/side/three/right/frame_1.xpm";
+	ptr_key_side_three_right = "../assets/key/side/three/left/frame_1.xpm";
+	ptr_key_side_three_up = "../assets/key/side/three/up/frame_1.xpm";
+
+	ptr_key_side_two_up_down = "../assets/key/side/two/up_down/frame_1.xpm";
+	ptr_key_side_two_left_right = "../assets/key/side/two/left_right/frame_1.xpm";
+
+	ptr_gate = "../assets/gate/frame_1.xpm";
+
 	mlx_win = mlx_new_window(mlx_ptr, X, Y, "POP!");
 	img_corner_left_up = mlx_xpm_file_to_image(mlx_ptr, ptr_corner_left_up, &x,
 			&y);
