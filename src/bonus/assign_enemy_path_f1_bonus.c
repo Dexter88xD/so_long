@@ -12,17 +12,17 @@
 
 #include "so_long.h"
 
-void	assign_right_e_middle_corner(t_places *e_r)
+void	assign_right_e_middle_corner_fone(t_places *e_r)
 {
 	(*e_r).inside.ptr = "../assets/N/look_r/inside_road/frame_1.xpm";
-	(*e_r).inside.ptr_shadows = "../assets/N/look_r/inside_road_shadows/frame_1.xpm";
+	(*e_r).inside.ptr_shad = "../assets/N/look_r/inside_road_shad/frame_1.xpm";
 	(*e_r).cor.ptr_l_d = "../assets/N/look_r/corner/left_down/frame_1.xpm";
 	(*e_r).cor.ptr_l_u = "../assets/N/look_r/corner/left_up/frame_1.xpm";
 	(*e_r).cor.ptr_r_d = "../assets/N/look_r/corner/right_down/frame_1.xpm";
 	(*e_r).cor.ptr_r_u = "../assets/N/look_r/corner/right_up/frame_1.xpm";
 }
 
-void	assign_right_e_side(t_places *e_r)
+void	assign_right_e_side_fone(t_places *e_r)
 {
 	(*e_r).one.ptr_d = "../assets/N/look_r/side/one/down/frame_1.xpm";
 	(*e_r).one.ptr_l = "../assets/N/look_r/side/one/left/frame_1.xpm";
@@ -36,25 +36,26 @@ void	assign_right_e_side(t_places *e_r)
 	(*e_r).two.ptr_l_r = "../assets/N/look_r/side/two/up_down/frame_1.xpm";
 }
 
-void	assign_left_e_middle_corner(t_places *e_l)
+void	assign_left_e_middle_corner_fone(t_places *e_l)
 {
-	(*p_l).inside.ptr = "../assets/C/look_l/inside_road/frame_1.xpm";
-	(*p_l).cor.ptr_l_d = "../assets/C/look_l/corner/left_down/frame_1.xpm";
-	(*p_l).cor.ptr_l_u = "../assets/C/look_l/corner/left_up/frame_1.xpm";
-	(*p_l).cor.ptr_r_d = "../assets/C/look_l/corner/right_down/frame_1.xpm";
-	(*p_l).cor.ptr_r_u = "../assets/C/look_l/corner/right_up/frame_1.xpm";
+	(*e_l).inside.ptr = "../assets/N/look_l/inside_road/frame_1.xpm";
+	(*e_l).inside.ptr_shad = "../assets/N/look_l/inside_road_shad/frame_1.xpm";
+	(*e_l).cor.ptr_l_d = "../assets/N/look_l/corner/left_down/frame_1.xpm";
+	(*e_l).cor.ptr_l_u = "../assets/N/look_l/corner/left_up/frame_1.xpm";
+	(*e_l).cor.ptr_r_d = "../assets/N/look_l/corner/right_down/frame_1.xpm";
+	(*e_l).cor.ptr_r_u = "../assets/N/look_l/corner/right_up/frame_1.xpm";
 }
 
-void	assign_left_e_side(t_places *p_l)
+void	assign_left_e_side_fone(t_places *e_l)
 {
-	(*p_l).one.ptr_d = "../assets/C/look_l/side/one/down/frame_1.xpm";
-	(*p_l).one.ptr_l = "../assets/C/look_l/side/one/left/frame_1.xpm";
-	(*p_l).one.ptr_r = "../assets/C/look_l/side/one/right/frame_1.xpm";
-	(*p_l).one.ptr_u = "../assets/C/look_l/side/one/up/frame_1.xpm";
-	(*p_l).three.ptr_d = "../assets/C/look_l/side/three/down/frame_1.xpm";
-	(*p_l).three.ptr_l = "../assets/C/look_l/side/three/right/frame_1.xpm";
-	(*p_l).three.ptr_r = "../assets/C/look_l/side/three/left/frame_1.xpm";
-	(*p_l).three.ptr_u = "../assets/C/look_l/side/three/up/frame_1.xpm";
-	(*p_l).two.ptr_u_d = "../assets/C/look_l/side/two/left_right/frame_1.xpm";
-	(*p_l).two.ptr_l_r = "../assets/C/look_l/side/two/up_down/frame_1.xpm";
+	(*e_l).one.ptr_d = "../assets/N/look_l/side/one/down/frame_1.xpm";
+	(*e_l).one.ptr_l = "../assets/N/look_l/side/one/left/frame_1.xpm";
+	(*e_l).one.ptr_r = "../assets/N/look_l/side/one/right/frame_1.xpm";
+	(*e_l).one.ptr_u = "../assets/N/look_l/side/one/up/frame_1.xpm";
+	(*e_l).three.ptr_d = "../assets/N/look_l/side/three/down/frame_1.xpm";
+	(*e_l).three.ptr_l = "../assets/N/look_l/side/three/right/frame_1.xpm";
+	(*e_l).three.ptr_r = "../assets/N/look_l/side/three/left/frame_1.xpm";
+	(*e_l).three.ptr_u = "../assets/N/look_l/side/three/up/frame_1.xpm";
+	(*e_l).two.ptr_u_d = "../assets/N/look_l/side/two/left_right/frame_1.xpm";
+	(*e_l).two.ptr_l_r = "../assets/N/look_l/side/two/up_down/frame_1.xpm";
 }

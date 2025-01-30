@@ -15,23 +15,12 @@
 
 # include "so_long.h"
 
-typedef struct s_places
-{
-	t_inside_wall	inside;
-	t_middle		middle;
-	t_side_one		one;
-	t_side_two		two;
-	t_side_three	three;
-	t_corner		cor;
-
-}					t_places;
-
 typedef struct s_inside_wall
 {
 	void			*img;
 	char			*ptr;
-	void			*img_shadows;
-	char			*ptr_shadows;
+	void			*img_shad;
+	char			*ptr_shad;
 }					t_inside_wall;
 
 typedef struct s_middle
@@ -83,5 +72,28 @@ typedef struct s_corner
 	void			*img_r_u;
 	char			*ptr_r_u;
 }					t_corner;
+
+typedef struct s_places
+{
+	t_inside_wall	inside;
+	t_middle		middle;
+	t_side_one		one;
+	t_side_two		two;
+	t_side_three	three;
+	t_corner		cor;
+
+}					t_places;
+
+typedef struct s_assets
+{
+	t_places		wall;
+	t_places		road;
+	t_places		key;
+	t_places		exit;
+	t_places		e_left;
+	t_places		e_right;
+	t_places		p_left;
+	t_places		p_right;
+}					t_assets;
 
 #endif

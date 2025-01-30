@@ -13,7 +13,9 @@ MINILIB = lib/minilibx-linux/libmlx*
 
 NAME = src/so_long
 
-FILES = src/main.c src/mapping.c src/checking_map.c src/putting_map.c
+FILES = src/main.c src/mapping.c src/checking_map.c
+
+BONUS = src/main.c src/bonus/mapping_bonus.c src/bonus/checking_map_bonus.c
 
 OBJECTS = $(FILES:%.c=%.o)
 

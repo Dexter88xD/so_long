@@ -10,11 +10,12 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "../so_long.h"
 
 int	checking_path(t_map *map, t_num *count, int y, int x)
 {
-	if ((*map).buffer[y][x] == '1' || (*map).buffer[y][x] == 'X')
+	if ((*map).buffer[y][x] == '1' || (*map).buffer[y][x] == 'X'
+		|| (*map).buffer[y][x] == 'N')
 		return ((*count).coll);
 	if ((*map).buffer[y][x] != '0' && (*map).buffer[y][x] != 'C'
 		&& (*map).buffer[y][x] != 'E' && (*map).buffer[y][x] != 'P')
@@ -54,13 +55,14 @@ int	checking_map(t_map *map)
 	e = checking_exit((*map).width, (*map).height, (*map).buffer);
 	if (e != 1)
 		return (ft_printf("Error:\nThe map must contain one exit!\n"), 0);
+	(*map).exit = e;
 	w = checking_wall((*map).width, (*map).height, (*map).buffer);
 	if (w != 1)
 		return (ft_printf("Error:\nThe map must be surrounded by walls!\n"), 0);
 	c = checking_collectibles((*map).width, (*map).height, (*map).buffer);
 	if (c == 0)
 		return (ft_printf("Error:\n"),
-			ft_printf("The map must contain multiple collectibles!\n"), 0);
+			ft_printf("The map must contain collectibles!\n"), 0);
 	(*map).collectible = c;
 	return (c);
 }
