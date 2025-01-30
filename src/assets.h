@@ -15,140 +15,73 @@
 
 # include "so_long.h"
 
-typedef struct s_wall
+typedef struct s_places
 {
-	void	*img_corner_left_up;
-	char	*ptr_corner_left_up;
-	void	*img_corner_left_down;
-	char	*ptr_corner_left_down;
-	void	*img_corner_right_up;
-	char	*ptr_corner_right_up;
-	void	*img_corner_right_down;
-	char	*ptr_corner_right_down;
-	void	*img_side_left;
-	char	*ptr_side_left;
-	void	*img_side_right;
-	char	*ptr_side_right;
-	void	*img_side_up;
-	char	*ptr_side_up;
-	void	*img_side_down;
-	char	*ptr_side_down;
-	void	*img_wall;
-	char	*ptr_wall;
-}			t_wall;
+	t_inside_wall	inside;
+	t_middle		middle;
+	t_side_one		one;
+	t_side_two		two;
+	t_side_three	three;
+	t_corner		cor;
 
-typedef struct s_road
+}					t_places;
+
+typedef struct s_inside_wall
 {
-	void	*img_middle;
-	char	*ptr_middle;
-	void	*img_corner_left_up;
-	char	*ptr_corner_left_up;
-	void	*img_corner_left_down;
-	char	*ptr_corner_left_down;
-	void	*img_corner_right_up;
-	char	*ptr_corner_right_up;
-	void	*img_corner_right_down;
-	char	*ptr_corner_right_down;
-	void	*img_side_up;
-	char	*ptr_side_up;
-	void	*img_side_right;
-	char	*ptr_side_right;
-	void	*img_side_down;
-	char	*ptr_side_down;
-	void	*img_side_left;
-	char	*ptr_side_left;
-	void	*img_side_up_down;
-	char	*ptr_side_up_down;
-	void	*img_side_left_right;
-	char	*ptr_side_left_right;
-	void	*img_three_side_up;
-	char	*ptr_three_side_up;
-	void	*img_three_side_down;
-	char	*ptr_three_side_down;
-	void	*img_three_side_left;
-	char	*ptr_three_side_left;
-	void	*img_three_side_right;
-	char	*ptr_three_side_right;
-	void	*img_inside_wall;
-	char	*ptr_inside_wall;
+	void			*img;
+	char			*ptr;
+	void			*img_shadows;
+	char			*ptr_shadows;
+}					t_inside_wall;
 
-}			t_road;
-
-typedef struct s_reach
+typedef struct s_middle
 {
-	void	*img_middle;
-	char	*ptr_middle;
-	void	*img_corner_left_down;
-	char	*ptr_corner_left_down;
-	void	*img_corner_left_up;
-	char	*ptr_corner_left_up;
-	void	*img_corner_right_down;
-	char	*ptr_corner_right_down;
-	void	*img_corner_right_up;
-	char	*ptr_corner_right_up;
-	void	*img_side_one_down;
-	char	*ptr_side_one_down;
-	void	*img_side_one_left;
-	char	*ptr_side_one_left;
-	void	*img_side_one_right;
-	char	*ptr_side_one_right;
-	void	*img_side_one_up;
-	char	*ptr_side_one_up;
-	void	*img_side_three_down;
-	char	*ptr_side_three_down;
-	void	*img_side_three_left;
-	char	*ptr_side_three_left;
-	void	*img_side_three_right;
-	char	*ptr_side_three_right;
-	void	*img_side_three_up;
-	char	*ptr_side_three_up;
-	void	*img_side_two_left_right;
-	char	*ptr_side_two_left_right;
-	void	*img_side_two_up_down;
-	char	*ptr_side_two_up_down;
-}			t_reach;
+	void			*img;
+	char			*ptr;
+}					t_middle;
 
-
-typedef struct s_enemy
+typedef struct s_side_one
 {
-	void	*img_middle;
-	char	*ptr_middle;
-	void	*img_inside_wall;
-	char	*ptr_inside_wall;
-	void	*img_corner_left_down;
-	char	*ptr_corner_left_down;
-	void	*img_corner_left_up;
-	char	*ptr_corner_left_up;
-	void	*img_corner_right_down;
-	char	*ptr_corner_right_down;
-	void	*img_corner_right_up;
-	char	*ptr_corner_right_up;
-	void	*img_side_one_down;
-	char	*ptr_side_one_down;
-	void	*img_side_one_left;
-	char	*ptr_side_one_left;
-	void	*img_side_one_right;
-	char	*ptr_side_one_right;
-	void	*img_side_one_up;
-	char	*ptr_side_one_up;
-	void	*img_side_three_down;
-	char	*ptr_side_three_down;
-	void	*img_side_three_left;
-	char	*ptr_side_three_left;
-	void	*img_side_three_right;
-	char	*ptr_side_three_right;
-	void	*img_side_three_up;
-	char	*ptr_side_three_up;
-	void	*img_side_two_left_right;
-	char	*ptr_side_two_left_right;
-	void	*img_side_two_up_down;
-	char	*ptr_side_two_up_down;
-}			t_enemy;
+	void			*img_d;
+	char			*ptr_d;
+	void			*img_l;
+	char			*ptr_l;
+	void			*img_r;
+	char			*ptr_r;
+	void			*img_u;
+	char			*ptr_u;
+}					t_side_one;
 
-typedef struct s_exit
+typedef struct s_side_two
 {
-	void	*img_gate;
-	char	*ptr_gate;
-}			t_exit;
+	void			*img_l_r;
+	char			*ptr_l_r;
+	void			*img_u_d;
+	char			*ptr_u_d;
+}					t_side_two;
+
+typedef struct s_side_three
+{
+	void			*img_d;
+	char			*ptr_d;
+	void			*img_l;
+	char			*ptr_l;
+	void			*img_r;
+	char			*ptr_r;
+	void			*img_u;
+	char			*ptr_u;
+}					t_side_three;
+
+typedef struct s_corner
+{
+	void			*img_l_d;
+	char			*ptr_l_d;
+	void			*img_l_u;
+	char			*ptr_l_u;
+	void			*img_r_d;
+	char			*ptr_r_d;
+	void			*img_r_u;
+	char			*ptr_r_u;
+}					t_corner;
 
 #endif

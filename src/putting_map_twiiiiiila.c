@@ -195,40 +195,40 @@ void	putting_images(char **array, int rows, int cols, void *mlx_ptr)
 	Y = rows * 32;
 	X = cols * 32;
 
-	ptr_corner_left_up = "../assets/wall/left_up.xpm";
-	ptr_corner_left_down = "../assets/wall/left_down.xpm";
-	ptr_corner_right_up = "../assets/wall/right_up.xpm";
-	ptr_corner_right_down = "../assets/wall/right_down.xpm";
+	ptr_corner_left_up = "../assets/1/left_up.xpm";
+	ptr_corner_left_down = "../assets/1/left_down.xpm";
+	ptr_corner_right_up = "../assets/1/right_up.xpm";
+	ptr_corner_right_down = "../assets/1/right_down.xpm";
 
-	ptr_side_left = "../assets/wall/left.xpm";
-	ptr_side_right = "../assets/wall/right.xpm";
-	ptr_side_up = "../assets/wall/up.xpm";
-	ptr_side_down = "../assets/wall/down.xpm";
+	ptr_side_left = "../assets/1/left.xpm";
+	ptr_side_right = "../assets/1/right.xpm";
+	ptr_side_up = "../assets/1/up.xpm";
+	ptr_side_down = "../assets/1/down.xpm";
 
-	ptr_road_corner_left_up = "../assets/road/corner/left_up.xpm";
-	ptr_road_corner_left_down = "../assets/road/corner/left_down.xpm";
-	ptr_road_corner_right_up = "../assets/road/corner/right_up.xpm";
-	ptr_road_corner_right_down = "../assets/road/corner/right_down.xpm";
+	ptr_road_corner_left_up = "../assets/0/corner/left_up.xpm";
+	ptr_road_corner_left_down = "../assets/0/corner/left_down.xpm";
+	ptr_road_corner_right_up = "../assets/0/corner/right_up.xpm";
+	ptr_road_corner_right_down = "../assets/0/corner/right_down.xpm";
 
-	ptr_road_side_up = "../assets/road/side/one/up.xpm";
-	ptr_road_side_right = "../assets/road/side/one/right.xpm";
-	ptr_road_side_down = "../assets/road/side/one/down.xpm";
-	ptr_road_side_left = "../assets/road/side/one/left.xpm";
+	ptr_road_side_up = "../assets/0/side/one/up.xpm";
+	ptr_road_side_right = "../assets/0/side/one/right.xpm";
+	ptr_road_side_down = "../assets/0/side/one/down.xpm";
+	ptr_road_side_left = "../assets/0/side/one/left.xpm";
 	
-	ptr_road_side_up_down = "../assets/road/side/two/up_down.xpm";
-	ptr_road_side_left_right = "../assets/road/side/two/left_right.xpm";
+	ptr_road_side_up_down = "../assets/0/side/two/up_down.xpm";
+	ptr_road_side_left_right = "../assets/0/side/two/left_right.xpm";
 
-	ptr_road_three_side_down = "../assets/road/side/three/down.xpm";
-	ptr_road_three_side_up = "../assets/road/side/three/up.xpm";
-	ptr_road_three_side_right = "../assets/road/side/three/right.xpm";
-	ptr_road_three_side_left = "../assets/road/side/three/left.xpm";
+	ptr_road_three_side_down = "../assets/0/side/three/down.xpm";
+	ptr_road_three_side_up = "../assets/0/side/three/up.xpm";
+	ptr_road_three_side_right = "../assets/0/side/three/right.xpm";
+	ptr_road_three_side_left = "../assets/0/side/three/left.xpm";
 
-	ptr_inside_road = "../assets/road/inside_road.xpm";
-	ptr_inside_road_shadows = "../assets/road/inside_road_shadows.xpm";
-	ptr_inside_wall = "../assets/wall/inside_wall.xpm";
+	ptr_inside_road = "../assets/0/inside_road.xpm";
+	ptr_inside_road_shadows = "../assets/0/inside_road_shadows.xpm";
+	ptr_inside_wall = "../assets/1/inside_wall.xpm";
 
 
-	ptr_char_inside_road = "../assets/sprites/look_right/character/inside_road/frame_1.xpm";
+	ptr_char_inside_road = "../assets/P/look_r/inside_road/frame_1.xpm";
 	
 	ptr_char_corner_left_down = "../assets/sprites/look_right/character/corner/left_down/frame_1.xpm";
 	ptr_char_corner_left_up = "../assets/sprites/look_right/character/corner/left_up/frame_1.xpm";

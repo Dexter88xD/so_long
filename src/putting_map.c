@@ -12,14 +12,14 @@ void	putting_images(char **array, int rows, int cols, void *mlx_ptr)
 	int		Y;
 	int		X;
 	void	*mlx_win;
-	t_wall	wall;
-	t_road	road;
-	t_reach	key;
-	t_exit	exit;
-	t_enemy	e_left;
-	t_enemy	e_right;
-	t_reach	p_left;
-	t_reach	p_right;
+	t_places	wall;
+	t_places	road;
+	t_places	key;
+	t_places	exit;
+	t_places	e_left;
+	t_places	e_right;
+	t_places	p_left;
+	t_places	p_right;
 	/**********************ASSIGNING IMAGES TO THE MAP*********************/
 	a = 0;
 	b = 0;
@@ -27,40 +27,6 @@ void	putting_images(char **array, int rows, int cols, void *mlx_ptr)
 	j = 0;
 	Y = rows * 32;
 	X = cols * 32;
-/*******************      RIGHT PLAYER      ************************/
-	p_right.ptr_middle = "../assets/sprites/look_right/character/inside_road/frame_1.xpm";
-	p_right.ptr_corner_left_down = "../assets/sprites/look_right/character/corner/left_down/frame_1.xpm";
-	p_right.ptr_corner_left_up = "../assets/sprites/look_right/character/corner/left_up/frame_1.xpm";
-	p_right.ptr_corner_right_down = "../assets/sprites/look_right/character/corner/right_down/frame_1.xpm";
-	p_right.ptr_corner_right_up = "../assets/sprites/look_right/character/corner/right_up/frame_1.xpm";
-	p_right.ptr_side_one_down = "../assets/sprites/look_right/character/side/one/down/frame_1.xpm";
-	p_right.ptr_side_one_left = "../assets/sprites/look_right/character/side/one/left/frame_1.xpm";
-	p_right.ptr_side_one_right = "../assets/sprites/look_right/character/side/one/right/frame_1.xpm";
-	p_right.ptr_side_one_up = "../assets/sprites/look_right/character/side/one/up/frame_1.xpm";
-	p_right.ptr_side_three_down = "../assets/sprites/look_right/character/side/three/down/frame_1.xpm";
-	p_right.ptr_side_three_left = "../assets/sprites/look_right/character/side/three/right/frame_1.xpm";
-	p_right.ptr_side_three_right = "../assets/sprites/look_right/character/side/three/left/frame_1.xpm";
-	p_right.ptr_side_three_up = "../assets/sprites/look_right/character/side/three/up/frame_1.xpm";
-	p_right.ptr_side_two_up_down = "../assets/sprites/look_right/character/side/two/left_right/frame_1.xpm";
-	p_right.ptr_side_two_left_right = "../assets/sprites/look_right/character/side/two/up_down/frame_1.xpm";
-
-/*******************      LEFT PLAYER      ************************/
-	p_left.ptr_middle = "../assets/sprites/look_left/character/inside_road/frame_1.xpm";
-	p_left.ptr_corner_left_down = "../assets/sprites/look_left/character/corner/left_down/frame_1.xpm";
-	p_left.ptr_corner_left_up = "../assets/sprites/look_left/character/corner/left_up/frame_1.xpm";
-	p_left.ptr_corner_right_down = "../assets/sprites/look_left/character/corner/right_down/frame_1.xpm";
-	p_left.ptr_corner_right_up = "../assets/sprites/look_left/character/corner/right_up/frame_1.xpm";
-	p_left.ptr_side_one_down = "../assets/sprites/look_left/character/side/one/down/frame_1.xpm";
-	p_left.ptr_side_one_left = "../assets/sprites/look_left/character/side/one/left/frame_1.xpm";
-	p_left.ptr_side_one_right = "../assets/sprites/look_left/character/side/one/right/frame_1.xpm";
-	p_left.ptr_side_one_up = "../assets/sprites/look_left/character/side/one/up/frame_1.xpm";
-	p_left.ptr_side_three_down = "../assets/sprites/look_left/character/side/three/down/frame_1.xpm";
-	p_left.ptr_side_three_left = "../assets/sprites/look_left/character/side/three/right/frame_1.xpm";
-	p_left.ptr_side_three_right = "../assets/sprites/look_left/character/side/three/left/frame_1.xpm";
-	p_left.ptr_side_three_up = "../assets/sprites/look_left/character/side/three/up/frame_1.xpm";
-	p_left.ptr_side_two_up_down = "../assets/sprites/look_left/character/side/two/left_right/frame_1.xpm";
-	p_left.ptr_side_two_left_right = "../assets/sprites/look_left/character/side/two/up_down/frame_1.xpm";
-
 
 /*******************      RIGHT ENEMY      ************************/
 	e_right.ptr_middle = "../assets/sprites/look_right/enemy/inside_road/frame_1.xpm";
