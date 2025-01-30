@@ -43,6 +43,7 @@ typedef struct s_map
 	t_location	player;
 }	t_map;
 
+char	**copying_buffer(char	**buffer);
 int		checking_map(t_map *map);
 int		mapping(int fd, t_num *count, t_map *map);
 int		checking_wall(int x, int y, char **buffer);

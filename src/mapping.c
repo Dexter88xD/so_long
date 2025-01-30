@@ -14,6 +14,7 @@
 
 int	checking_path(t_map *map, t_num *count, int y, int x)
 {
+
 	if ((*map).buffer[y][x] == '1' || (*map).buffer[y][x] == 'X')
 		return ((*count).coll);
 	if ((*map).buffer[y][x] != '0' && (*map).buffer[y][x] != 'C'
@@ -32,9 +33,9 @@ int	checking_path(t_map *map, t_num *count, int y, int x)
 		(*count).exit = 1;
 	}
 	checking_path(map, count, y, x + 1);
-	checking_path(map, count, y, x - 1);
-	checking_path(map, count, y + 1, x);
-	checking_path(map, count, y - 1, x);
+    checking_path(map, count, y, x - 1);
+    checking_path(map, count, y + 1, x);
+    checking_path(map, count, y - 1, x);
 	return ((*count).coll);
 }
 

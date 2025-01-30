@@ -40,6 +40,26 @@ void	putting_map(t_map *map)
 	mlx_loop(mlx_ptr);
 }
 
+char	**copying_buffer(char	**buffer)
+{
+	int		i;
+	char	**array;
+
+	i = 0;
+	array = (char **)malloc(BUFFER_SIZE * sizeof(char *));
+	if (!array)
+		return (free(array), NULL);
+	while (buffer[i] != NULL)
+	{
+		array[i] = ft_strndup(buffer[i], 0);
+		if (!array[i])
+			return (free(array), NULL);
+		i++;
+	}
+	array[i] = NULL;
+	return (array);
+}
+
 int	main(int argc, char **argv)
 {
 	int			fd;
