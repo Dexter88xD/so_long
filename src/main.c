@@ -22,13 +22,24 @@ void	buffer_freeing(t_map *map)
 	free((*map).buffer);
 }
 
-void	initialise(t_num *count, t_map *map)
+int	initialise_nd_mapping(int fd, t_num *count, t_map *map, char *map_path)
 {
+	int	check;
+
 	(*count).coll = 0;
 	(*count).exit = 0;
 	(*map).width = 0;
 	(*map).height = 0;
 	(*map).collectible = 0;
+	check = mapping(fd, count, map);
+	if ((*map).collectible != (*count).coll)
+		return (ft_printf("Error:\n") \
+		, ft_printf("The player must reach all collectibles and exit"), -1);
+	else if (check != 1)
+		return (-1);
+	else
+		check = recopying_map(map_path, map);
+	return (check);
 }
 
 void	putting_map(t_map *map)
@@ -40,55 +51,42 @@ void	putting_map(t_map *map)
 	mlx_loop(mlx_ptr);
 }
 
-char	**copying_buffer(char	**buffer)
+int	recopying_map(char *map_path, t_map *map)
 {
-	int		i;
-	char	**array;
+	int	fd;
 
-	i = 0;
-	array = (char **)malloc(BUFFER_SIZE * sizeof(char *));
-	if (!array)
-		return (free(array), NULL);
-	while (buffer[i] != NULL)
-	{
-		array[i] = ft_strndup(buffer[i], 0);
-		if (!array[i])
-			return (free(array), NULL);
-		i++;
-	}
-	array[i] = NULL;
-	return (array);
+	fd = open(map_path, O_RDWR);
+	if (fd == -1)
+		return (ft_printf("Error\n"), perror("Reason: "), -1);
+	buffer_freeing(map);
+	(*map).height = 0;
+	copying_map(fd, &(*map).height, (*map).buffer);
+	return (0);
 }
 
 int	main(int argc, char **argv)
 {
 	int			fd;
-	//int			check;
+	int			check;
+	char		*map_path;
 	t_num		count;
 	t_map		map;
 
 	if (argc != 2)
 		return (ft_printf("so_long: must provide a file\n"), -1);
-	fd = open(argv[1], O_RDWR);
+	map_path = argv[1];
+	fd = open(map_path, O_RDWR);
 	if (fd == -1)
 		return (ft_printf("Error\n"), perror("Reason: "), -1);
 	map.buffer = (char **)malloc(BUFFER_SIZE * sizeof(t_map *));
 	if (!map.buffer)
 		return (free(map.buffer), -1);
-	initialise(&count, &map);
-	//check = 
-	mapping(fd, &count, &map);
-	
-	putting_map(&map);
-	/*
-	if (map.collectible != count.coll)
-		return (ft_printf("Error:\n") \
-		, ft_printf("The player must reach all collectibles and exit"), 0);
-	else if (check != 1)
+	check = initialise_nd_mapping(fd, &count, &map, map_path);
+	close(fd);
+	if (check == -1)
 		exit(EXIT_FAILURE);
 	else
 		putting_map(&map);
-	*/
 	map.height = 0;
 	buffer_freeing(&map);
 	exit(EXIT_SUCCESS);

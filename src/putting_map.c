@@ -806,7 +806,6 @@ void	putting_images(char **array, int rows, int cols, void *mlx_ptr)
 		}
 		i++;
 	}
-
 	mlx_loop(mlx_ptr);
 	/**********************************************************************/
 }
