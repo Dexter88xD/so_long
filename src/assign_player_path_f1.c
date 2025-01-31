@@ -12,7 +12,7 @@
 
 #include "so_long.h"
 
-void	assign_right_p_middle_corner(t_places *p_r)
+void	assign_right_p_middle_corner_fone(t_places *p_r)
 {
 	(*p_r).inside.ptr = "../assets/C/look_r/inside_road/frame_1.xpm";
 	(*p_r).cor.ptr_l_d = "../assets/C/look_r/corner/left_down/frame_1.xpm";
@@ -21,7 +21,7 @@ void	assign_right_p_middle_corner(t_places *p_r)
 	(*p_r).cor.ptr_r_u = "../assets/C/look_r/corner/right_up/frame_1.xpm";
 }
 
-void	assign_right_p_side(t_places *p_r)
+void	assign_right_p_side_fone(t_places *p_r)
 {
 	(*p_r).one.ptr_d = "../assets/C/look_r/side/one/down/frame_1.xpm";
 	(*p_r).one.ptr_l = "../assets/C/look_r/side/one/left/frame_1.xpm";
@@ -35,7 +35,7 @@ void	assign_right_p_side(t_places *p_r)
 	(*p_r).two.ptr_l_r = "../assets/C/look_r/side/two/up_down/frame_1.xpm";
 }
 
-void	assign_left_p_middle_corner(t_places *p_l)
+void	assign_left_p_middle_corner_fone(t_places *p_l)
 {
 	(*p_l).inside.ptr = "../assets/C/look_l/inside_road/frame_1.xpm";
 	(*p_l).cor.ptr_l_d = "../assets/C/look_l/corner/left_down/frame_1.xpm";
@@ -44,7 +44,7 @@ void	assign_left_p_middle_corner(t_places *p_l)
 	(*p_l).cor.ptr_r_u = "../assets/C/look_l/corner/right_up/frame_1.xpm";
 }
 
-void	assign_left_p_side(t_places *p_l)
+void	assign_left_p_side_fone(t_places *p_l)
 {
 	(*p_l).one.ptr_d = "../assets/C/look_l/side/one/down/frame_1.xpm";
 	(*p_l).one.ptr_l = "../assets/C/look_l/side/one/left/frame_1.xpm";
