@@ -59,4 +59,22 @@ int		checking_player(int x, int y, t_location *location, char **buffer);
 void	putting_map(t_map *map);
 void	putting_images(char	**array, int rows, int cols, void *mlx_ptr);
 
+void	assign_wall_exit(t_places *wall, t_places *exit);
+void	assign_road(t_places *road);
+void	assign_collectible(t_places *key);
+void	assign_right_p_middle_corner(t_places *p_r);
+void	assign_right_p_side(t_places *p_r);
+void	assign_left_p_middle_corner(t_places *p_l);
+void	assign_left_p_side(t_places *p_l);
+
+void	point_wall(t_places *wall, void *mlx_ptr, int *x, int *y);
+void	point_side_road(t_places *road, void *mlx_ptr, int *x, int *y);
+void	point_corner_middle_road(t_places *road, void *mlx_ptr, int *x, int *y);
+void	point_side_collectible(t_places *key, void *mlx_ptr, int *x, int *y);
+void	point_mid_cor_coll_exit(t_assets *a, void *mlx_ptr, int *x, int *y);
+void	point_r_p_middle_corner(t_places *p_r, void *mlx_ptr, int *x, int *y);
+void	point_r_p_side(t_places *p_r, void *mlx_ptr, int *x, int *y);
+void	point_l_p_middle_corner(t_places *p_l, void *mlx_ptr, int *x, int *y);
+void	point_l_p_side(t_places *p_l, void *mlx_ptr, int *x, int *y);
+
 #endif

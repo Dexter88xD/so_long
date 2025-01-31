@@ -29,6 +29,12 @@ typedef struct s_middle
 	char			*ptr;
 }					t_middle;
 
+typedef struct s_end
+{
+	void			*img;
+	char			*ptr;
+}					t_end;
+
 typedef struct s_side_one
 {
 	void			*img_d;
@@ -81,6 +87,7 @@ typedef struct s_places
 	t_side_two		two;
 	t_side_three	three;
 	t_corner		cor;
+	t_end			end;
 
 }					t_places;
 
