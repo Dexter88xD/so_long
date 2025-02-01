@@ -85,13 +85,13 @@ void	point_side_collectible(t_places *key, void *mlx_ptr, int *x, int *y)
 	(*key).one.img_u = mlx_xpm_file_to_image(mlx_ptr,
 			(*key).one.ptr_u, x, y);
 	(*key).three.img_d = mlx_xpm_file_to_image(mlx_ptr,
-			(*key).one.ptr_d, x, y);
+			(*key).three.ptr_d, x, y);
 	(*key).three.img_l = mlx_xpm_file_to_image(mlx_ptr,
-			(*key).one.ptr_l, x, y);
+			(*key).three.ptr_l, x, y);
 	(*key).three.img_r = mlx_xpm_file_to_image(mlx_ptr,
-			(*key).one.ptr_r, x, y);
+			(*key).three.ptr_r, x, y);
 	(*key).three.img_u = mlx_xpm_file_to_image(mlx_ptr,
-			(*key).one.ptr_u, x, y);
+			(*key).three.ptr_u, x, y);
 	(*key).two.img_u_d = mlx_xpm_file_to_image(mlx_ptr,
 			(*key).two.ptr_u_d, x, y);
 	(*key).two.img_l_r = mlx_xpm_file_to_image(mlx_ptr,

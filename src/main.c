@@ -45,14 +45,17 @@ int	initialise_nd_mapping(int fd, t_num *count, t_map *map, char *map_path)
 	return (check);
 }
 
-
-void	putting_map(t_map *map)
+int	putting_map(t_map *map)
 {
 	void	*mlx_ptr;
+	int		check;
 
 	mlx_ptr = mlx_init();
-	putting_images((*map).buffer, (*map).height, (*map).width, mlx_ptr);
+	check = putting_images((*map).buffer, (*map).height, (*map).width, mlx_ptr);
+	if (check == 0)
+		return (0);
 	mlx_loop(mlx_ptr);
+	return (1);
 }
 
 int	recopying_map(char *map_path, t_map *map)
@@ -70,11 +73,11 @@ int	recopying_map(char *map_path, t_map *map)
 
 int	main(int argc, char **argv)
 {
-	int			fd;
-	int			check;
-	char		*map_path;
-	t_num		count;
-	t_map		map;
+	int		fd;
+	int		check;
+	char	*map_path;
+	t_num	count;
+	t_map	map;
 
 	if (argc != 2)
 		return (ft_printf("so_long: must provide a file\n"), -1);
@@ -89,7 +92,7 @@ int	main(int argc, char **argv)
 	close(fd);
 	if (check == -1)
 		exit(EXIT_FAILURE);
-	//else
+	// else
 	//	putting_map(&map);
 	map.height = 0;
 	buffer_freeing(&map);

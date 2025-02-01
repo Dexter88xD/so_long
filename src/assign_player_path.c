@@ -14,8 +14,8 @@
 
 void	assign_right_p_middle_corner(t_places *p_r)
 {
-	(*p_r).inside.ptr = "../assets/P/look_r/inside_road/frame_1.xpm";
 	(*p_r).end.ptr = "../assets/P/look_r/gate/frame_1.xpm";
+	(*p_r).inside.ptr = "../assets/P/look_r/inside_road/frame_1.xpm";
 	(*p_r).cor.ptr_l_d = "../assets/P/look_r/corner/left_down/frame_1.xpm";
 	(*p_r).cor.ptr_l_u = "../assets/P/look_r/corner/left_up/frame_1.xpm";
 	(*p_r).cor.ptr_r_d = "../assets/P/look_r/corner/right_down/frame_1.xpm";

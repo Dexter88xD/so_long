@@ -13,7 +13,11 @@ MINILIB = lib/minilibx-linux/libmlx*
 
 NAME = src/so_long
 
-FILES = src/main.c src/mapping.c src/checking_map.c src/putting_map.c src/assign_pointer.c src/assign_player_pointer.c src/assign_path.c src/assign_player_path.c
+FILES = src/main.c src/mapping.c src/checking_map.c src/putting_map.c \
+		src/assign_path.c src/assign_pointer.c \
+		src/assign_player_path.c src/assign_player_pointer.c \
+		src/checking_pointers.c src/checking_player_pointers.c \
+		src/assigning_checking_pointers.c
 
 BONUS = src/main.c src/bonus/mapping_bonus.c src/bonus/checking_map_bonus.c
 

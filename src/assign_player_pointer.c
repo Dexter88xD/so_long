@@ -14,12 +14,12 @@
 
 void	point_r_p_middle_corner(t_places *p_r, void *mlx_ptr, int *x, int *y)
 {
-	(*p_r).inside.img = mlx_xpm_file_to_image(mlx_ptr,
-			(*p_r).inside.img, x, y);
 	(*p_r).end.img = mlx_xpm_file_to_image(mlx_ptr,
 			(*p_r).end.ptr, x, y);
+	(*p_r).inside.img = mlx_xpm_file_to_image(mlx_ptr,
+			(*p_r).inside.ptr, x, y);
 	(*p_r).cor.img_l_d = mlx_xpm_file_to_image(mlx_ptr,
-			(*p_r).end.ptr, x, y);
+			(*p_r).cor.ptr_l_d, x, y);
 	(*p_r).cor.img_l_u = mlx_xpm_file_to_image(mlx_ptr,
 			(*p_r).cor.ptr_l_u, x, y);
 	(*p_r).cor.img_r_d = mlx_xpm_file_to_image(mlx_ptr,
