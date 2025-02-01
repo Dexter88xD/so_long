@@ -121,12 +121,9 @@ int	checking_char(int x, int y, char **buffer)
 		width = 0;
 		while (width < x)
 		{
-			if (buffer[height][width] != 'E' &&
-					buffer[height][width] != 'C' &&
-					buffer[height][width] != 'P' &&
-					buffer[height][width] != '1' &&
-					buffer[height][width] != '0' &&
-					buffer[height][width] != 'N')
+			if (buffer[height][width] != 'E' && buffer[height][width] != 'C'
+				&& buffer[height][width] != 'P' && buffer[height][width] != '1'
+				&& buffer[height][width] != '0' && buffer[height][width] != 'N')
 				return (0);
 			width++;
 		}

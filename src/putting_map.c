@@ -1,397 +1,63 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   putting_map.c                                      :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: sohamdan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2025/02/01 19:03:11 by sohamdan          #+#    #+#             */
+/*   Updated: 2025/02/01 19:03:12 by sohamdan         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "so_long.h"
 
-int	putting_images(char **array, int rows, int cols, void *mlx_ptr)
+void	putting_to_window(char **array, t_location *dim, t_data *data,
+		t_ptr mlx)
 {
-	int			i;
-	int			j;
-	int			a;
-	int			b;
-	int			x;
-	int			y;
-	int			Y;
-	int			X;
-	void		*mlx_win;
-	t_assets	pic;
-
-	/**********************ASSIGNING IMAGES TO THE MAP*********************/
-	a = 0;
-	b = 0;
-	i = 0;
-	j = 0;
-	x = 0;
-	y = 0;
-	Y = rows * 32;
-	X = cols * 32;
-	/*******************************************/
-	assigning_paths_pointers(&pic, mlx_ptr, &x, &y);
-	if (checking_pointers(&pic) == 0)
-		return (ft_printf("Error:\nProbable issue with assets paths!\n"), -1);
-	mlx_win = mlx_new_window(mlx_ptr, X, Y, "POP!");
-	while (i < rows)
+	while ((*data).len.i < (*dim).height)
 	{
-		a = i * x;
-		j = 0;
-		b = 0;
-		while (j < cols)
+		(*data).len.a = (*data).len.i * (*data).len.x;
+		(*data).len.j = 0;
+		(*data).len.b = 0;
+		while ((*data).len.j < (*dim).width)
 		{
-			if (array[i][j] == 'E')
-				mlx_put_image_to_window(mlx_ptr, mlx_win, pic.exit.middle.img,
-					b, a);
-			else if (array[i][j] == '1')
-			{
-				if (i == 0 && j == 0) // Left upper corner
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						pic.wall.cor.img_l_u, b, a);
-				else if (i == 0 && j == cols - 1) // Right upper corner
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						pic.wall.cor.img_r_u, b, a);
-				else if (i == rows - 1 && j == 0) // Left lower corner
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						pic.wall.cor.img_l_d, b, a);
-				else if (i == rows - 1 && j == cols - 1) // Right lower corner
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						pic.wall.cor.img_r_d, b, a);
-				else if (i == 0) // Upper side
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						pic.wall.one.img_u, b, a);
-				else if (i == rows - 1) // Lower side
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						pic.wall.one.img_d, b, a);
-				else if (j == 0) // Left side
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						pic.wall.one.img_l, b, a);
-				else if (j == cols - 1) // Right side
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						pic.wall.one.img_r, b, a);
-				else // Inside wall
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						pic.wall.middle.img, b, a);
-			}
-			else if (array[i][j] == '0')
-			{
-				// Left upper corner of road
-				if (array[i - 1][j] == '1' && array[i][j - 1] == '1'
-					&& array[i][j + 1] != '1' && array[i + 1][j] != '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						pic.road.cor.img_l_u, b, a);
-				// Right upper corner of road
-				else if (array[i - 1][j] == '1' && array[i][j + 1] == '1'
-					&& array[i][j - 1] != '1' && array[i + 1][j] != '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						pic.road.cor.img_r_u, b, a);
-				// Left lower corner of road
-				else if (array[i + 1][j] == '1' && array[i][j - 1] == '1'
-					&& array[i][j + 1] != '1' && array[i - 1][j] != '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						pic.road.cor.img_l_d, b, a);
-				// Right lower corner of road
-				else if (array[i + 1][j] == '1' && array[i][j + 1] == '1'
-					&& array[i][j - 1] != '1' && array[i - 1][j] != '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						pic.road.cor.img_r_d, b, a);
-				// Upper side of road
-				else if (array[i - 1][j] == '1' && array[i + 1][j] != '1'
-					&& (array[i][j - 1] != '1' || array[i][j + 1] != '1'))
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						pic.road.one.img_u, b, a);
-				// Lower side of road
-				else if (array[i + 1][j] == '1' && array[i - 1][j] != '1'
-					&& array[i][j - 1] != '1' && array[i][j + 1] != '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						pic.road.one.img_d, b, a);
-				// Left side of road
-				else if (array[i][j - 1] == '1' && array[i][j + 1] != '1'
-					&& array[i - 1][j] != '1' && array[i + 1][j] != '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						pic.road.one.img_l, b, a);
-				// Right side of road
-				else if (array[i][j + 1] == '1' && array[i][j - 1] != '1'
-					&& array[i - 1][j] != '1' && array[i + 1][j] != '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						pic.road.one.img_r, b, a);
-				// One way up
-				else if (array[i][j + 1] == '1' && array[i][j - 1] == '1'
-					&& array[i - 1][j] != '1' && array[i + 1][j] == '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						pic.road.three.img_d, b, a);
-				// One way down
-				else if (array[i][j + 1] == '1' && array[i][j - 1] == '1'
-					&& array[i - 1][j] == '1' && array[i + 1][j] != '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						pic.road.three.img_u, b, a);
-				// One way left
-				else if (array[i][j + 1] != '1' && array[i][j - 1] == '1'
-					&& array[i - 1][j] == '1' && array[i + 1][j] == '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						pic.road.three.img_l, b, a);
-				// One way right
-				else if (array[i][j + 1] == '1' && array[i][j - 1] != '1'
-					&& array[i - 1][j] == '1' && array[i + 1][j] == '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						pic.road.three.img_r, b, a);
-				// Horizontal road
-				else if (array[i - 1][j] == '1' && array[i + 1][j] == '1'
-					&& array[i][j - 1] != '1' && array[i][j + 1] != '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						pic.road.two.img_u_d, b, a);
-				// Vertical road
-				else if (array[i][j - 1] == '1' && array[i][j + 1] == '1'
-					&& array[i - 1][j] != '1' && array[i + 1][j] != '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						pic.road.two.img_l_r, b, a);
-				// inside road with walls around
-				else if (array[i - 1][j] == '1' && array[i + 1][j] == '1'
-					&& array[i][j - 1] == '1' && array[i][j + 1] == '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						pic.road.inside.img_shad, b, a);
-				// inside road
-				else
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						pic.road.inside.img, b, a);
-			}
-			else if (array[i][j] == 'P')
-			{
-				// Left upper corner
-				if (array[i - 1][j] == '1' && array[i][j - 1] == '1'
-					&& array[i][j + 1] != '1' && array[i + 1][j] != '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						pic.p_right.cor.img_l_u, b, a);
-				// Right upper corner
-				else if (array[i - 1][j] == '1' && array[i][j + 1] == '1'
-					&& array[i][j - 1] != '1' && array[i + 1][j] != '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						pic.p_right.cor.img_r_u, b, a);
-				// Left lower corner
-				else if (array[i + 1][j] == '1' && array[i][j - 1] == '1'
-					&& array[i][j + 1] != '1' && array[i - 1][j] != '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						pic.p_right.cor.img_l_d, b, a);
-				// Right lower corner
-				else if (array[i + 1][j] == '1' && array[i][j + 1] == '1'
-					&& array[i][j - 1] != '1' && array[i - 1][j] != '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						pic.p_right.cor.img_r_d, b, a);
-				// Upper side of road
-				else if (array[i - 1][j] == '1' && array[i + 1][j] != '1'
-					&& (array[i][j - 1] != '1' || array[i][j + 1] != '1'))
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						pic.p_right.one.img_u, b, a);
-				// Lower side of road
-				else if (array[i + 1][j] == '1' && array[i - 1][j] != '1'
-					&& array[i][j - 1] != '1' && array[i][j + 1] != '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						pic.p_right.one.img_d, b, a);
-				// Left side of road
-				else if (array[i][j - 1] == '1' && array[i][j + 1] != '1'
-					&& array[i - 1][j] != '1' && array[i + 1][j] != '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						pic.p_right.one.img_l, b, a);
-				// Right side of road
-				else if (array[i][j + 1] == '1' && array[i][j - 1] != '1'
-					&& array[i - 1][j] != '1' && array[i + 1][j] != '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						pic.p_right.one.img_r, b, a);
-				// One way up
-				else if (array[i][j + 1] == '1' && array[i][j - 1] == '1'
-					&& array[i - 1][j] != '1' && array[i + 1][j] == '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						pic.p_right.three.img_d, b, a);
-				// One way down
-				else if (array[i][j + 1] == '1' && array[i][j - 1] == '1'
-					&& array[i - 1][j] == '1' && array[i + 1][j] != '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						pic.p_right.three.img_u, b, a);
-				// One way left
-				else if (array[i][j + 1] != '1' && array[i][j - 1] == '1'
-					&& array[i - 1][j] == '1' && array[i + 1][j] == '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						pic.p_right.three.img_r, b, a);
-				// One way right
-				else if (array[i][j + 1] == '1' && array[i][j - 1] != '1'
-					&& array[i - 1][j] == '1' && array[i + 1][j] == '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						pic.p_right.three.img_l, b, a);
-				// Horizontal road
-				else if (array[i - 1][j] == '1' && array[i + 1][j] == '1'
-					&& array[i][j - 1] != '1' && array[i][j + 1] != '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						pic.p_right.two.img_u_d, b, a);
-				// Vertical road
-				else if (array[i][j - 1] == '1' && array[i][j + 1] == '1'
-					&& array[i - 1][j] != '1' && array[i + 1][j] != '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						pic.p_right.two.img_l_r, b, a);
-				// inside road
-				else
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						pic.p_right.inside.img, b, a);
-			}
-			else if (array[i][j] == 'C')
-			{
-				// Left upper corner
-				if (array[i - 1][j] == '1' && array[i][j - 1] == '1'
-					&& array[i][j + 1] != '1' && array[i + 1][j] != '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						pic.key.cor.img_l_u, b, a);
-				// Right upper corner
-				else if (array[i - 1][j] == '1' && array[i][j + 1] == '1'
-					&& array[i][j - 1] != '1' && array[i + 1][j] != '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						pic.key.cor.img_r_u, b, a);
-				// Left lower corner
-				else if (array[i + 1][j] == '1' && array[i][j - 1] == '1'
-					&& array[i][j + 1] != '1' && array[i - 1][j] != '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						pic.key.cor.img_l_d, b, a);
-				// Right lower corner
-				else if (array[i + 1][j] == '1' && array[i][j + 1] == '1'
-					&& array[i][j - 1] != '1' && array[i - 1][j] != '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						pic.key.cor.img_r_d, b, a);
-				// Upper side of road
-				else if (array[i - 1][j] == '1' && array[i + 1][j] != '1'
-					&& (array[i][j - 1] != '1' || array[i][j + 1] != '1'))
-					mlx_put_image_to_window(mlx_ptr, mlx_win, pic.key.one.img_u,
-						b, a);
-				// Lower side of road
-				else if (array[i + 1][j] == '1' && array[i - 1][j] != '1'
-					&& array[i][j - 1] != '1' && array[i][j + 1] != '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win, pic.key.one.img_d,
-						b, a);
-				// Left side of road
-				else if (array[i][j - 1] == '1' && array[i][j + 1] != '1'
-					&& array[i - 1][j] != '1' && array[i + 1][j] != '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win, pic.key.one.img_l,
-						b, a);
-				// Right side of road
-				else if (array[i][j + 1] == '1' && array[i][j - 1] != '1'
-					&& array[i - 1][j] != '1' && array[i + 1][j] != '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win, pic.key.one.img_r,
-						b, a);
-				// One way up
-				else if (array[i][j + 1] == '1' && array[i][j - 1] == '1'
-					&& array[i - 1][j] != '1' && array[i + 1][j] == '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						pic.key.three.img_d, b, a);
-				// One way down
-				else if (array[i][j + 1] == '1' && array[i][j - 1] == '1'
-					&& array[i - 1][j] == '1' && array[i + 1][j] != '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						pic.key.three.img_u, b, a);
-				// One way left
-				else if (array[i][j + 1] != '1' && array[i][j - 1] == '1'
-					&& array[i - 1][j] == '1' && array[i + 1][j] == '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						pic.key.three.img_r, b, a);
-				// One way right
-				else if (array[i][j + 1] == '1' && array[i][j - 1] != '1'
-					&& array[i - 1][j] == '1' && array[i + 1][j] == '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						pic.key.three.img_l, b, a);
-				// Horizontal road
-				else if (array[i - 1][j] == '1' && array[i + 1][j] == '1'
-					&& array[i][j - 1] != '1' && array[i][j + 1] != '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						pic.key.two.img_u_d, b, a);
-				// Vertical road
-				else if (array[i][j - 1] == '1' && array[i][j + 1] == '1'
-					&& array[i - 1][j] != '1' && array[i + 1][j] != '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						pic.key.two.img_l_r, b, a);
-				// inside road
-				else
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						pic.key.middle.img, b, a);
-			}
-			/*
-			else if (array[i][j] == 'N')
-			{
-					// Left upper corner
-				if (array[i - 1][j] == '1' && array[i][j - 1] == '1'
-						&& array[i][j + 1] != '1' && array[i + 1][j] != '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						img_enemy_corner_left_up, b, a);
-					// Right upper corner
-				else if (array[i - 1][j] == '1' && array[i][j + 1] == '1'
-						&& array[i][j - 1] != '1' && array[i + 1][j] != '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						img_enemy_corner_right_up, b, a);
-					// Left lower corner
-				else if (array[i + 1][j] == '1' && array[i][j - 1] == '1'
-						&& array[i][j + 1] != '1' && array[i - 1][j] != '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						img_enemy_corner_left_down, b, a);
-					// Right lower corner
-				else if (array[i + 1][j] == '1' && array[i][j + 1] == '1'
-						&& array[i][j - 1] != '1' && array[i - 1][j] != '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						img_enemy_corner_right_down, b, a);
-					// Upper side of road
-				else if (array[i - 1][j] == '1' && array[i + 1][j] != '1'
-						&& (array[i][j - 1] != '1' || array[i][j + 1] != '1'))
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						img_enemy_side_one_up, b, a);
-					// Lower side of road
-				else if (array[i + 1][j] == '1' && array[i - 1][j] != '1'
-						&& array [i][j - 1] != '1' && array[i][j + 1] != '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						img_enemy_side_one_down, b, a);
-					// Left side of road
-				else if (array[i][j - 1] == '1' && array[i][j + 1] != '1'
-						&& array[i - 1][j] != '1' && array[i + 1][j] != '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						img_enemy_side_one_left, b, a);
-					// Right side of road
-				else if (array[i][j + 1] == '1' && array[i][j - 1] != '1'
-						&& array[i - 1][j] != '1' && array[i + 1][j] != '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						img_enemy_side_onp_right, b, a);
-					// One way up
-				else if (array[i][j + 1] == '1' && array[i][j - 1] == '1'
-					&& array[i - 1][j] != '1' && array[i + 1][j] == '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						img_enemy_side_three_down, b, a);
-					// One way down
-				else if (array[i][j + 1] == '1' && array[i][j - 1] == '1'
-					&& array[i - 1][j] == '1' && array[i + 1][j] != '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						img_enemy_side_three_up, b, a);
-					// One way left
-				else if (array[i][j + 1] != '1' && array[i][j - 1] == '1'
-					&& array[i - 1][j] == '1' && array[i + 1][j] == '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						img_enemy_side_threp_right, b, a);
-					// One way right
-				else if (array[i][j + 1] == '1' && array[i][j - 1] != '1'
-					&& array[i - 1][j] == '1' && array[i + 1][j] == '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						img_enemy_side_three_left, b, a);
-					// Horizontal road
-				else if (array[i - 1][j] == '1' && array[i + 1][j] == '1'
-						&& array[i][j - 1] != '1' && array[i][j + 1] != '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						img_enemy_side_two_up_down, b, a);
-					// Vertical road
-				else if (array[i][j - 1] == '1' && array[i][j + 1] == '1'
-						&& array[i - 1][j] != '1' && array[i + 1][j] != '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						img_enemy_side_two_left_right, b, a);
-					//inside road with walls
-				else if (array[i - 1][j] == '1' && array[i + 1][j] == '1'
-						&& array[i][j - 1] == '1' && array[i][j + 1] == '1')
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						img_enemy_inside_road_shadows, b, a);
-				else
-					mlx_put_image_to_window(mlx_ptr, mlx_win,
-						img_enemy_inside_road, b, a);
-			}
-			*/
-			j++;
-			b = j * y;
+			if (array[(*data).len.i][(*data).len.j] == 'E')
+				mlx_put_image_to_window(mlx.ptr, mlx.win,
+					(*data).pic.exit.middle.img, (*data).len.b, (*data).len.a);
+			else if (array[(*data).len.i][(*data).len.j] == '1')
+				is_it_wall(data, mlx, dim);
+			else if (array[(*data).len.i][(*data).len.j] == '0')
+				is_it_road(array, data, mlx);
+			else if (array[(*data).len.i][(*data).len.j] == 'P')
+				is_it_right_player(array, data, mlx);
+			else if (array[(*data).len.i][(*data).len.j] == 'C')
+				is_it_collectible(array, data, mlx);
+			(*data).len.j++;
+			(*data).len.b = (*data).len.j * (*data).len.y;
 		}
-		i++;
+		(*data).len.i++;
 	}
-	mlx_loop(mlx_ptr);
+}
+
+int	putting_images(char **array, t_location *dim, t_ptr *mlx)
+{
+	t_data	data;
+
+	data.len.a = 0;
+	data.len.b = 0;
+	data.len.i = 0;
+	data.len.j = 0;
+	data.len.x = 0;
+	data.len.y = 0;
+	data.size.height = (*dim).height * 32;
+	data.size.width = (*dim).width * 32;
+	assigning_paths_pointers(&data.pic, (*mlx).ptr, &data.len.x, &data.len.y);
+	if (checking_pointers(&data.pic) == 0)
+		return (ft_printf("Error:\nProbable issue with assets paths!\n"), -1);
+	(*mlx).win = mlx_new_window((*mlx).ptr, data.size.width, data.size.height,
+			"POP!");
+	putting_to_window(array, dim, &data, (*mlx));
+	mlx_loop((*mlx).ptr);
 	return (1);
-	/**********************************************************************/
 }

@@ -54,6 +54,8 @@ int	checking_map(t_map *map)
 	e = checking_exit((*map).width, (*map).height, (*map).buffer);
 	if (e != 1)
 		return (ft_printf("Error:\nThe map must contain one exit!\n"), 0);
+	else
+		(*map).exit = e;
 	w = checking_wall((*map).width, (*map).height, (*map).buffer);
 	if (w != 1)
 		return (ft_printf("Error:\nThe map must be surrounded by walls!\n"), 0);

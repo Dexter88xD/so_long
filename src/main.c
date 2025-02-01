@@ -31,30 +31,31 @@ int	initialise_nd_mapping(int fd, t_num *count, t_map *map, char *map_path)
 	(*map).width = 0;
 	(*map).height = 0;
 	(*map).collectible = 0;
+	(*map).exit = 0;
 	check = mapping(fd, count, map);
-	/*
 	if ((*map).collectible != (*count).coll || (*map).exit != (*count).exit)
-		return (ft_printf("Error:\n") \
-		, ft_printf("The player must reach all collectibles and exit\n"), -1);
+		return (ft_printf("Error:\n"),
+			ft_printf("The player must reach all collectibles and exit\n"), -1);
 	else if (check != 1)
 		return (-1);
 	else
-	*/
-	check = recopying_map(map_path, map);
-	putting_map(map);
+		check = recopying_map(map_path, map);
 	return (check);
 }
 
 int	putting_map(t_map *map)
 {
-	void	*mlx_ptr;
-	int		check;
+	t_ptr		mlx;
+	t_location	dim;
+	int			check;
 
-	mlx_ptr = mlx_init();
-	check = putting_images((*map).buffer, (*map).height, (*map).width, mlx_ptr);
+	mlx.ptr = mlx_init();
+	dim.height = (*map).height;
+	dim.width = (*map).width;
+	check = putting_images((*map).buffer, &dim, &mlx);
 	if (check == 0)
 		return (0);
-	mlx_loop(mlx_ptr);
+	mlx_loop(mlx.ptr);
 	return (1);
 }
 
@@ -92,8 +93,8 @@ int	main(int argc, char **argv)
 	close(fd);
 	if (check == -1)
 		exit(EXIT_FAILURE);
-	// else
-	//	putting_map(&map);
+	else
+		putting_map(&map);
 	map.height = 0;
 	buffer_freeing(&map);
 	exit(EXIT_SUCCESS);

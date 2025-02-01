@@ -20,6 +20,12 @@
 # include <stdio.h>
 # include <unistd.h>
 
+typedef struct s_ptr
+{
+	void			*ptr;
+	void			*win;
+}					t_ptr;
+
 typedef struct s_num
 {
 	int				coll;
@@ -42,6 +48,16 @@ typedef struct s_map
 	t_location		player;
 }					t_map;
 
+typedef struct s_dim
+{
+	int				i;
+	int				j;
+	int				a;
+	int				b;
+	int				x;
+	int				y;
+}					t_dim;
+
 int					initialise_nd_mapping(int fd, t_num *count, t_map *map,
 						char *map_path);
 int					checking_map(t_map *map);
@@ -57,8 +73,7 @@ int					checking_exit(int x, int y, char **buffer);
 int					checking_player(int x, int y, t_location *location,
 						char **buffer);
 int					putting_map(t_map *map);
-int					putting_images(char **array, int rows, int cols,
-						void *mlx_ptr);
+int					putting_images(char **array, t_location *dim, t_ptr *mlx);
 
 typedef struct s_inside_wall
 {
@@ -148,6 +163,13 @@ typedef struct s_assets
 	t_places		p_right;
 }					t_assets;
 
+typedef struct s_data
+{
+	t_dim			len;
+	t_location		size;
+	t_assets		pic;
+}					t_data;
+
 void				assign_wall_exit(t_places *wall, t_places *exit);
 void				assign_road(t_places *road);
 void				assign_collectible(t_places *key);
@@ -186,4 +208,44 @@ int					check_r_p_side_pointer(t_places *p_r);
 int					check_l_p_middle_corner_pointer(t_places *p_l);
 int					check_l_p_side_pointer(t_places *p_l);
 int					checking_pointers(t_assets *pic);
+
+void				is_it_wall(t_data *data, t_ptr mlx, t_location *dim);
+void				is_it_rest_wall(t_data *data, t_ptr mlx, t_location *dim);
+
+void				is_it_road(char **array, t_data *data, t_ptr mlx);
+void				is_it_rest_road_one(char **array, t_data *data, t_ptr mlx);
+void				is_it_rest_road_two(char **array, t_data *data, t_ptr mlx);
+void				is_it_rest_road_three(char **array, t_data *data,
+						t_ptr mlx);
+void				is_it_rest_road_four(char **array, t_data *data, t_ptr mlx);
+
+void				is_it_right_player(char **array, t_data *data, t_ptr mlx);
+void				is_it_right_player_one(char **array, t_data *data,
+						t_ptr mlx);
+void				is_it_right_player_two(char **array, t_data *data,
+						t_ptr mlx);
+void				is_it_right_player_three(char **array, t_data *data,
+						t_ptr mlx);
+void				is_it_right_player_four(char **array, t_data *data,
+						t_ptr mlx);
+
+void				is_it_left_player(char **array, t_data *data, t_ptr mlx);
+void				is_it_left_player_one(char **array, t_data *data,
+						t_ptr mlx);
+void				is_it_left_player_two(char **array, t_data *data,
+						t_ptr mlx);
+void				is_it_left_player_three(char **array, t_data *data,
+						t_ptr mlx);
+void				is_it_left_player_four(char **array, t_data *data,
+						t_ptr mlx);
+
+void				is_it_collectible(char **array, t_data *data, t_ptr mlx);
+void				is_it_collectible_one(char **array, t_data *data,
+						t_ptr mlx);
+void				is_it_collectible_two(char **array, t_data *data,
+						t_ptr mlx);
+void				is_it_collectible_three(char **array, t_data *data,
+						t_ptr mlx);
+void				is_it_collectible_four(char **array, t_data *data,
+						t_ptr mlx);
 #endif
