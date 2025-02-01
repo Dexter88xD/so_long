@@ -74,6 +74,7 @@ int					checking_player(int x, int y, t_location *location,
 						char **buffer);
 int					putting_map(t_map *map);
 int					putting_images(char **array, t_location *dim, t_ptr *mlx);
+int 				close_window(void *mlx);
 
 typedef struct s_inside_wall
 {

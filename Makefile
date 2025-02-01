@@ -19,7 +19,8 @@ FILES = src/main.c src/mapping.c src/checking_map.c src/putting_map.c \
 		src/checking_pointers.c src/checking_player_pointers.c \
 		src/assigning_checking_pointers.c src/putting_wall.c \
 		src/putting_road.c src/putting_right_player.c \
-		src/putting_left_player.c src/putting_collectible.c
+		src/putting_left_player.c src/putting_collectible.c \
+		src/close_window.c
 
 BONUS = src/main.c src/bonus/mapping_bonus.c src/bonus/checking_map_bonus.c
 

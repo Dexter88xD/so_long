@@ -55,6 +55,7 @@ int	putting_map(t_map *map)
 	check = putting_images((*map).buffer, &dim, &mlx);
 	if (check == 0)
 		return (0);
+	mlx_hook(mlx.ptr, 17, 0, close_window, 0);
 	mlx_loop(mlx.ptr);
 	return (1);
 }
@@ -67,6 +68,7 @@ int	recopying_map(char *map_path, t_map *map)
 	if (fd == -1)
 		return (ft_printf("Error\n"), perror("Reason: "), -1);
 	buffer_freeing(map);
+	(*map).buffer = (char **)malloc(BUFFER_SIZE * sizeof(t_map *));
 	(*map).height = 0;
 	copying_map(fd, &(*map).height, (*map).buffer);
 	return (0);
@@ -95,7 +97,7 @@ int	main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	else
 		putting_map(&map);
-	map.height = 0;
-	buffer_freeing(&map);
+	// map.height = 0;
+	// buffer_freeing(&map);
 	exit(EXIT_SUCCESS);
 }
