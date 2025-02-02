@@ -40,24 +40,22 @@ void	putting_to_window(char **array, t_location *dim, t_data *data,
 	}
 }
 
-int	putting_images(char **array, t_location *dim, t_ptr *mlx)
+int	putting_images(char **array, t_location *dim, t_ptr *mlx, t_data *data)
 {
-	t_data	data;
-
-	data.len.a = 0;
-	data.len.b = 0;
-	data.len.i = 0;
-	data.len.j = 0;
-	data.len.x = 0;
-	data.len.y = 0;
-	data.size.height = (*dim).height * 32;
-	data.size.width = (*dim).width * 32;
-	assigning_paths_pointers(&data.pic, (*mlx).ptr, &data.len.x, &data.len.y);
-	if (checking_pointers(&data.pic) == 0)
+	(*data).len.a = 0;
+	(*data).len.b = 0;
+	(*data).len.i = 0;
+	(*data).len.j = 0;
+	(*data).len.x = 0;
+	(*data).len.y = 0;
+	(*data).size.height = (*dim).height * 32;
+	(*data).size.width = (*dim).width * 32;
+	assigning_paths_pointers(&(*data).pic, (*mlx).ptr, &(*data).len.x,
+		&(*data).len.y);
+	if (checking_pointers(&(*data).pic) == 0)
 		return (ft_printf("Error:\nProbable issue with assets paths!\n"), -1);
-	(*mlx).win = mlx_new_window((*mlx).ptr, data.size.width, data.size.height,
-			"POP!");
-	putting_to_window(array, dim, &data, (*mlx));
-	mlx_loop((*mlx).ptr);
+	(*mlx).win = mlx_new_window((*mlx).ptr, (*data).size.width,
+			(*data).size.height, "POP!");
+	putting_to_window(array, dim, &(*data), (*mlx));
 	return (1);
 }

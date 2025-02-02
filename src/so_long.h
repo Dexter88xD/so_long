@@ -15,6 +15,7 @@
 
 # include "../include/ft_libc/ft_printf/ft_printf.h"
 # include "../include/ft_libc/get_next_line/get_next_line.h"
+# include "../include/ft_libc/libft.h"
 # include "../lib/minilibx-linux/mlx.h"
 # include <fcntl.h>
 # include <stdio.h>
@@ -57,24 +58,6 @@ typedef struct s_dim
 	int				x;
 	int				y;
 }					t_dim;
-
-int					initialise_nd_mapping(int fd, t_num *count, t_map *map,
-						char *map_path);
-int					checking_map(t_map *map);
-int					recopying_map(char *map_path, t_map *map);
-int					mapping(int fd, t_num *count, t_map *map);
-int					checking_wall(int x, int y, char **buffer);
-int					checking_length(int y, int *x, char **buffer);
-int					copying_map(int fd, int *height, char **buffer);
-int					checking_path(t_map *map, t_num *count, int y, int x);
-int					checking_char(int x, int y, char **buffer);
-int					checking_collectibles(int x, int y, char **buffer);
-int					checking_exit(int x, int y, char **buffer);
-int					checking_player(int x, int y, t_location *location,
-						char **buffer);
-int					putting_map(t_map *map);
-int					putting_images(char **array, t_location *dim, t_ptr *mlx);
-int 				close_window(void *mlx);
 
 typedef struct s_inside_wall
 {
@@ -170,6 +153,43 @@ typedef struct s_data
 	t_location		size;
 	t_assets		pic;
 }					t_data;
+
+typedef struct s_cleanup
+{
+	t_ptr			*mlx;
+	t_data			*data;
+}					t_cleanup;
+
+int					initialise_nd_mapping(int fd, t_num *count, t_map *map,
+						char *map_path);
+int					checking_map(t_map *map);
+int					recopying_map(char *map_path, t_map *map);
+int					mapping(int fd, t_num *count, t_map *map);
+int					checking_wall(int x, int y, char **buffer);
+int					checking_length(int y, int *x, char **buffer);
+int					copying_map(int fd, int *height, char **buffer);
+int					checking_path(t_map *map, t_num *count, int y, int x);
+int					checking_char(int x, int y, char **buffer);
+int					checking_collectibles(int x, int y, char **buffer);
+int					checking_exit(int x, int y, char **buffer);
+int					checking_player(int x, int y, t_location *location,
+						char **buffer);
+int					putting_map(t_map *map);
+int					putting_images(char **array, t_location *dim, t_ptr *mlx,
+						t_data *data);
+int					close_window(void *param);
+void				capture_keys(t_ptr *mlx, t_data *data);
+
+void    			start_destroying(t_ptr mlx, t_data *data);
+void				destroy_exit_side_wall_images(t_ptr mlx, t_data *data);
+void				destroy_corner_wall_road_images(t_ptr mlx, t_data *data);
+void				destroy_side_mid_road_images(t_ptr mlx, t_data *data);
+void				destroy_rest_player_r_images(t_ptr mlx, t_data *data);
+void				destroy_player_r_images(t_ptr mlx, t_data *data);
+void				destroy_rest_player_l_images(t_ptr mlx, t_data *data);
+void				destroy_player_l_images(t_ptr mlx, t_data *data);
+void				destroy_key_images(t_ptr mlx, t_data *data);
+void				destroy_rest_key_images(t_ptr mlx, t_data *data);
 
 void				assign_wall_exit(t_places *wall, t_places *exit);
 void				assign_road(t_places *road);

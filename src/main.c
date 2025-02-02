@@ -14,24 +14,22 @@
 
 void	buffer_freeing(t_map *map)
 {
-	while ((*map).buffer[(*map).height] != NULL)
+	int	i;
+
+	i = 0;
+	while ((*map).buffer[i] != NULL)
 	{
-		free((*map).buffer[(*map).height]);
-		(*map).height++;
+		free((*map).buffer[i]);
+		i++;
 	}
 	free((*map).buffer);
+	(*map).buffer = NULL;
 }
 
 int	initialise_nd_mapping(int fd, t_num *count, t_map *map, char *map_path)
 {
 	int	check;
 
-	(*count).coll = 0;
-	(*count).exit = 0;
-	(*map).width = 0;
-	(*map).height = 0;
-	(*map).collectible = 0;
-	(*map).exit = 0;
 	check = mapping(fd, count, map);
 	if ((*map).collectible != (*count).coll || (*map).exit != (*count).exit)
 		return (ft_printf("Error:\n"),
@@ -45,18 +43,20 @@ int	initialise_nd_mapping(int fd, t_num *count, t_map *map, char *map_path)
 
 int	putting_map(t_map *map)
 {
+	t_data		data;
 	t_ptr		mlx;
 	t_location	dim;
 	int			check;
 
+	ft_memset(&mlx, 0, sizeof(t_ptr));
 	mlx.ptr = mlx_init();
+	ft_memset(&data, 0, sizeof(t_data));
 	dim.height = (*map).height;
 	dim.width = (*map).width;
-	check = putting_images((*map).buffer, &dim, &mlx);
-	if (check == 0)
+	check = putting_images((*map).buffer, &dim, &mlx, &data);
+	if (check != 1)
 		return (0);
-	mlx_hook(mlx.ptr, 17, 0, close_window, 0);
-	mlx_loop(mlx.ptr);
+	capture_keys(&mlx, &data);
 	return (1);
 }
 
@@ -88,6 +88,8 @@ int	main(int argc, char **argv)
 	fd = open(map_path, O_RDWR);
 	if (fd == -1)
 		return (ft_printf("Error\n"), perror("Reason: "), -1);
+	ft_memset(&map, 0, sizeof(t_map));
+	ft_memset(&count, 0, sizeof(t_num));
 	map.buffer = (char **)malloc(BUFFER_SIZE * sizeof(t_map *));
 	if (!map.buffer)
 		return (free(map.buffer), -1);
@@ -97,7 +99,6 @@ int	main(int argc, char **argv)
 		exit(EXIT_FAILURE);
 	else
 		putting_map(&map);
-	// map.height = 0;
-	// buffer_freeing(&map);
+	buffer_freeing(&map);
 	exit(EXIT_SUCCESS);
 }

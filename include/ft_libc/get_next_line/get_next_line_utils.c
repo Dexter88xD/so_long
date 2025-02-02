@@ -53,7 +53,7 @@ char	*ft_strndup(const char *s, size_t len)
 	buffer = (char *)malloc((len + 1) * sizeof(*s));
 	if (buffer == NULL)
 		return (NULL);
-	buffer = ft_memcpy(buffer, s, len);
+	ft_memcpy(buffer, s, len);
 	buffer[len] = '\0';
 	return (buffer);
 }
