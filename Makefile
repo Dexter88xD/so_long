@@ -21,7 +21,8 @@ FILES = src/main.c src/mapping.c src/checking_map.c src/putting_map.c \
 		src/putting_road.c src/putting_right_player.c \
 		src/putting_left_player.c src/putting_collectible.c \
 		src/close_window.c src/destroy_assets_nbr1.c \
-		src/destroy_assets_nbr2.c
+		src/destroy_assets_nbr2.c src/moving_player.c \
+		src/capturing_keys.c
 
 BONUS = src/main.c src/bonus/mapping_bonus.c src/bonus/checking_map_bonus.c
 

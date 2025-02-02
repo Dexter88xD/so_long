@@ -17,8 +17,7 @@
 # include "../include/ft_libc/get_next_line/get_next_line.h"
 # include "../include/ft_libc/libft.h"
 # include "../lib/minilibx-linux/mlx.h"
-
-#include <X11/keysym.h>
+# include <X11/keysym.h>
 # include <fcntl.h>
 # include <stdio.h>
 # include <unistd.h>
@@ -162,6 +161,8 @@ typedef struct s_cleanup
 	t_data			*data;
 	t_map			*map;
 	t_location		*dim;
+	int				coll;
+	int				move;
 }					t_cleanup;
 
 int					initialise_nd_mapping(int fd, t_num *count, t_map *map,
@@ -184,7 +185,8 @@ int					putting_images(char **array, t_location *dim, t_ptr *mlx,
 int					close_window(void *param);
 int					putting_to_images_to_window(void *param);
 void				buffer_freeing(t_map *map);
-void				capture_keys(t_ptr *mlx, t_data *data, t_map *map, t_location *dim);
+void				capture_keys(t_ptr *mlx, t_data *data, t_map *map,
+						t_location *dim);
 
 void				start_destroying(t_ptr mlx, t_data *data);
 void				destroy_exit_side_wall_images(t_ptr mlx, t_data *data);
@@ -275,4 +277,11 @@ void				is_it_collectible_three(char **array, t_data *data,
 						t_ptr mlx);
 void				is_it_collectible_four(char **array, t_data *data,
 						t_ptr mlx);
+
+void				move_up(t_cleanup *all);
+void				move_down(t_cleanup *all);
+void				move_left(t_cleanup *all);
+void				move_right(t_cleanup *all);
+void				update_position_data(t_cleanup *all);
+
 #endif

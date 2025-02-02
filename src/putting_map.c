@@ -12,7 +12,6 @@
 
 #include "so_long.h"
 
-
 void	putting_to_window(char **array, t_location *dim, t_data *data,
 		t_ptr mlx)
 {
@@ -40,13 +39,14 @@ void	putting_to_window(char **array, t_location *dim, t_data *data,
 		(*data).len.i++;
 	}
 }
+
 int	putting_to_images_to_window(void *param)
 {
-	char 		**array;
+	char		**array;
 	t_cleanup	*all;
-	t_location 	*dim;
-	t_ptr 		*mlx;
-	t_data 		*data;
+	t_location	*dim;
+	t_ptr		*mlx;
+	t_data		*data;
 
 	all = (t_cleanup *)param;
 	array = all->map->buffer;
