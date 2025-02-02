@@ -92,12 +92,18 @@ int	checking_length(int y, int *x, char **buffer)
 
 int	copying_map(int fd, int *height, char **buffer)
 {
-	buffer[(*height)] = get_next_line(fd);
+	char	*line;
+
+	line = get_next_line(fd);
+	buffer[(*height)] = line;
 	while (buffer[(*height)] != NULL)
 	{
 		(*height)++;
-		buffer[(*height)] = get_next_line(fd);
+		line = get_next_line(fd);
+		buffer[(*height)] = line;
 	}
+	buffer[(*height)] = NULL;
+	free(line);
 	return (1);
 }
 

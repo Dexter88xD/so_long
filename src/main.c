@@ -16,6 +16,8 @@ void	buffer_freeing(t_map *map)
 {
 	int	i;
 
+	if ((*map).buffer == NULL)
+		return ;
 	i = 0;
 	while ((*map).buffer[i] != NULL)
 	{
@@ -24,21 +26,6 @@ void	buffer_freeing(t_map *map)
 	}
 	free((*map).buffer);
 	(*map).buffer = NULL;
-}
-
-int	initialise_nd_mapping(int fd, t_num *count, t_map *map, char *map_path)
-{
-	int	check;
-
-	check = mapping(fd, count, map);
-	if ((*map).collectible != (*count).coll || (*map).exit != (*count).exit)
-		return (ft_printf("Error:\n"),
-			ft_printf("The player must reach all collectibles and exit\n"), -1);
-	else if (check != 1)
-		return (-1);
-	else
-		check = recopying_map(map_path, map);
-	return (check);
 }
 
 int	putting_map(t_map *map)
@@ -56,8 +43,26 @@ int	putting_map(t_map *map)
 	check = putting_images((*map).buffer, &dim, &mlx, &data);
 	if (check != 1)
 		return (0);
-	capture_keys(&mlx, &data);
+	capture_keys(&mlx, &data, map);
 	return (1);
+}
+
+int	initialise_nd_mapping(int fd, t_num *count, t_map *map, char *map_path)
+{
+	int	check;
+
+	check = mapping(fd, count, map);
+	if ((*map).collectible != (*count).coll || (*map).exit != (*count).exit)
+		return (ft_printf("Error:\n"),
+			ft_printf("The player must reach all collectibles and exit\n"), -1);
+	else if (check != 1)
+		return (-1);
+	else
+	{
+		buffer_freeing(map);
+		check = recopying_map(map_path, map);
+	}
+	return (check);
 }
 
 int	recopying_map(char *map_path, t_map *map)
@@ -67,8 +72,10 @@ int	recopying_map(char *map_path, t_map *map)
 	fd = open(map_path, O_RDWR);
 	if (fd == -1)
 		return (ft_printf("Error\n"), perror("Reason: "), -1);
-	buffer_freeing(map);
 	(*map).buffer = (char **)malloc(BUFFER_SIZE * sizeof(t_map *));
+	if (!(*map).buffer)
+		return (free((*map).buffer),
+			ft_printf("Error: Memory allocation failed\n"), -1);
 	(*map).height = 0;
 	copying_map(fd, &(*map).height, (*map).buffer);
 	return (0);
@@ -92,13 +99,13 @@ int	main(int argc, char **argv)
 	ft_memset(&count, 0, sizeof(t_num));
 	map.buffer = (char **)malloc(BUFFER_SIZE * sizeof(t_map *));
 	if (!map.buffer)
-		return (free(map.buffer), -1);
+		return (free(map.buffer),
+			ft_printf("Error: Memory allocation failed\n"), -1);
 	check = initialise_nd_mapping(fd, &count, &map, map_path);
 	close(fd);
 	if (check == -1)
 		exit(EXIT_FAILURE);
 	else
 		putting_map(&map);
-	buffer_freeing(&map);
 	exit(EXIT_SUCCESS);
 }

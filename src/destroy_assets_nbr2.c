@@ -48,6 +48,8 @@ void	destroy_player_l_images(t_ptr mlx, t_data *data)
 		mlx_destroy_image(mlx.ptr, (*data).pic.p_left.cor.img_r_d);
 	if ((*data).pic.p_left.cor.img_r_u)
 		mlx_destroy_image(mlx.ptr, (*data).pic.p_left.cor.img_r_u);
+	if ((*data).pic.p_left.end.img)
+		mlx_destroy_image(mlx.ptr, (*data).pic.p_left.end.img);
 	destroy_rest_player_l_images(mlx, data);
 }
 

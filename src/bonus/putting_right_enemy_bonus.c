@@ -15,17 +15,19 @@
 void	is_it_right_enemy_four(char **array, t_data *data, t_ptr mlx)
 {
 	if (array[(*data).len.i - 1][(*data).len.j] == '1' && array[(*data).len.i
-		+ 1][(*data).len.j] == '1' && array[(*data).len.i][(*data).len.j - 1] != '1'
-		&& array[(*data).len.i][(*data).len.j + 1] != '1')
+		+ 1][(*data).len.j] == '1' && array[(*data).len.i][(*data).len.j
+		- 1] != '1' && array[(*data).len.i][(*data).len.j + 1] != '1')
 		mlx_put_image_to_window(mlx.ptr, mlx.win,
 			(*data).pic.e_right.two.img_u_d, (*data).len.b, (*data).len.a);
 	else if (array[(*data).len.i][(*data).len.j - 1] == '1'
 		&& array[(*data).len.i][(*data).len.j + 1] == '1' && array[(*data).len.i
-		- 1][(*data).len.j] != '1' && array[(*data).len.i + 1][(*data).len.j] != '1')
+		- 1][(*data).len.j] != '1' && array[(*data).len.i
+		+ 1][(*data).len.j] != '1')
 		mlx_put_image_to_window(mlx.ptr, mlx.win,
 			(*data).pic.e_right.two.img_l_r, (*data).len.b, (*data).len.a);
-	else if (array[(*data).len.i - 1][(*data).len.j] == '1' && array[(*data).len.i
-		+ 1][(*data).len.j] == '1' && array[(*data).len.i][(*data).len.j - 1] == '1'
+	else if (array[(*data).len.i - 1][(*data).len.j] == '1'
+		&& array[(*data).len.i + 1][(*data).len.j] == '1'
+		&& array[(*data).len.i][(*data).len.j - 1] == '1'
 		&& array[(*data).len.i][(*data).len.j + 1] == '1')
 		mlx_put_image_to_window(mlx.ptr, mlx.win,
 			(*data).pic.e_right.inside.img_shad, (*data).len.b, (*data).len.a);
@@ -38,17 +40,20 @@ void	is_it_right_enemy_three(char **array, t_data *data, t_ptr mlx)
 {
 	if (array[(*data).len.i][(*data).len.j + 1] == '1'
 		&& array[(*data).len.i][(*data).len.j - 1] == '1' && array[(*data).len.i
-		- 1][(*data).len.j] == '1' && array[(*data).len.i + 1][(*data).len.j] != '1')
+		- 1][(*data).len.j] == '1' && array[(*data).len.i
+		+ 1][(*data).len.j] != '1')
 		mlx_put_image_to_window(mlx.ptr, mlx.win,
 			(*data).pic.e_right.three.img_u, (*data).len.b, (*data).len.a);
 	else if (array[(*data).len.i][(*data).len.j + 1] != '1'
 		&& array[(*data).len.i][(*data).len.j - 1] == '1' && array[(*data).len.i
-		- 1][(*data).len.j] == '1' && array[(*data).len.i + 1][(*data).len.j] == '1')
+		- 1][(*data).len.j] == '1' && array[(*data).len.i
+		+ 1][(*data).len.j] == '1')
 		mlx_put_image_to_window(mlx.ptr, mlx.win,
 			(*data).pic.e_right.three.img_r, (*data).len.b, (*data).len.a);
 	else if (array[(*data).len.i][(*data).len.j + 1] == '1'
 		&& array[(*data).len.i][(*data).len.j - 1] != '1' && array[(*data).len.i
-		- 1][(*data).len.j] == '1' && array[(*data).len.i + 1][(*data).len.j] == '1')
+		- 1][(*data).len.j] == '1' && array[(*data).len.i
+		+ 1][(*data).len.j] == '1')
 		mlx_put_image_to_window(mlx.ptr, mlx.win,
 			(*data).pic.e_right.three.img_l, (*data).len.b, (*data).len.a);
 	else
@@ -59,17 +64,20 @@ void	is_it_right_enemy_two(char **array, t_data *data, t_ptr mlx)
 {
 	if (array[(*data).len.i][(*data).len.j - 1] == '1'
 		&& array[(*data).len.i][(*data).len.j + 1] != '1' && array[(*data).len.i
-		- 1][(*data).len.j] != '1' && array[(*data).len.i + 1][(*data).len.j] != '1')
-		mlx_put_image_to_window(mlx.ptr, mlx.win,
-			(*data).pic.e_right.one.img_l, (*data).len.b, (*data).len.a);
+		- 1][(*data).len.j] != '1' && array[(*data).len.i
+		+ 1][(*data).len.j] != '1')
+		mlx_put_image_to_window(mlx.ptr, mlx.win, (*data).pic.e_right.one.img_l,
+			(*data).len.b, (*data).len.a);
 	else if (array[(*data).len.i][(*data).len.j + 1] == '1'
 		&& array[(*data).len.i][(*data).len.j - 1] != '1' && array[(*data).len.i
-		- 1][(*data).len.j] != '1' && array[(*data).len.i + 1][(*data).len.j] != '1')
-		mlx_put_image_to_window(mlx.ptr, mlx.win,
-			(*data).pic.e_right.one.img_r, (*data).len.b, (*data).len.a);
+		- 1][(*data).len.j] != '1' && array[(*data).len.i
+		+ 1][(*data).len.j] != '1')
+		mlx_put_image_to_window(mlx.ptr, mlx.win, (*data).pic.e_right.one.img_r,
+			(*data).len.b, (*data).len.a);
 	else if (array[(*data).len.i][(*data).len.j + 1] == '1'
 		&& array[(*data).len.i][(*data).len.j - 1] == '1' && array[(*data).len.i
-		- 1][(*data).len.j] != '1' && array[(*data).len.i + 1][(*data).len.j] == '1')
+		- 1][(*data).len.j] != '1' && array[(*data).len.i
+		+ 1][(*data).len.j] == '1')
 		mlx_put_image_to_window(mlx.ptr, mlx.win,
 			(*data).pic.e_right.three.img_d, (*data).len.b, (*data).len.a);
 	else
@@ -84,25 +92,28 @@ void	is_it_right_enemy_one(char **array, t_data *data, t_ptr mlx)
 		- 1][(*data).len.j] != '1')
 		mlx_put_image_to_window(mlx.ptr, mlx.win,
 			(*data).pic.e_right.cor.img_r_d, (*data).len.b, (*data).len.a);
-	else if (array[(*data).len.i - 1][(*data).len.j] == '1' && array[(*data).len.i
-		+ 1][(*data).len.j] != '1' && (array[(*data).len.i][(*data).len.j - 1] != '1'
+	else if (array[(*data).len.i - 1][(*data).len.j] == '1'
+		&& array[(*data).len.i + 1][(*data).len.j] != '1'
+		&& (array[(*data).len.i][(*data).len.j - 1] != '1'
 			|| array[(*data).len.i][(*data).len.j + 1] != '1'))
-		mlx_put_image_to_window(mlx.ptr, mlx.win,
-			(*data).pic.e_right.one.img_u, (*data).len.b, (*data).len.a);
-	else if (array[(*data).len.i + 1][(*data).len.j] == '1' && array[(*data).len.i
-		- 1][(*data).len.j] != '1' && array[(*data).len.i][(*data).len.j - 1] != '1'
+		mlx_put_image_to_window(mlx.ptr, mlx.win, (*data).pic.e_right.one.img_u,
+			(*data).len.b, (*data).len.a);
+	else if (array[(*data).len.i + 1][(*data).len.j] == '1'
+		&& array[(*data).len.i - 1][(*data).len.j] != '1'
+		&& array[(*data).len.i][(*data).len.j - 1] != '1'
 		&& array[(*data).len.i][(*data).len.j + 1] != '1')
-		mlx_put_image_to_window(mlx.ptr, mlx.win,
-			(*data).pic.e_right.one.img_d, (*data).len.b, (*data).len.a);
+		mlx_put_image_to_window(mlx.ptr, mlx.win, (*data).pic.e_right.one.img_d,
+			(*data).len.b, (*data).len.a);
 	else
 		is_it_right_enemy_two(array, data, mlx);
 }
 
 void	is_it_right_enemy(char **array, t_data *data, t_ptr mlx)
 {
-	if (array[(*data).len.i - 1][(*data).len.j] == '1' && array[(*data).len.i][(*data).len.j
-		- 1] == '1' && array[(*data).len.i][(*data).len.j + 1] != '1'
-		&& array[(*data).len.i + 1][(*data).len.j] != '1')
+	if (array[(*data).len.i - 1][(*data).len.j] == '1'
+		&& array[(*data).len.i][(*data).len.j - 1] == '1'
+		&& array[(*data).len.i][(*data).len.j + 1] != '1' && array[(*data).len.i
+		+ 1][(*data).len.j] != '1')
 		mlx_put_image_to_window(mlx.ptr, mlx.win,
 			(*data).pic.e_right.cor.img_l_u, (*data).len.b, (*data).len.a);
 	else if (array[(*data).len.i - 1][(*data).len.j] == '1'

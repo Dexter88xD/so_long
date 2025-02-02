@@ -158,6 +158,7 @@ typedef struct s_cleanup
 {
 	t_ptr			*mlx;
 	t_data			*data;
+	t_map			*map;
 }					t_cleanup;
 
 int					initialise_nd_mapping(int fd, t_num *count, t_map *map,
@@ -178,9 +179,10 @@ int					putting_map(t_map *map);
 int					putting_images(char **array, t_location *dim, t_ptr *mlx,
 						t_data *data);
 int					close_window(void *param);
-void				capture_keys(t_ptr *mlx, t_data *data);
+void				buffer_freeing(t_map *map);
+void				capture_keys(t_ptr *mlx, t_data *data, t_map *map);
 
-void    			start_destroying(t_ptr mlx, t_data *data);
+void				start_destroying(t_ptr mlx, t_data *data);
 void				destroy_exit_side_wall_images(t_ptr mlx, t_data *data);
 void				destroy_corner_wall_road_images(t_ptr mlx, t_data *data);
 void				destroy_side_mid_road_images(t_ptr mlx, t_data *data);
