@@ -93,7 +93,7 @@ void	move_left(t_cleanup *all)
 		is_it_road(all->map->buffer, all->data, *(all->mlx));
 		all->map->player.width--;
 		update_position_data(all);
-		is_it_right_player(all->map->buffer, all->data, *(all->mlx));
+		is_it_left_player(all->map->buffer, all->data, *(all->mlx));
 	}
 	else if (all->map->collectible == all->coll && all->map->buffer[i][j
 		- 1] == 'E')
