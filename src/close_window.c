@@ -44,6 +44,36 @@ int	close_window(void *param)
 	return (0);
 }
 
+int	move_up(t_cleanup *all)
+{
+
+	int	i, j, a, b;
+
+	i = all->map->player.height;
+	j = all->map->player.width;
+	a = all->data->len.a;
+	b = all->data->len.b;
+	ft_printf("height: %d\n", all->map->height);
+	ft_printf("width: %d\n", all->map->width);
+	ft_printf("player's height position: %d\n", all->map->player.height);
+	ft_printf("player's width position: %d\n", all->map->player.width);
+	if (all->map->buffer[i - 1][j] == '0')
+		{
+			all->data->len.i = all->map->player.height;
+			all->data->len.j = all->map->player.width;
+			all->data->len.a = all->map->player.height * 32;
+			all->data->len.b = all->map->player.width * 32;
+			is_it_road(all->map->buffer, all->data, *(all->mlx));
+			all->map->player.height--;
+			all->data->len.i = all->map->player.height;
+			all->data->len.j = all->map->player.width;
+			all->data->len.a = all->map->player.height * 32;
+			all->data->len.b = all->map->player.width * 32;
+			is_it_right_player(all->map->buffer, all->data, *(all->mlx));
+		}
+	return (0);
+}
+
 int	what_key(int keycode, void *param)
 {
 	t_cleanup	*all;
@@ -51,19 +81,25 @@ int	what_key(int keycode, void *param)
 
 	all = (t_cleanup *)param;
 	map = (*all).map;
+	(*(*all).data).len.i = 0;
+	(*(*all).data).len.j = 0;
 	if (keycode == 65307)
 		close_window(param);
+	else if (keycode == XK_Up)
+		move_up(all);
 	return (0);
 }
 
-void	capture_keys(t_ptr *mlx, t_data *data, t_map *map)
+void	capture_keys(t_ptr *mlx, t_data *data, t_map *map, t_location *dim)
 {
 	t_cleanup	cleanup;
 
 	cleanup.data = data;
 	cleanup.mlx = mlx;
 	cleanup.map = map;
+	cleanup.dim  = dim;
 	mlx_key_hook(mlx->win, what_key, &cleanup);
 	mlx_hook((*mlx).win, 17, 0, close_window, &cleanup);
+	//mlx_loop_hook(mlx->ptr, putting_to_images_to_window, &cleanup);
 	mlx_loop((*mlx).ptr);
 }

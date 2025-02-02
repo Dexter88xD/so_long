@@ -43,7 +43,7 @@ int	putting_map(t_map *map)
 	check = putting_images((*map).buffer, &dim, &mlx, &data);
 	if (check != 1)
 		return (0);
-	capture_keys(&mlx, &data, map);
+	capture_keys(&mlx, &data, map, &dim);
 	return (1);
 }
 
