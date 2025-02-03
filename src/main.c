@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sohamdan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sohamdan <sohamdan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 09:17:00 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/01/30 05:40:08 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/02/03 22:06:53 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -96,10 +96,9 @@ int	main(int argc, char **argv)
 		return (ft_printf("so_long: must provide a file\n"), -1);
 	map_path = argv[1];
 	fd = open(map_path, O_RDWR);
-	if (fd == -1)
-		return (ft_printf("Error\n"), perror("Reason: "), -1);
-	ft_memset(&map, 0, sizeof(t_map));
-	ft_memset(&count, 0, sizeof(t_num));
+	if (fd == -1 || !check_ber(map_path))
+		return (ft_printf("Error\nFile not found or not .ber file\n"), -1);
+	(ft_memset(&map, 0, sizeof(t_map)), ft_memset(&count, 0, sizeof(t_num)));
 	map.buffer = (char **)malloc(BUFFER_SIZE * sizeof(t_map *));
 	if (!map.buffer)
 		return (free(map.buffer),

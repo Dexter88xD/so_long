@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sohamdan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sohamdan <sohamdan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 11:11:35 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/01/30 05:37:08 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/02/03 21:56:57 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -170,6 +170,7 @@ typedef struct s_cleanup
 	t_move_coll		*mc;
 }					t_cleanup;
 
+int					check_ber(char *str);
 int					initialise_nd_mapping(int fd, t_num *count, t_map *map,
 						char *map_path);
 int					checking_map(t_map *map);
