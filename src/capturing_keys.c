@@ -21,15 +21,15 @@ int	what_key(int keycode, void *param)
 	map = (*all).map;
 	(*(*all).data).len.i = 0;
 	(*(*all).data).len.j = 0;
-	if (keycode == 65307)
+	if (keycode == XK_Escape || keycode == XK_Q || keycode == XK_q)
 		close_window(param);
-	else if (keycode == XK_Up)
+	else if (keycode == XK_Up || keycode == XK_W || keycode == XK_w)
 		move_up(all);
-	else if (keycode == XK_Down)
+	else if (keycode == XK_Down || keycode == XK_S || keycode == XK_s)
 		move_down(all);
-	else if (keycode == XK_Left)
+	else if (keycode == XK_Left || keycode == XK_A || keycode == XK_a)
 		move_left(all);
-	else if (keycode == XK_Right)
+	else if (keycode == XK_Right || keycode == XK_D || keycode == XK_d)
 		move_right(all);
 	return (0);
 }
