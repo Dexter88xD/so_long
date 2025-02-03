@@ -155,14 +155,19 @@ typedef struct s_data
 	t_assets		pic;
 }					t_data;
 
+typedef struct s_move_coll
+{
+	int				coll;
+	int				move;
+}					t_move_coll;
+
 typedef struct s_cleanup
 {
 	t_ptr			*mlx;
 	t_data			*data;
 	t_map			*map;
 	t_location		*dim;
-	int				coll;
-	int				move;
+	t_move_coll		*mc;
 }					t_cleanup;
 
 int					initialise_nd_mapping(int fd, t_num *count, t_map *map,
@@ -185,7 +190,7 @@ int					putting_images(char **array, t_location *dim, t_ptr *mlx,
 int					close_window(void *param);
 int					putting_to_images_to_window(void *param);
 void				buffer_freeing(t_map *map);
-void				capture_keys(t_ptr *mlx, t_data *data, t_map *map,
+int					capture_keys(t_ptr *mlx, t_data *data, t_map *map,
 						t_location *dim);
 
 void				start_destroying(t_ptr mlx, t_data *data);
@@ -278,10 +283,22 @@ void				is_it_collectible_three(char **array, t_data *data,
 void				is_it_collectible_four(char **array, t_data *data,
 						t_ptr mlx);
 
-void				move_up(t_cleanup *all);
-void				move_down(t_cleanup *all);
-void				move_left(t_cleanup *all);
-void				move_right(t_cleanup *all);
-void				update_position_data(t_cleanup *all);
+void				move_up(t_map *map, t_move_coll *mc, t_data *data,
+						t_ptr *mlx);
+void				move_down(t_map *map, t_move_coll *mc, t_data *data,
+						t_ptr *mlx);
+void				move_left(t_map *map, t_move_coll *mc, t_data *data,
+						t_ptr *mlx);
+void				move_right(t_map *map, t_move_coll *mc, t_data *data,
+						t_ptr *mlx);
+void				move_up_exit(t_map *map, t_move_coll *mc, t_data *data,
+						t_ptr *mlx);
+void				move_down_exit(t_map *map, t_move_coll *mc, t_data *data,
+						t_ptr *mlx);
+void				move_left_exit(t_map *map, t_move_coll *mc, t_data *data,
+						t_ptr *mlx);
+void				move_right_exit(t_map *map, t_move_coll *mc, t_data *data,
+						t_ptr *mlx);
+void				update_position_data(t_data *data, t_map *map);
 
 #endif

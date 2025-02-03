@@ -6,124 +6,128 @@
 /*   By: sohamdan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 21:09:17 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/02/02 22:07:40 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/02/03 15:22:09 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	update_position_data(t_cleanup *all)
+void	update_position_data(t_data *data, t_map *map)
 {
-	all->data->len.i = all->map->player.height;
-	all->data->len.j = all->map->player.width;
-	all->data->len.a = all->map->player.height * 32;
-	all->data->len.b = all->map->player.width * 32;
+	data->len.i = map->player.height;
+	data->len.j = map->player.width;
+	data->len.a = map->player.height * 32;
+	data->len.b = map->player.width * 32;
 }
 
-void	move_up(t_cleanup *all)
+void	move_up(t_map *map, t_move_coll *mc, t_data *data, t_ptr *mlx)
 {
-	int	i;
-	int	j;
-
-	i = all->map->player.height;
-	j = all->map->player.width;
-	if (all->map->buffer[i - 1][j] == '0' || all->map->buffer[i - 1][j] == 'P'
-		|| all->map->buffer[i - 1][j] == 'C')
+	int (i), j;
+	i = map->player.height;
+	j = map->player.width;
+	if (map->buffer[i - 1][j] == '0' || map->buffer[i - 1][j] == 'P'
+		|| map->buffer[i - 1][j] == 'C')
 	{
-		if (all->map->buffer[i - 1][j] == 'C')
+		if (map->buffer[i - 1][j] == 'C')
 		{
-			all->map->buffer[i - 1][j] = '0';
-			all->coll++;
+			map->buffer[i - 1][j] = '0';
+			mc->coll++;
 		}
-		update_position_data(all);
-		is_it_road(all->map->buffer, all->data, *(all->mlx));
-		all->map->player.height--;
-		update_position_data(all);
-		is_it_right_player(all->map->buffer, all->data, *(all->mlx));
-		ft_printf("Move number: %d\n", ++all->move);
+		update_position_data(data, map);
+		if (map->buffer[i][j] == 'E')
+			mlx_put_image_to_window(mlx->ptr, mlx->win,
+				data->pic.exit.middle.img, data->len.b, data->len.a);
+		else
+			is_it_road(map->buffer, data, *(mlx));
+		map->player.height--;
+		update_position_data(data, map);
+		is_it_right_player(map->buffer, data, *(mlx));
+		ft_printf("Move number: %d\n", ++mc->move);
 	}
-	else if (all->map->collectible == all->coll && all->map->buffer[i
-			- 1][j] == 'E')
-		close_window(all);
+	else if (map->buffer[i - 1][j] == 'E')
+		move_up_exit(map, mc, data, mlx);
 }
 
-void	move_down(t_cleanup *all)
+void	move_down(t_map *map, t_move_coll *mc, t_data *data, t_ptr *mlx)
 {
-	int	i;
-	int	j;
-
-	i = all->map->player.height;
-	j = all->map->player.width;
-	if (all->map->buffer[i + 1][j] == '0' || all->map->buffer[i + 1][j] == 'C'
-		|| all->map->buffer[i + 1][j] == 'P')
+	int (i), j;
+	i = map->player.height;
+	j = map->player.width;
+	if (map->buffer[i + 1][j] == '0' || map->buffer[i + 1][j] == 'C'
+		|| map->buffer[i + 1][j] == 'P')
 	{
-		if (all->map->buffer[i + 1][j] == 'C')
+		if (map->buffer[i + 1][j] == 'C')
 		{
-			all->map->buffer[i + 1][j] = '0';
-			all->coll++;
+			map->buffer[i + 1][j] = '0';
+			mc->coll++;
 		}
-		update_position_data(all);
-		is_it_road(all->map->buffer, all->data, *(all->mlx));
-		all->map->player.height++;
-		update_position_data(all);
-		is_it_right_player(all->map->buffer, all->data, *(all->mlx));
-		ft_printf("Move number: %d\n", ++all->move);
+		update_position_data(data, map);
+		if (map->buffer[i][j] == 'E')
+			mlx_put_image_to_window(mlx->ptr, mlx->win,
+				data->pic.exit.middle.img, data->len.b, data->len.a);
+		else
+			is_it_road(map->buffer, data, *(mlx));
+		map->player.height++;
+		update_position_data(data, map);
+		is_it_right_player(map->buffer, data, *(mlx));
+		ft_printf("Move number: %d\n", ++mc->move);
 	}
-	else if (all->map->collectible == all->coll && all->map->buffer[i
-			+ 1][j] == 'E')
-		close_window(all);
+	else if (map->buffer[i + 1][j] == 'E')
+		move_down_exit(map, mc, data, mlx);
 }
 
-void	move_left(t_cleanup *all)
+void	move_left(t_map *map, t_move_coll *mc, t_data *data, t_ptr *mlx)
 {
-	int	i;
-	int	j;
-
-	i = all->map->player.height;
-	j = all->map->player.width;
-	if (all->map->buffer[i][j - 1] == '0' || all->map->buffer[i][j - 1] == 'C'
-		|| all->map->buffer[i][j - 1] == 'P')
+	int (i), j;
+	i = map->player.height;
+	j = map->player.width;
+	if (map->buffer[i][j - 1] == '0' || map->buffer[i][j - 1] == 'C'
+		|| map->buffer[i][j - 1] == 'P')
 	{
-		if (all->map->buffer[i][j - 1] == 'C')
+		if (map->buffer[i][j - 1] == 'C')
 		{
-			all->map->buffer[i][j - 1] = '0';
-			all->coll++;
+			map->buffer[i][j - 1] = '0';
+			mc->coll++;
 		}
-		update_position_data(all);
-		is_it_road(all->map->buffer, all->data, *(all->mlx));
-		all->map->player.width--;
-		update_position_data(all);
-		is_it_left_player(all->map->buffer, all->data, *(all->mlx));
-		ft_printf("Move number: %d\n", ++all->move);
+		update_position_data(data, map);
+		if (map->buffer[i][j] == 'E')
+			mlx_put_image_to_window(mlx->ptr, mlx->win,
+				data->pic.exit.middle.img, data->len.b, data->len.a);
+		else
+			is_it_road(map->buffer, data, *(mlx));
+		map->player.width--;
+		update_position_data(data, map);
+		is_it_left_player(map->buffer, data, *(mlx));
+		ft_printf("Move number: %d\n", ++mc->move);
 	}
-	else if (all->map->collectible == all->coll && all->map->buffer[i][j
-		- 1] == 'E')
-		close_window(all);
+	else if (map->buffer[i][j - 1] == 'E')
+		move_left_exit(map, mc, data, mlx);
 }
 
-void	move_right(t_cleanup *all)
+void	move_right(t_map *map, t_move_coll *mc, t_data *data, t_ptr *mlx)
 {
-	int	i;
-	int	j;
-
-	i = all->map->player.height;
-	j = all->map->player.width;
-	if (all->map->buffer[i][j + 1] == '0' || all->map->buffer[i][j + 1] == 'C'
-		|| all->map->buffer[i][j + 1] == 'P')
+	int (i), j;
+	i = map->player.height;
+	j = map->player.width;
+	if (map->buffer[i][j + 1] == '0' || map->buffer[i][j + 1] == 'C'
+		|| map->buffer[i][j + 1] == 'P')
 	{
-		if (all->map->buffer[i][j + 1] == 'C')
+		if (map->buffer[i][j + 1] == 'C')
 		{
-			all->map->buffer[i][j + 1] = '0';
-			all->coll++;
+			map->buffer[i][j + 1] = '0';
+			mc->coll++;
 		}
-		update_position_data(all);
-		is_it_road(all->map->buffer, all->data, *(all->mlx));
-		all->map->player.width++;
-		update_position_data(all);
-		is_it_right_player(all->map->buffer, all->data, *(all->mlx));
-		ft_printf("Move number: %d\n", ++all->move);
+		update_position_data(data, map);
+		if (map->buffer[i][j] == 'E')
+			mlx_put_image_to_window(mlx->ptr, mlx->win,
+				data->pic.exit.middle.img, data->len.b, data->len.a);
+		else
+			is_it_road(map->buffer, data, *(mlx));
+		map->player.width++;
+		update_position_data(data, map);
+		is_it_right_player(map->buffer, data, *(mlx));
+		ft_printf("Move number: %d\n", ++mc->move);
 	}
-	else if (all->map->collectible == all->coll && all->map->buffer[i][j
-		+ 1] == 'E')
-		close_window(all);
+	else if (map->buffer[i][j + 1] == 'E')
+		move_right_exit(map, mc, data, mlx);
 }

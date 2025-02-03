@@ -38,6 +38,7 @@ int	close_window(void *param)
 	mlx_destroy_window((*mlx).ptr, (*mlx).win);
 	mlx_destroy_display((*mlx).ptr);
 	free((*mlx).ptr);
+	free(cleanup->mc);
 	buffer_freeing(map);
 	ft_printf("closed!\n");
 	exit(0);
