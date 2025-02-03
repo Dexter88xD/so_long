@@ -188,7 +188,6 @@ int					putting_map(t_map *map);
 int					putting_images(char **array, t_location *dim, t_ptr *mlx,
 						t_data *data);
 int					close_window(void *param);
-int					putting_to_images_to_window(void *param);
 void				buffer_freeing(t_map *map);
 int					capture_keys(t_ptr *mlx, t_data *data, t_map *map,
 						t_location *dim);
