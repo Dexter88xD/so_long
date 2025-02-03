@@ -31,7 +31,6 @@ int	what_key(int keycode, void *param)
 		move_left(all);
 	else if (keycode == XK_Right)
 		move_right(all);
-	ft_printf("move number: %d\n", all->move);
 	return (0);
 }
 

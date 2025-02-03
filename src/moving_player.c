@@ -40,11 +40,11 @@ void	move_up(t_cleanup *all)
 		all->map->player.height--;
 		update_position_data(all);
 		is_it_right_player(all->map->buffer, all->data, *(all->mlx));
+		ft_printf("Move number: %d\n", ++all->move);
 	}
 	else if (all->map->collectible == all->coll && all->map->buffer[i
 			- 1][j] == 'E')
 		close_window(all);
-	all->move++;
 }
 
 void	move_down(t_cleanup *all)
@@ -67,11 +67,11 @@ void	move_down(t_cleanup *all)
 		all->map->player.height++;
 		update_position_data(all);
 		is_it_right_player(all->map->buffer, all->data, *(all->mlx));
+		ft_printf("Move number: %d\n", ++all->move);
 	}
 	else if (all->map->collectible == all->coll && all->map->buffer[i
 			+ 1][j] == 'E')
 		close_window(all);
-	all->move++;
 }
 
 void	move_left(t_cleanup *all)
@@ -94,11 +94,11 @@ void	move_left(t_cleanup *all)
 		all->map->player.width--;
 		update_position_data(all);
 		is_it_left_player(all->map->buffer, all->data, *(all->mlx));
+		ft_printf("Move number: %d\n", ++all->move);
 	}
 	else if (all->map->collectible == all->coll && all->map->buffer[i][j
 		- 1] == 'E')
 		close_window(all);
-	all->move++;
 }
 
 void	move_right(t_cleanup *all)
@@ -121,9 +121,9 @@ void	move_right(t_cleanup *all)
 		all->map->player.width++;
 		update_position_data(all);
 		is_it_right_player(all->map->buffer, all->data, *(all->mlx));
+		ft_printf("Move number: %d\n", ++all->move);
 	}
 	else if (all->map->collectible == all->coll && all->map->buffer[i][j
 		+ 1] == 'E')
 		close_window(all);
-	all->move++;
 }
