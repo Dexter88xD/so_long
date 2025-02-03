@@ -26,7 +26,7 @@ BONUS = src/main.c src/bonus/mapping_bonus.c src/bonus/checking_map_bonus.c
 
 OBJECTS = $(FILES:%.c=%.o)
 
-LIBRARY = make -C /lib/minilibx
+LIBRARY = make -C lib/minilibx-linux
 
 MAKE_FT_LIBC = make files -C include/ft_libc
 
@@ -38,11 +38,14 @@ MINILIB = lib/minilibx-linux/libmlx*
 
 all: $(NAME)
 
-$(NAME): $(OBJECTS) $(LIBFT_A) $(MINILIB)
+$(NAME): $(OBJECTS) $(LIBFT_A) $(MINILIB) 
 	$(CC) $(CFLAGS) $(LIB_FLAGS) -o $(NAME) $^
 
 $(LIBFT_A):
 	$(MAKE_FT_LIBC)
+
+$(MINILIB):
+	$(LIBRARY)
 
 %.o : %.c
 	$(CC) $(CFLAGS) -c $^ -o $@
