@@ -9,9 +9,7 @@ CFLAGS = -Wall -Wextra -Werror
 
 LIB_FLAGS = -lXext -lX11
 
-MINILIB = lib/minilibx-linux/libmlx*
-
-NAME = src/so_long
+NAME = so_long
 
 FILES = src/main.c src/mapping.c src/checking_map.c src/putting_map.c \
 		src/assign_path.c src/assign_pointer.c \
@@ -28,11 +26,15 @@ BONUS = src/main.c src/bonus/mapping_bonus.c src/bonus/checking_map_bonus.c
 
 OBJECTS = $(FILES:%.c=%.o)
 
+LIBRARY = make -C /lib/minilibx
+
 MAKE_FT_LIBC = make files -C include/ft_libc
 
 FCLEAN_FT_LIBC = make fclean -C include/ft_libc
 
 LIBFT_A = include/ft_libc/libft.a
+
+MINILIB = lib/minilibx-linux/libmlx*
 
 all: $(NAME)
 
