@@ -52,11 +52,14 @@ int	initialise_nd_mapping(int fd, t_num *count, t_map *map, char *map_path)
 	int	check;
 
 	check = mapping(fd, count, map);
-	if ((*map).collectible != (*count).coll || (*map).exit != (*count).exit)
+	if (check != 1 && ((*map).collectible == (*count).coll
+			|| (*map).exit == (*count).exit))
+		return (buffer_freeing(map), -1);
+	else if ((*map).collectible != (*count).coll
+		|| (*map).exit != (*count).exit)
 		return (ft_printf("Error:\n"),
-			ft_printf("The player must reach all collectibles and exit\n"), -1);
-	else if (check != 1)
-		return (-1);
+			ft_printf("The player must reach all collectibles and exit\n"),
+			buffer_freeing(map), -1);
 	else
 	{
 		buffer_freeing(map);
