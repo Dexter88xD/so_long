@@ -10,7 +10,7 @@
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "../so_long.h"
+#include "so_long.h"
 
 int	checking_wall(int x, int y, char **buffer)
 {
@@ -123,7 +123,7 @@ int	checking_char(int x, int y, char **buffer)
 		{
 			if (buffer[height][width] != 'E' && buffer[height][width] != 'C'
 				&& buffer[height][width] != 'P' && buffer[height][width] != '1'
-				&& buffer[height][width] != '0' && buffer[height][width] != 'N')
+				&& buffer[height][width] != '0')
 				return (0);
 			width++;
 		}

@@ -1,23 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   assign_player_pointer_f3_bonus.c                   :+:      :+:    :+:   */
+/*   assign_player_pointer_f2_bonus.c                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sohamdan <sohamdan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 11:57:19 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/02/04 09:39:43 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/02/04 09:39:40 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long.h"
 
-void	point_right_p_middle_corner_fthree(t_places *p_r, void *mlx_ptr, int *x,
+void	point_right_p_middle_corner_ftwo(t_places *p_r, void *mlx_ptr, int *x,
 		int *y)
 {
 	(*p_r).inside.img = mlx_xpm_file_to_image(mlx_ptr, (*p_r).inside.ptr, x, y);
 	(*p_r).end.img = mlx_xpm_file_to_image(mlx_ptr, (*p_r).end.ptr, x, y);
-	(*p_r).cor.img_l_d = mlx_xpm_file_to_image(mlx_ptr, (*p_r).cor.img_l_d, x,
+	(*p_r).cor.img_l_d = mlx_xpm_file_to_image(mlx_ptr, (*p_r).cor.ptr_l_d, x,
 			y);
 	(*p_r).cor.img_l_u = mlx_xpm_file_to_image(mlx_ptr, (*p_r).cor.ptr_l_u, x,
 			y);
@@ -27,7 +27,7 @@ void	point_right_p_middle_corner_fthree(t_places *p_r, void *mlx_ptr, int *x,
 			y);
 }
 
-void	point_right_p_side_fthree(t_places *p_r, void *mlx_ptr, int *x, int *y)
+void	point_right_p_side_ftwo(t_places *p_r, void *mlx_ptr, int *x, int *y)
 {
 	(*p_r).one.img_d = mlx_xpm_file_to_image(mlx_ptr, (*p_r).one.ptr_d, x, y);
 	(*p_r).one.img_l = mlx_xpm_file_to_image(mlx_ptr, (*p_r).one.ptr_l, x, y);
@@ -47,7 +47,7 @@ void	point_right_p_side_fthree(t_places *p_r, void *mlx_ptr, int *x, int *y)
 			y);
 }
 
-void	point_left_p_middle_corner_fthree(t_places *p_l, void *mlx_ptr, int *x,
+void	point_left_p_middle_corner_ftwo(t_places *p_l, void *mlx_ptr, int *x,
 		int *y)
 {
 	(*p_l).inside.img = mlx_xpm_file_to_image(mlx_ptr, (*p_l).inside.ptr, x, y);
@@ -62,7 +62,7 @@ void	point_left_p_middle_corner_fthree(t_places *p_l, void *mlx_ptr, int *x,
 			y);
 }
 
-void	point_left_p_side_fthree(t_places *p_l, void *mlx_ptr, int *x, int *y)
+void	point_left_p_side_ftwo(t_places *p_l, void *mlx_ptr, int *x, int *y)
 {
 	(*p_l).one.img_d = mlx_xpm_file_to_image(mlx_ptr, (*p_l).one.ptr_d, x, y);
 	(*p_l).one.img_l = mlx_xpm_file_to_image(mlx_ptr, (*p_l).one.ptr_l, x, y);

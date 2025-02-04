@@ -6,7 +6,7 @@
 /*   By: sohamdan <sohamdan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 09:17:00 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/02/04 12:31:54 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/02/03 22:06:53 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,9 +97,8 @@ int	main(int argc, char **argv)
 	map_path = argv[1];
 	fd = open(map_path, O_RDWR);
 	if (fd == -1 || !check_ber(map_path))
-		return (ft_printf("Error\nMust give a valid .ber file\n"), -1);
-	ft_memset(&map, 0, sizeof(t_map));
-	ft_memset(&count, 0, sizeof(t_num));
+		return (ft_printf("Error\nFile not found or not .ber file\n"), -1);
+	(ft_memset(&map, 0, sizeof(t_map)), ft_memset(&count, 0, sizeof(t_num)));
 	map.buffer = (char **)malloc(BUFFER_SIZE * sizeof(t_map *));
 	if (!map.buffer)
 		return (free(map.buffer),
