@@ -6,7 +6,7 @@
 /*   By: sohamdan <sohamdan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 09:17:00 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/02/04 12:31:54 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/02/04 22:17:24 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,13 +52,11 @@ int	initialise_nd_mapping(int fd, t_num *count, t_map *map, char *map_path)
 	int	check;
 
 	check = mapping(fd, count, map);
-	if (check != 1 && ((*map).collectible == (*count).coll
-			|| (*map).exit == (*count).exit))
+	if (check != 1)
 		return (buffer_freeing(map), -1);
-	else if ((*map).collectible != (*count).coll
-		|| (*map).exit != (*count).exit)
+	else if ((*map).collectible != (*count).coll)
 		return (ft_printf("Error:\n"),
-			ft_printf("The player must reach all collectibles and exit\n"),
+			ft_printf("The player must reach all collectibles\n"),
 			buffer_freeing(map), -1);
 	else
 	{
@@ -97,7 +95,7 @@ int	main(int argc, char **argv)
 	map_path = argv[1];
 	fd = open(map_path, O_RDWR);
 	if (fd == -1 || !check_ber(map_path))
-		return (ft_printf("Error\nMust give a valid .ber file\n"), -1);
+		return (ft_printf("Error\nFile not found or not .ber file\n"), -1);
 	ft_memset(&map, 0, sizeof(t_map));
 	ft_memset(&count, 0, sizeof(t_num));
 	map.buffer = (char **)malloc(BUFFER_SIZE * sizeof(t_map *));

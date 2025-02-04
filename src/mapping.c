@@ -6,7 +6,7 @@
 /*   By: sohamdan <sohamdan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 11:10:57 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/02/04 11:49:42 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/02/04 22:11:47 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -122,5 +122,7 @@ int	mapping(int fd, t_num *count, t_map *map)
 		return (0);
 	(*count).coll = 0;
 	checking_path(map, count, (*map).player.height, (*map).player.width);
+	if ((*count).exit != 1)
+		return (ft_printf("Error:\nThe player must reach the exit\n"), -1);
 	return ((*count).exit);
 }
