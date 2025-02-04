@@ -1,8 +1,8 @@
-This project is a very small 2D game. Its purpose is to work with textures, sprites, and some other very basic gameplay elements.
+# You can play a basic version of this game for now!
 
-You can play a basic version of this game for now!
+## This project is a very small 2D game. Its purpose is to work with textures, sprites, and some other very basic gameplay elements.
 
-# Usage:
+## Usage:
 - clone the repository:
 ```
 git clone https://github.com/Dexter88xD/so_long.git
