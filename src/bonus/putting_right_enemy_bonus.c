@@ -6,11 +6,11 @@
 /*   By: sohamdan <sohamdan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 17:10:19 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/02/04 09:55:16 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/02/04 14:50:06 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	is_it_right_enemy_four(char **array, t_data *data, t_ptr mlx)
 {
@@ -31,6 +31,9 @@ void	is_it_right_enemy_four(char **array, t_data *data, t_ptr mlx)
 		&& array[(*data).len.i][(*data).len.j + 1] == '1')
 		mlx_put_image_to_window(mlx.ptr, mlx.win,
 			(*data).pic.e_right.inside.img_shad, (*data).len.b, (*data).len.a);
+	else if (array[(*data).len.i][(*data).len.j] == 'e')
+		mlx_put_image_to_window(mlx.ptr, mlx.win,
+			(*data).pic.e_right.end.img, (*data).len.b, (*data).len.a);
 	else
 		mlx_put_image_to_window(mlx.ptr, mlx.win,
 			(*data).pic.e_right.inside.img, (*data).len.b, (*data).len.a);

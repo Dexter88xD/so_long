@@ -6,11 +6,11 @@
 /*   By: sohamdan <sohamdan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 22:42:00 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/02/04 09:53:54 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/02/04 14:45:53 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 int	what_key(int keycode, void *param)
 {

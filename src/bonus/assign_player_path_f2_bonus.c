@@ -6,16 +6,16 @@
 /*   By: sohamdan <sohamdan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 11:57:19 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/02/04 09:39:27 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/02/04 14:44:02 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	assign_right_p_middle_corner_ftwo(t_places *p_r)
 {
-	(*p_r).inside.ptr = "assets/P/look_r/inside_road/frame_2.xpm";
 	(*p_r).end.ptr = "assets/P/look_r/gate/frame_2.xpm";
+	(*p_r).inside.ptr = "assets/P/look_r/inside_road/frame_2.xpm";
 	(*p_r).cor.ptr_l_d = "assets/P/look_r/corner/left_down/frame_2.xpm";
 	(*p_r).cor.ptr_l_u = "assets/P/look_r/corner/left_up/frame_2.xpm";
 	(*p_r).cor.ptr_r_d = "assets/P/look_r/corner/right_down/frame_2.xpm";

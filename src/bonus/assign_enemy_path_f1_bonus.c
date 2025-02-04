@@ -6,11 +6,11 @@
 /*   By: sohamdan <sohamdan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 11:57:19 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/02/04 09:39:05 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/02/04 14:42:41 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	assign_right_e_middle_corner_fone(t_places *e_r)
 {

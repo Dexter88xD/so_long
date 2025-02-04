@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   putting_map.c                                      :+:      :+:    :+:   */
+/*   putting_map_bonus.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sohamdan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 19:03:11 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/02/01 19:03:12 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/02/04 14:49:48 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	putting_to_window(char **array, t_location *dim, t_data *data,
 		t_ptr mlx)

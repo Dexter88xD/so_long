@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   assign_player_pointer.c                            :+:      :+:    :+:   */
+/*   assign_player_pointer_bonus.c                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sohamdan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 11:57:19 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/01/30 11:57:20 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/02/04 14:44:44 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	point_r_p_middle_corner(t_places *p_r, void *mlx_ptr, int *x, int *y)
 {

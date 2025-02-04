@@ -1,36 +1,38 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checking_pointers.c                                :+:      :+:    :+:   */
+/*   checking_pointers_bonus.c                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sohamdan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sohamdan <sohamdan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2025/02/00 00:42:22 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/02/00 00:42:22 by sohamdan         ###   ########.fr       */
+/*   Created: Invalid date        by sohamdan          #+#    #+#             */
+/*   Updated: 2025/02/04 18:30:52 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
-int	check_wall_pointer(t_places *wall)
+int	check_wall_exit_pointer(t_assets *a)
 {
-	if ((*wall).cor.img_l_d == NULL)
+	if ((*a).wall.cor.img_l_d == NULL)
 		return (0);
-	else if ((*wall).cor.img_l_u == NULL)
+	else if ((*a).wall.cor.img_l_u == NULL)
 		return (0);
-	else if ((*wall).cor.img_r_u == NULL)
+	else if ((*a).wall.cor.img_r_u == NULL)
 		return (0);
-	else if ((*wall).cor.img_r_d == NULL)
+	else if ((*a).wall.cor.img_r_d == NULL)
 		return (0);
-	else if ((*wall).one.img_l == NULL)
+	else if ((*a).wall.one.img_l == NULL)
 		return (0);
-	else if ((*wall).one.img_r == NULL)
+	else if ((*a).wall.one.img_r == NULL)
 		return (0);
-	else if ((*wall).one.img_u == NULL)
+	else if ((*a).wall.one.img_u == NULL)
 		return (0);
-	else if ((*wall).one.img_d == NULL)
+	else if ((*a).wall.one.img_d == NULL)
 		return (0);
-	else if ((*wall).middle.img == NULL)
+	else if ((*a).wall.middle.img == NULL)
+		return (0);
+	else if ((*a).exit.middle.img == NULL)
 		return (0);
 	else
 		return (1);
@@ -61,7 +63,6 @@ int	check_side_road_pointer(t_places *road)
 	else
 		return (1);
 }
-
 int	check_corner_middle_road_pointer(t_places *road)
 {
 	if ((*road).cor.img_l_u == NULL)
@@ -106,19 +107,17 @@ int	check_side_collectible_pointer(t_places *key)
 		return (1);
 }
 
-int	check_mid_cor_coll_exit_pointer(t_assets *a)
+int	check_mid_cor_coll_exit_pointer(t_places *key)
 {
-	if ((*a).exit.middle.img == NULL)
+	if ((*key).middle.img == NULL)
 		return (0);
-	else if ((*a).key.middle.img == NULL)
+	else if ((*key).cor.img_l_d == NULL)
 		return (0);
-	else if ((*a).key.cor.img_l_d == NULL)
+	else if ((*key).cor.img_l_u == NULL)
 		return (0);
-	else if ((*a).key.cor.img_l_u == NULL)
+	else if ((*key).cor.img_r_d == NULL)
 		return (0);
-	else if ((*a).key.cor.img_r_d == NULL)
-		return (0);
-	else if ((*a).key.cor.img_r_u == NULL)
+	else if ((*key).cor.img_r_u == NULL)
 		return (0);
 	else
 		return (1);

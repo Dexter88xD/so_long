@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   putting_left_player.c                              :+:      :+:    :+:   */
+/*   putting_left_player_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sohamdan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 17:08:11 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/02/01 17:08:21 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/02/04 14:49:38 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	is_it_left_player_four(char **array, t_data *data, t_ptr mlx)
 {

@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   putting_right_player.c                             :+:      :+:    :+:   */
+/*   putting_right_player_bonus.c                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sohamdan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 17:10:19 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/02/01 17:10:20 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/02/04 14:50:17 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	is_it_right_player_four(char **array, t_data *data, t_ptr mlx)
 {
@@ -25,6 +25,9 @@ void	is_it_right_player_four(char **array, t_data *data, t_ptr mlx)
 		+ 1][(*data).len.j] != '1')
 		mlx_put_image_to_window(mlx.ptr, mlx.win,
 			(*data).pic.p_right.two.img_l_r, (*data).len.b, (*data).len.a);
+	else if (array[(*data).len.i][(*data).len.j] == 'e')
+		mlx_put_image_to_window(mlx.ptr, mlx.win,
+			(*data).pic.p_right.end.img, (*data).len.b, (*data).len.a);
 	else
 		mlx_put_image_to_window(mlx.ptr, mlx.win,
 			(*data).pic.p_right.inside.img, (*data).len.b, (*data).len.a);

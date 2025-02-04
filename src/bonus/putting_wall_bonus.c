@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   putting_wall.c                                     :+:      :+:    :+:   */
+/*   putting_wall_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sohamdan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 17:09:27 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/02/01 17:09:32 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/02/04 14:50:35 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	is_it_rest_wall(t_data *data, t_ptr mlx, t_location *dim)
 {

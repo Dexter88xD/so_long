@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   moving_player.c                                    :+:      :+:    :+:   */
+/*   moving_player_bonus.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sohamdan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 21:09:17 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/02/03 15:22:09 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/02/04 14:48:41 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	update_position_data(t_data *data, t_map *map)
 {

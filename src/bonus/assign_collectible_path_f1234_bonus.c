@@ -6,11 +6,11 @@
 /*   By: sohamdan <sohamdan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/31 11:38:49 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/02/04 09:39:00 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/02/04 14:42:09 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	assign_collectible_fone(t_places *key)
 {

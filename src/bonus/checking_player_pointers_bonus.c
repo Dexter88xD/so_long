@@ -1,15 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   checking_player_pointers.c                         :+:      :+:    :+:   */
+/*   checking_player_pointers_bonus.c                   :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sohamdan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 10:59:32 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/02/01 10:59:33 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/02/04 14:47:01 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "so_long.h"
+
+#include "so_long_bonus.h"
 
 int	check_r_p_middle_corner_pointer(t_places *p_r)
 {

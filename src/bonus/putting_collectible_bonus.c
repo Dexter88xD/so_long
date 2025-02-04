@@ -1,16 +1,16 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   putting_collectible.c                              :+:      :+:    :+:   */
+/*   putting_collectible_bonus.c                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: sohamdan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 17:10:19 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/02/01 18:01:12 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/02/04 14:49:00 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "so_long_bonus.h"
 
 void	is_it_collectible_four(char **array, t_data *data, t_ptr mlx)
 {
