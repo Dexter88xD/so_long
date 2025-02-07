@@ -6,7 +6,7 @@
 /*   By: sohamdan <sohamdan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 11:45:49 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/02/04 17:08:36 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/02/07 15:07:49 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -40,10 +40,8 @@ void	destroy_side_mid_road_images(t_ptr mlx, t_data *data)
 		mlx_destroy_image(mlx.ptr, (*data).pic.road.inside.img_shad);
 }
 
-void	destroy_exit_side_wall_images(t_ptr mlx, t_data *data)
+void	destroy_side_wall_images(t_ptr mlx, t_data *data)
 {
-	if ((*data).pic.exit.middle.img)
-		mlx_destroy_image(mlx.ptr, (*data).pic.exit.middle.img);
 	if ((*data).pic.wall.middle.img)
 		mlx_destroy_image(mlx.ptr, (*data).pic.wall.middle.img);
 	if ((*data).pic.wall.one.img_d)
@@ -66,6 +64,20 @@ void	destroy_exit_side_wall_images(t_ptr mlx, t_data *data)
 		mlx_destroy_image(mlx.ptr, (*data).pic.wall.three.img_r);
 	if ((*data).pic.wall.three.img_u)
 		mlx_destroy_image(mlx.ptr, (*data).pic.wall.three.img_u);
+}
+
+void	destroy_exit_images(t_ptr mlx, t_data *data)
+{
+	if ((*data).pic.exit.f1.middle.img)
+		mlx_destroy_image(mlx.ptr, (*data).pic.exit.f1.middle.img);
+	if ((*data).pic.exit.f2.middle.img)
+		mlx_destroy_image(mlx.ptr, (*data).pic.exit.f2.middle.img);
+	if ((*data).pic.exit.f3.middle.img)
+		mlx_destroy_image(mlx.ptr, (*data).pic.exit.f3.middle.img);
+	if ((*data).pic.exit.f4.middle.img)
+		mlx_destroy_image(mlx.ptr, (*data).pic.exit.f4.middle.img);
+	if ((*data).pic.exit.f4.middle.img)
+		mlx_destroy_image(mlx.ptr, (*data).pic.exit.f5.middle.img);
 }
 
 void	destroy_corner_wall_road_images(t_ptr mlx, t_data *data)

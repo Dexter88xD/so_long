@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   checking_map_bonus.c                               :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sohamdan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sohamdan <sohamdan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 10:13:09 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/02/04 14:46:43 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/02/05 17:33:29 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,7 +123,7 @@ int	checking_char(int x, int y, char **buffer)
 		{
 			if (buffer[height][width] != 'E' && buffer[height][width] != 'C'
 				&& buffer[height][width] != 'P' && buffer[height][width] != '1'
-				&& buffer[height][width] != '0')
+				&& buffer[height][width] != '0' && buffer[height][width] != 'N')
 				return (0);
 			width++;
 		}

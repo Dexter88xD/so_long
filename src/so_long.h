@@ -6,20 +6,20 @@
 /*   By: sohamdan <sohamdan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 11:11:35 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/02/03 21:56:57 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/02/05 18:36:14 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "../include/ft_libc/ft_printf/ft_printf.h"
-# include "../include/ft_libc/get_next_line/get_next_line.h"
-# include "../include/ft_libc/libft.h"
-# include "../lib/minilibx-linux/mlx.h"
+# include "ft_printf/ft_printf.h"
+# include "get_next_line/get_next_line.h"
+# include "libft.h"
+# include "mlx.h"
 # include <X11/keysym.h>
 # include <fcntl.h>
-# include <stdio.h>
+//# include <stdio.h>
 # include <unistd.h>
 
 typedef struct s_ptr

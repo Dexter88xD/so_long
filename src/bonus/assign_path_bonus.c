@@ -6,15 +6,19 @@
 /*   By: sohamdan <sohamdan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/30 11:57:19 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/02/04 14:43:33 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/02/07 14:53:06 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "so_long_bonus.h"
 
-void	assign_wall_exit(t_places *wall, t_places *exit)
+void	assign_wall_exit(t_places *wall, t_frames *exit)
 {
-	(*exit).middle.ptr = "assets/E/frame_1.xpm";
+	(*exit).f1.middle.ptr = "assets/E/frame_1.xpm";
+	(*exit).f2.middle.ptr = "assets/E/frame_2.xpm";
+	(*exit).f3.middle.ptr = "assets/E/frame_3.xpm";
+	(*exit).f4.middle.ptr = "assets/E/frame_4.xpm";
+	(*exit).f5.middle.ptr = "assets/E/frame_5.xpm";
 	(*wall).cor.ptr_l_u = "assets/1/left_up.xpm";
 	(*wall).cor.ptr_l_d = "assets/1/left_down.xpm";
 	(*wall).cor.ptr_r_u = "assets/1/right_up.xpm";

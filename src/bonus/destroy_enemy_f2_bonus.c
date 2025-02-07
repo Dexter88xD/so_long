@@ -6,7 +6,7 @@
 /*   By: sohamdan <sohamdan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 11:45:49 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/02/04 17:27:51 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/02/05 16:44:09 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ void	destroy_enemy_r_3_images(t_ptr mlx, t_data *data)
 		mlx_destroy_image(mlx.ptr, (*data).pic.e_right.f2.three.img_r);
 	if ((*data).pic.e_right.f2.three.img_u)
 		mlx_destroy_image(mlx.ptr, (*data).pic.e_right.f2.three.img_u);
-	destroy_rest_enemy_r_4_images(mlx, data);
+	destroy_enemy_r_4_images(mlx, data);
 }
 
 void	destroy_enemy_r_2_images(t_ptr mlx, t_data *data)
