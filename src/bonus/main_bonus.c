@@ -103,7 +103,7 @@ int	main(int argc, char **argv)
 	map.buffer = (char **)malloc(BUFFER_SIZE * sizeof(t_map *));
 	if (!map.buffer)
 		return (free(map.buffer),
-			ft_printf("Error: Memory allocation failed\n"), -1);
+			ft_printf("Error\nMemory allocation failed\n"), -1);
 	check = initialise_nd_mapping(fd, &count, &map, map_path);
 	close(fd);
 	if (check == -1)
