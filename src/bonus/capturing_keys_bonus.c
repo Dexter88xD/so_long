@@ -52,7 +52,8 @@ int	capture_keys(t_ptr *mlx, t_data *data, t_map *map, t_location *dim)
 	cleanup.exit_frame = 0;
 	cleanup.mc = (t_move_coll *)malloc(sizeof(t_move_coll));
 	if (!cleanup.mc)
-		return (ft_printf("Memory allocation for mc failed!\n"), -1);
+		return (ft_printf("Memory allocation for mc failed!\n"),
+			free(cleanup.mc), close_window(&cleanup), -1);
 	cleanup.mc->coll = 0;
 	cleanup.mc->move = 0;
 	load_frames(&cleanup);
