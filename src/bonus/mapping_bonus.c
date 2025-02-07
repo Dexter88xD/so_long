@@ -6,7 +6,7 @@
 /*   By: sohamdan <sohamdan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 11:10:57 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/02/04 14:48:13 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/02/08 00:32:00 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,7 +84,8 @@ int	checking_length(int y, int *x, char **buffer)
 		while (buffer[height][width] != '\n' && buffer[height][width] != '\0')
 			width++;
 		if (width != (*x))
-			return (ft_printf("Error:\nThe map must be rectangular!\n"), 0);
+			return (ft_printf("Error:\nThe map must be rectangular"),
+				ft_printf(" (Check if there are empty lines)!\n"), 0);
 		height++;
 	}
 	return (1);
