@@ -6,7 +6,7 @@
 /*   By: sohamdan <sohamdan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 11:11:35 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/02/05 18:36:14 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/02/08 11:34:05 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,6 @@
 # include "mlx.h"
 # include <X11/keysym.h>
 # include <fcntl.h>
-//# include <stdio.h>
 # include <unistd.h>
 
 typedef struct s_ptr
