@@ -1,90 +1,98 @@
 # This is the brain of the whole operation.
 # Let's get this ship going!
 
-.PHONY: all clean fclean re a
-
 CC = cc
+CFLAGS = -Wall -Wextra -Werror -I $(MINILIB) -I $(LIBFT)
+LIB_FLAGS = -lXext -lX11 -L$(MINILIB) -lmlx_Linux -L$(LIBFT) -lft
+RM = rm
+RMF = rm -rf
 
-CFLAGS = -Wall -Wextra -Werror
+MINILIB = /usr/include/minilibx-linux/
+LIBFT = ./include/libft/
 
-LIB_FLAGS = -lXext -lX11
+MAKE_LIBFT = make files -C $(LIBFT)
+FCLEAN_LIBFT = make fclean -C $(LIBFT)
 
-NAME = so_long
+M_NAME = so_long
+B_NAME = so_long_bonus
 
-FILES = src/assigning_checking_pointers.c   src/checking_player_pointers.c   src/putting_collectible.c \
-        src/assign_path.c                   src/checking_pointers.c          src/putting_left_player.c \
-        src/assign_player_path.c            src/close_window.c               src/putting_map.c \
-        src/assign_player_pointer.c         src/destroy_assets_nbr1.c        src/putting_right_player.c \
-        src/assign_pointer.c                src/destroy_assets_nbr2.c        src/putting_road.c \
-        src/moving_player.c                 src/main.c                       src/putting_wall.c \
-        src/capturing_keys.c                src/mapping.c                    src/checking_map.c \
-        src/check_ber.c                     src/moving_player_around_exit.c
+SRC_DIR = src
+BONUS_DIR = src/bonus
+OBJ_DIR = obj
+BONUS_OBJ_DIR = bonus_obj
 
-BONUS = src/bonus/assign_collectible_path_f1234_bonus.c  src/bonus/destroy_keys_1_bonus.c \
-        src/bonus/assign_collectible_path_f5678_bonus.c  src/bonus/destroy_keys_2_bonus.c \
-        src/bonus/assign_enemy_path_f1_bonus.c           src/bonus/destroy_keys_3_bonus.c \
-        src/bonus/assign_enemy_path_f2_bonus.c           src/bonus/destroy_keys_4_bonus.c \
-        src/bonus/assign_enemy_path_f3_bonus.c           src/bonus/destroy_keys_5_bonus.c \
-        src/bonus/assign_enemy_path_f4_bonus.c           src/bonus/destroy_keys_6_bonus.c \
-        src/bonus/assigning_checking_pointers_bonus.c    src/bonus/destroy_keys_7_bonus.c \
-        src/bonus/assign_key_pointer_bonus.c             src/bonus/destroy_keys_8_bonus.c \
-        src/bonus/assign_path_bonus.c                    src/bonus/destroy_player_f1_bonus.c \
-        src/bonus/assign_player_path_f1_bonus.c          src/bonus/destroy_player_f2_bonus.c \
-        src/bonus/assign_player_path_f2_bonus.c          src/bonus/destroy_player_f3_bonus.c \
-        src/bonus/assign_player_path_f4_bonus.c          src/bonus/destroy_player_f4_bonus.c \
-        src/bonus/assign_player_pointer_bonus.c          src/bonus/destroy_wall_road_bonus.c \
-        src/bonus/assign_pointer_bonus.c                 src/bonus/main_bonus.c              \
-        src/bonus/capturing_keys_bonus.c                 src/bonus/moving_player_around_exit_bonus.c \
-        src/bonus/check_ber_bonus.c                      src/bonus/moving_player_bonus.c \
-        src/bonus/checking_key_pointers_bonus.c          src/bonus/putting_collectible_bonus.c \
-        src/bonus/checking_map_bonus.c                   src/bonus/putting_left_enemy_bonus.c \
-        src/bonus/checking_player_pointers_bonus.c       src/bonus/putting_left_player_bonus.c \
-        src/bonus/checking_pointers_bonus.c              src/bonus/putting_map_bonus.c \
-        src/bonus/close_window_bonus.c                   src/bonus/putting_right_enemy_bonus.c \
-        src/bonus/destroy_enemy_f1_bonus.c               src/bonus/putting_right_player_bonus.c \
-        src/bonus/destroy_enemy_f2_bonus.c               src/bonus/putting_road_bonus.c \
-        src/bonus/destroy_enemy_f3_bonus.c               src/bonus/putting_wall_bonus.c \
-        src/bonus/destroy_enemy_f4_bonus.c
+SRCS =  assigning_checking_pointers.c   checking_player_pointers.c   putting_collectible.c \
+        assign_path.c                   checking_pointers.c          putting_left_player.c \
+        assign_player_path.c            close_window.c               putting_map.c \
+        assign_player_pointer.c         destroy_assets_nbr1.c        putting_right_player.c \
+        assign_pointer.c                destroy_assets_nbr2.c        putting_road.c \
+        moving_player.c                 main.c                       putting_wall.c \
+        capturing_keys.c                mapping.c                    checking_map.c \
+        check_ber.c                     moving_player_around_exit.c
 
+BSRCS =	assign_collectible_path_f1234_bonus.c  destroy_keys_1_bonus.c \
+		assign_collectible_path_f5678_bonus.c  destroy_keys_2_bonus.c \
+		assign_enemy_path_f1_bonus.c           destroy_keys_3_bonus.c \
+		assign_enemy_path_f2_bonus.c           destroy_keys_4_bonus.c \
+		assign_enemy_path_f3_bonus.c           destroy_keys_5_bonus.c \
+		assign_enemy_path_f4_bonus.c           destroy_keys_6_bonus.c \
+		assigning_checking_pointers_bonus.c    destroy_keys_7_bonus.c \
+		checking_key_pointers_bonus.c          destroy_keys_8_bonus.c \
+		assign_path_bonus.c                    destroy_player_f1_bonus.c \
+		assign_player_path_f1_bonus.c          destroy_player_f2_bonus.c \
+		assign_player_path_f2_bonus.c          destroy_player_f3_bonus.c \
+		assign_player_path_f3_bonus.c          close_window_bonus.c \
+		assign_player_path_f4_bonus.c          destroy_player_f4_bonus.c \
+		assign_player_pointer_bonus.c          destroy_wall_road_bonus.c \
+		assign_pointer_bonus.c                 main_bonus.c              \
+		capturing_keys_bonus.c                 moving_player_around_exit_bonus.c \
+		check_ber_bonus.c                      moving_player_bonus.c \
+		checking_enemy_pointers_bonus.c        putting_collectible_bonus.c \
+		checking_map_bonus.c                   putting_left_enemy_bonus.c \
+		checking_player_pointers_bonus.c       putting_left_player_bonus.c \
+		checking_pointers_bonus.c              putting_map_bonus.c \
+		putting_right_enemy_bonus.c            destroy_enemy_f4_bonus.c \
+		destroy_enemy_f1_bonus.c               putting_right_player_bonus.c \
+		destroy_enemy_f2_bonus.c               putting_road_bonus.c \
+		destroy_enemy_f3_bonus.c               putting_wall_bonus.c \
+		mapping_bonus.c                        assign_enemy_pointer_bonus.c \
+		assig_point_enemy_paths_bonus.c        moving_player_how_bonus.c \
+		putting_animation_background_bonus.c  display_exit_bonus.c
 
+MFILES = $(addprefix $(SRC_DIR)/, $(SRCS))
+OBJECTS = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(MFILES))
 
-OBJECTS = $(FILES:%.c=%.o)
+BFILES = $(addprefix $(BONUS_DIR)/, $(BSRCS))
+BONUS_OBJECTS = $(patsubst $(BONUS_DIR)/%.c, $(BONUS_OBJ_DIR)/%.o, $(BFILES))
 
-BONUS_OBJECTS = $(BONUS:%.c=%.o)
+all: $(M_NAME)
 
-LIBRARY = make -C lib/minilibx-linux
+$(M_NAME): $(OBJECTS) $(LIBFT)/libft.a 
+	$(CC) -o $(M_NAME) $(OBJECTS) $(LIB_FLAGS)
 
-MAKE_FT_LIBC = make files -C include/ft_libc
+bonus: $(B_NAME)
 
-FCLEAN_FT_LIBC = make fclean -C include/ft_libc
+$(B_NAME): $(BONUS_OBJECTS) $(LIBFT)/libft.a
+	$(CC) -o $(B_NAME) $(BONUS_OBJECTS) $(LIB_FLAGS)
 
-LIBFT_A = include/ft_libc/libft.a
+$(LIBFT)/libft.a:
+	$(MAKE_LIBFT)
 
-MINILIB = lib/minilibx-linux/libmlx*
+$(OBJ_DIR)/%.o : 	$(SRC_DIR)/%.c
+					@mkdir -p $(OBJ_DIR)
+					$(CC) $(CFLAGS) -c $^ -o $@
 
-all: $(NAME)
-
-$(NAME): $(OBJECTS) $(LIBFT_A) $(MINILIB) 
-	$(CC) $(CFLAGS) $(LIB_FLAGS) -o $(NAME) $^
-
-bonus: $(BONUS_OBJECTS) $(LIBFT_A) $(MINILIB)
-	$(CC) $(CFLAGS) $(LIB_FLAGS) -o $(NAME) $^
-
-$(LIBFT_A):
-	$(MAKE_FT_LIBC)
-
-$(MINILIB):
-	$(LIBRARY)
-
-%.o : %.c
-	$(CC) $(CFLAGS) -c $^ -o $@
+$(BONUS_OBJ_DIR)/%.o :	$(BONUS_DIR)/%.c
+					@mkdir -p $(BONUS_OBJ_DIR)
+					$(CC) $(CFLAGS) -c $^ -o $@
 
 clean:
-	$(FCLEAN_FT_LIBC)
-	rm -f $(OBJECTS) $(BONUS_OBJECTS)
+	$(FCLEAN_LIBFT)
+	$(RMF) $(OBJ_DIR) $(BONUS_OBJ_DIR)
 
-fclean:
-	$(FCLEAN_FT_LIBC)
-	rm -f $(OBJECTS) $(NAME) $(BONUS_OBJECTS)
+fclean: clean
+	$(RMF) $(M_NAME) $(B_NAME)
 
 re: fclean all
+
+.PHONY: all clean fclean re
