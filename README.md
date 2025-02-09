@@ -279,6 +279,11 @@ Feel free to contribute by:
 ## License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
+Here's a seamless version of the two paragraphs combined:
+
 ---
+
 ### **Work in Progress**  
-`so_long` is an ongoing project, and updates are continuously being made to improve functionality, performance, and gameplay. New features, bug fixes, and optimisations will be introduced over time. Stay tuned for future updates, and feel free to share any feedback or suggestions to help enhance the project!
+`so_long` is an ongoing project, and updates are continuously being made to improve functionality, performance, and gameplay. Please be aware that there may be issues with maps having bigger heights, potential leaks due to errors in asset paths, and other bugs. These issues are actively being worked on, with new features, bug fixes, and optimisations planned for future updates. Stay tuned, and feel free to share any feedback or suggestions to help enhance the project. If you encounter any problems, please be patient, and report them via the project's [issues page](https://github.com/Dexter88xD/so_long/issues). This disclaimer will be removed once the project reaches a stable release.
+
+---
