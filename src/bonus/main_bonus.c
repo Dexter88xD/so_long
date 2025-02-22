@@ -6,7 +6,7 @@
 /*   By: sohamdan <sohamdan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/17 09:17:00 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/02/06 22:05:39 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/02/22 22:11:59 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -100,7 +100,7 @@ int	main(int argc, char **argv)
 		return (ft_printf("Error\nFile not valid or not found\n"), -1);
 	ft_memset(&map, 0, sizeof(t_map));
 	ft_memset(&count, 0, sizeof(t_num));
-	map.buffer = (char **)malloc(BUFFER_SIZE * sizeof(t_map *));
+	map.buffer = (char **)malloc(how_many_lines(map_path) * sizeof(t_map *));
 	if (!map.buffer)
 		return (free(map.buffer),
 			ft_printf("Error\nMemory allocation failed\n"), -1);

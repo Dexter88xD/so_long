@@ -6,7 +6,7 @@
 /*   By: sohamdan <sohamdan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 20:29:50 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/02/07 22:26:37 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/02/22 22:24:38 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -84,6 +84,8 @@ int	animation_frames(void *param)
 		}
 		i++;
 	}
-	usleep(100000);
+	i = 0;
+	while (i < 14000000)
+		i++;
 	return (0);
 }

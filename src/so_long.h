@@ -6,7 +6,7 @@
 /*   By: sohamdan <sohamdan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 11:11:35 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/02/08 11:34:05 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/02/22 22:09:19 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include "mlx.h"
 # include <X11/keysym.h>
 # include <fcntl.h>
+# include <stdio.h>
 # include <unistd.h>
 
 typedef struct s_ptr
@@ -170,6 +171,7 @@ typedef struct s_cleanup
 }					t_cleanup;
 
 int					check_ber(char *str);
+int					how_many_lines(char *path);
 int					initialise_nd_mapping(int fd, t_num *count, t_map *map,
 						char *map_path);
 int					checking_map(t_map *map);
