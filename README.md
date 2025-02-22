@@ -280,8 +280,6 @@ Feel free to contribute by:
 ## License
 This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
 
-Here's a seamless version of the two paragraphs combined:
-
 ---
 
 ### **Work in Progress**  
