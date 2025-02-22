@@ -28,7 +28,7 @@ SRCS =  assigning_checking_pointers.c   checking_player_pointers.c   putting_col
         assign_pointer.c                destroy_assets_nbr2.c        putting_road.c \
         moving_player.c                 main.c                       putting_wall.c \
         capturing_keys.c                mapping.c                    checking_map.c \
-        check_ber.c                     moving_player_around_exit.c
+        check_ber.c                     moving_player_around_exit.c  how_many_lines.c
 
 BSRCS =	assign_collectible_path_f1234_bonus.c  destroy_keys_1_bonus.c \
 		assign_collectible_path_f5678_bonus.c  destroy_keys_2_bonus.c \
@@ -57,7 +57,8 @@ BSRCS =	assign_collectible_path_f1234_bonus.c  destroy_keys_1_bonus.c \
 		destroy_enemy_f3_bonus.c               putting_wall_bonus.c \
 		mapping_bonus.c                        assign_enemy_pointer_bonus.c \
 		assig_point_enemy_paths_bonus.c        moving_player_how_bonus.c \
-		putting_animation_background_bonus.c  display_exit_bonus.c
+		putting_animation_background_bonus.c  display_exit_bonus.c \
+		how_many_lines_bonus.c 
 
 MFILES = $(addprefix $(SRC_DIR)/, $(SRCS))
 OBJECTS = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(MFILES))
