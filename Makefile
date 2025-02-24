@@ -17,7 +17,7 @@ M_NAME = so_long
 B_NAME = so_long_bonus
 
 SRC_DIR = src
-BONUS_DIR = src/bonus
+BONUS_DIR = bonus
 OBJ_DIR = obj
 BONUS_OBJ_DIR = bonus_obj
 
