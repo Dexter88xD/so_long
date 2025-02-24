@@ -6,7 +6,7 @@
 /*   By: sohamdan <sohamdan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 20:29:50 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/02/24 16:16:59 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/02/24 18:17:33 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,10 +65,15 @@ void	which_char(t_cleanup *all, int i, int j)
 
 int	animation_frames(void *param)
 {
+	static int	frame_count = 0;
 	t_cleanup	*all;
+	int			i;
+	int			j;
 
-	int (i), j;
 	all = (t_cleanup *)param;
+	if (frame_count++ < FRAME_DELAY)
+		return (0);
+	frame_count = 0;
 	all->key_frame = (all->key_frame + 1) % 8;
 	all->enemy_frame = (all->enemy_frame + 1) % 4;
 	i = 0;
@@ -84,8 +89,5 @@ int	animation_frames(void *param)
 		}
 		i++;
 	}
-	i = 0;
-	while (i < 99999)
-		i++;
 	return (0);
 }

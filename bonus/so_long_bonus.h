@@ -6,7 +6,7 @@
 /*   By: sohamdan <sohamdan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 11:11:35 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/02/24 16:09:53 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/02/24 18:21:06 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@
 # include <X11/keysym.h>
 # include <fcntl.h>
 # include <unistd.h>
+
+# define FRAME_DELAY 10000
+# define EXIT_FRAME_DELAY 10000
 
 typedef struct s_ptr
 {
@@ -175,10 +178,7 @@ typedef struct s_move_coll
 typedef struct s_cleanup
 {
 	void			*cor_l_u_keys[8];
-	// void			*cor_l_d_keys[8];
-	// void			*cor_r_u_keys[8];
-	// void			*cor_r_u_keys[8];
-	//declare all the frame loaders needed for all the locations
+	// declare all the frame loaders needed for all the locations
 	void			*mid_keys[8];
 	void			*enemy[4];
 	void			*exit[5];
