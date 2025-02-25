@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   putting_map.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sohamdan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sohamdan <sohamdan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 19:03:11 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/02/01 19:03:12 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/02/25 15:09:48 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,8 +52,6 @@ int	putting_images(char **array, t_location *dim, t_ptr *mlx, t_data *data)
 	(*data).size.width = (*dim).width * 32;
 	assigning_paths_pointers(&(*data).pic, (*mlx).ptr, &(*data).len.x,
 		&(*data).len.y);
-	if (checking_pointers(&(*data).pic) == 0)
-		return (ft_printf("Error:\nProbable issue with assets paths!\n"), -1);
 	(*mlx).win = mlx_new_window((*mlx).ptr, (*data).size.width,
 			(*data).size.height, "POP!");
 	putting_to_window(array, dim, &(*data), (*mlx));

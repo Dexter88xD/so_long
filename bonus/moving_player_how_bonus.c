@@ -6,7 +6,7 @@
 /*   By: sohamdan <sohamdan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/02 21:09:17 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/02/07 15:45:10 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/02/22 22:28:23 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	move_up_how(t_map *map, t_move_coll *mc, t_data *data, t_ptr *mlx)
 	map->player.height--;
 	update_position_data(data, map);
 	is_it_right_player(map->buffer, data, *(mlx));
-	ft_printf("Move Number: %d\n", ++mc->move);
+	++mc->move;
 	putting_moves(mlx, mc, &data->pic);
 }
 
@@ -68,7 +68,7 @@ void	move_down_how(t_map *map, t_move_coll *mc, t_data *data, t_ptr *mlx)
 	map->player.height++;
 	update_position_data(data, map);
 	is_it_right_player(map->buffer, data, *(mlx));
-	ft_printf("Move Number: %d\n", ++mc->move);
+	++mc->move;
 	putting_moves(mlx, mc, &data->pic);
 }
 
@@ -91,7 +91,7 @@ void	move_left_how(t_map *map, t_move_coll *mc, t_data *data, t_ptr *mlx)
 	map->player.width--;
 	update_position_data(data, map);
 	is_it_left_player(map->buffer, data, *(mlx));
-	ft_printf("Move Number: %d\n", ++mc->move);
+	++mc->move;
 	putting_moves(mlx, mc, &data->pic);
 }
 
@@ -114,6 +114,6 @@ void	move_right_how(t_map *map, t_move_coll *mc, t_data *data, t_ptr *mlx)
 	map->player.width++;
 	update_position_data(data, map);
 	is_it_right_player(map->buffer, data, *(mlx));
-	ft_printf("Move Number: %d\n", ++mc->move);
+	++mc->move;
 	putting_moves(mlx, mc, &data->pic);
 }

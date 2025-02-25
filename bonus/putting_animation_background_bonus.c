@@ -6,7 +6,7 @@
 /*   By: sohamdan <sohamdan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/06 20:29:50 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/02/07 22:26:37 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/02/25 15:21:44 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,15 +33,13 @@ void	load_frames(t_cleanup *all)
 	all->exit[4] = all->data->pic.exit.f5.middle.img;
 }
 
-int	assign_point_check_moves(t_assets *moves, void *mlx_ptr)
+int	assign_point_moves(t_assets *moves, void *mlx_ptr)
 {
 	int	x;
 	int	y;
 
 	moves->moves.ptr = "assets/M/background.xpm";
 	moves->moves.img = mlx_xpm_file_to_image(mlx_ptr, moves->moves.ptr, &x, &y);
-	if (moves->moves.img == NULL)
-		return (0);
 	return (1);
 }
 
@@ -65,10 +63,15 @@ void	which_char(t_cleanup *all, int i, int j)
 
 int	animation_frames(void *param)
 {
+	static int	frame_count = 0;
 	t_cleanup	*all;
+	int			i;
+	int			j;
 
-	int (i), j;
 	all = (t_cleanup *)param;
+	if (frame_count++ < FRAME_DELAY)
+		return (0);
+	frame_count = 0;
 	all->key_frame = (all->key_frame + 1) % 8;
 	all->enemy_frame = (all->enemy_frame + 1) % 4;
 	i = 0;
@@ -84,6 +87,5 @@ int	animation_frames(void *param)
 		}
 		i++;
 	}
-	usleep(100000);
 	return (0);
 }

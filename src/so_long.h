@@ -6,7 +6,7 @@
 /*   By: sohamdan <sohamdan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 11:11:35 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/02/08 11:34:05 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/02/25 15:10:11 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,6 +19,7 @@
 # include "mlx.h"
 # include <X11/keysym.h>
 # include <fcntl.h>
+# include <stdio.h>
 # include <unistd.h>
 
 typedef struct s_ptr
@@ -170,6 +171,7 @@ typedef struct s_cleanup
 }					t_cleanup;
 
 int					check_ber(char *str);
+int					how_many_lines(char *path);
 int					initialise_nd_mapping(int fd, t_num *count, t_map *map,
 						char *map_path);
 int					checking_map(t_map *map);
@@ -230,17 +232,6 @@ void				point_l_p_side(t_places *p_l, void *mlx_ptr, int *x,
 						int *y);
 void				assigning_paths_pointers(t_assets *pic, void *mlx_ptr,
 						int *x, int *y);
-
-int					check_wall_pointer(t_places *wall);
-int					check_side_road_pointer(t_places *road);
-int					check_corner_middle_road_pointer(t_places *road);
-int					check_side_collectible_pointer(t_places *key);
-int					check_mid_cor_coll_exit_pointer(t_assets *a);
-int					check_r_p_middle_corner_pointer(t_places *p_r);
-int					check_r_p_side_pointer(t_places *p_r);
-int					check_l_p_middle_corner_pointer(t_places *p_l);
-int					check_l_p_side_pointer(t_places *p_l);
-int					checking_pointers(t_assets *pic);
 
 void				is_it_wall(t_data *data, t_ptr mlx, t_location *dim);
 void				is_it_rest_wall(t_data *data, t_ptr mlx, t_location *dim);

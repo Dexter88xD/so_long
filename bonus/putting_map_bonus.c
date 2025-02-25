@@ -6,7 +6,7 @@
 /*   By: sohamdan <sohamdan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 19:03:11 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/02/07 21:50:02 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/02/25 15:26:25 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,8 +59,6 @@ int	putting_images(char **array, t_location *dim, t_ptr *mlx, t_data *data)
 	(*data).size.width = (*dim).width * 32;
 	assigning_paths_pointers(&(*data).pic, (*mlx).ptr, &(*data).len.x,
 		&(*data).len.y);
-	if (checking_pointers(&(*data).pic, mlx) == 0)
-		return (-1);
 	(*mlx).win = mlx_new_window((*mlx).ptr, (*data).size.width,
 			(*data).size.height, "POP!");
 	putting_to_window(array, dim, &(*data), (*mlx));

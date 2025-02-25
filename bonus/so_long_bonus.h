@@ -6,7 +6,7 @@
 /*   By: sohamdan <sohamdan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 11:11:35 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/02/08 11:34:13 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/02/25 15:26:50 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,9 @@
 # include <X11/keysym.h>
 # include <fcntl.h>
 # include <unistd.h>
+
+# define FRAME_DELAY 10000
+# define EXIT_FRAME_DELAY 10000
 
 typedef struct s_ptr
 {
@@ -189,6 +192,7 @@ typedef struct s_cleanup
 
 void				which_char(t_cleanup *all, int i, int j);
 int					check_ber(char *str);
+int					how_many_lines(char *path);
 int					initialise_nd_mapping(int fd, t_num *count, t_map *map,
 						char *map_path);
 int					checking_map(t_map *map);
@@ -206,7 +210,7 @@ int					checking_player(int x, int y, t_location *location,
 int					putting_map(t_map *map);
 int					putting_images(char **array, t_location *dim, t_ptr *mlx,
 						t_data *data);
-int					assign_point_check_moves(t_assets *moves, void *mlx_ptr);
+int					assign_point_moves(t_assets *moves, void *mlx_ptr);
 int					putting_moves(t_ptr *mlx, t_move_coll *mc, t_assets *moves);
 void				which_image(char **array, t_location *dim, t_data *data,
 						t_ptr mlx);
@@ -315,6 +319,8 @@ void				assign_right_e_middle_corner_ffour(t_places *e_r);
 void				assign_right_e_side_ffour(t_places *e_r);
 void				assign_left_e_middle_corner_ffour(t_places *e_l);
 void				assign_left_e_side_ffour(t_places *e_l);
+void				assig_point_key_paths_pointers(t_assets *pic, void *mlx_ptr,
+						int *x, int *y);
 
 void				assign_enemy(t_assets *pic, void *mlx_ptr, int *x, int *y);
 void				point_enemy(t_assets *pic, void *mlx_ptr, int *x, int *y);
@@ -348,30 +354,6 @@ void				assigning_paths_pointers(t_assets *pic, void *mlx_ptr,
 						int *x, int *y);
 void				pointing_path_pointers(t_assets *pic, void *mlx_ptr, int *x,
 						int *y);
-
-int					check_wall_exit_pointer(t_assets *a);
-int					check_side_road_pointer(t_places *road);
-int					check_exit_corner_middle_road_pointer(t_assets *a);
-int					check_side_collectible_pointer(t_places *key);
-int					check_mid_cor_coll_pointer(t_places *key);
-int					check_r_p_middle_corner_pointer(t_places *p_r);
-int					check_r_p_side_pointer(t_places *p_r);
-int					check_l_p_middle_corner_pointer(t_places *p_l);
-int					check_l_p_side_pointer(t_places *p_l);
-
-int					check_r_e_middle_corner_pointer(t_places *e_r);
-int					check_r_e_side_pointer(t_places *e_r);
-int					check_l_e_middle_corner_pointer(t_places *e_l);
-int					check_l_e_side_pointer(t_places *e_l);
-
-int					checking_pointers(t_assets *pic, t_ptr *mlx);
-int					checking_rest_pointers(t_assets *pic);
-int					checking_key_pointers(t_assets *pic);
-int					checking_rest_key_pointers(t_assets *pic);
-int					checking_enemy_pointers(t_assets *pic);
-int					checking_rest_enemy_pointers(t_assets *pic);
-void				assig_point_key_paths_pointers(t_assets *pic, void *mlx_ptr,
-						int *x, int *y);
 
 void				is_it_wall(t_data *data, t_ptr mlx, t_location *dim);
 void				is_it_rest_wall(t_data *data, t_ptr mlx, t_location *dim);

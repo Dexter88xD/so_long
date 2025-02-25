@@ -6,7 +6,7 @@
 /*   By: sohamdan <sohamdan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/02/01 10:29:59 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/02/07 15:06:29 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/02/25 15:23:50 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -62,6 +62,7 @@ void	assigning_paths_pointers(t_assets *pic, void *mlx_ptr, int *x, int *y)
 	assign_left_p_middle_corner_ffour(&(*pic).p_left.f4);
 	assign_left_p_side_ffour(&(*pic).p_left.f4);
 	assign_enemy(pic, mlx_ptr, x, y);
+	assign_point_moves(pic, mlx_ptr);
 }
 
 void	pointing_path_pointers(t_assets *pic, void *mlx_ptr, int *x, int *y)
@@ -86,54 +87,4 @@ void	pointing_path_pointers(t_assets *pic, void *mlx_ptr, int *x, int *y)
 	point_l_p_middle_corner(&(*pic).p_left.f4, mlx_ptr, x, y);
 	point_l_p_side(&(*pic).p_left.f4, mlx_ptr, x, y);
 	point_enemy(pic, mlx_ptr, x, y);
-}
-
-int	checking_pointers(t_assets *pic, t_ptr *mlx)
-{
-	if (assign_point_check_moves(pic, mlx->ptr) == 0)
-		return (ft_printf("Error\nCheck moves pointer!\n"), 0);
-	else if (check_wall_exit_pointer(pic) == 0)
-		return (ft_printf("Error\nCheck wall/exit pointers!\n"), 0);
-	if (check_side_road_pointer(&(*pic).road) == 0)
-		return (ft_printf("Error\nCheck side road pointers!\n"), 0);
-	if (check_exit_corner_middle_road_pointer(pic) == 0)
-		return (ft_printf("Error\nCheck cor/mid road ptr!\n"), 0);
-	if (check_r_p_middle_corner_pointer(&(*pic).p_right.f1) == 0)
-		return (ft_printf("Error\nCheck f1 right player cor/mid ptr!\n"), 0);
-	if (check_r_p_side_pointer(&(*pic).p_right.f1) == 0)
-		return (ft_printf("Error\nCheck f1 right player side ptr!\n"), 0);
-	if (check_l_p_middle_corner_pointer(&(*pic).p_left.f1) == 0)
-		return (ft_printf("Error\nCheck f1 left player cor/mid ptr!\n"), 0);
-	if (check_l_p_side_pointer(&(*pic).p_left.f1) == 0)
-		return (ft_printf("Error\nCheck f1 left player side ptr!\n"), 0);
-	return (checking_rest_pointers(pic));
-}
-
-int	checking_rest_pointers(t_assets *pic)
-{
-	if (check_r_p_middle_corner_pointer(&(*pic).p_right.f2) == 0)
-		return (ft_printf("Error\nCheck f2 right player cor/mid ptr!\n"), 0);
-	if (check_r_p_side_pointer(&(*pic).p_right.f2) == 0)
-		return (ft_printf("Error\nCheck f2 right player side ptr!\n"), 0);
-	if (check_l_p_middle_corner_pointer(&(*pic).p_left.f2) == 0)
-		return (ft_printf("Error\nCheck f2 left player cor/mid ptr!\n"), 0);
-	if (check_l_p_side_pointer(&(*pic).p_left.f2) == 0)
-		return (ft_printf("Error\nCheck f2 left player side ptr!\n"), 0);
-	if (check_r_p_middle_corner_pointer(&(*pic).p_right.f3) == 0)
-		return (ft_printf("Error\nCheck f3 right player cor/mid ptr!\n"), 0);
-	if (check_r_p_side_pointer(&(*pic).p_right.f3) == 0)
-		return (ft_printf("Error\nCheck f3 right player side ptr!\n"), 0);
-	if (check_l_p_middle_corner_pointer(&(*pic).p_left.f3) == 0)
-		return (ft_printf("Error\nCheck f3 left player cor/mid ptr!\n"), 0);
-	if (check_l_p_side_pointer(&(*pic).p_left.f3) == 0)
-		return (ft_printf("Error\nCheck f3 left player cor/mid ptr!\n"), 0);
-	if (check_r_p_middle_corner_pointer(&(*pic).p_right.f4) == 0)
-		return (ft_printf("Error\nCheck f4 right player cor/mid ptr!\n"), 0);
-	if (check_r_p_side_pointer(&(*pic).p_right.f4) == 0)
-		return (ft_printf("Error\nCheck f4 right player side ptr!\n"), 0);
-	if (check_l_p_middle_corner_pointer(&(*pic).p_left.f4) == 0)
-		return (ft_printf("Error\nCheck f4 left player cor/mid ptr!\n"), 0);
-	if (check_l_p_side_pointer(&(*pic).p_left.f4) == 0)
-		return (ft_printf("Error\nCheck f4 left player side ptr!\n"), 0);
-	return (checking_key_pointers(pic));
 }
