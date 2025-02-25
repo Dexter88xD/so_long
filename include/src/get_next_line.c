@@ -3,21 +3,19 @@
 /*                                                        :::      ::::::::   */
 /*   get_next_line.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sohamdan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sohamdan <sohamdan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/28 09:03:49 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/01/19 22:25:13 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/02/25 23:23:18 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "get_next_line.h"
+#include "libft.h"
 
 static char	*line_extract(char **buffer)
 {
-	char	*line;
-	char	*temp;
-	size_t	i;
-
+	size_t (i);
+	char *(line), *(temp);
 	i = 0;
 	line = NULL;
 	if (!(*buffer))
@@ -37,6 +35,8 @@ static char	*line_extract(char **buffer)
 		free(*buffer);
 		*buffer = NULL;
 	}
+	if (!*buffer || !**buffer)
+		(free(*buffer), *buffer = NULL);
 	return (line);
 }
 
@@ -63,7 +63,7 @@ static ssize_t	line_read(char **buffer, int fd)
 	ssize_t	bytes_read;
 
 	bytes_read = 0;
-	while (!ft_strchr(*buffer, '\n'))
+	while (!ft_custom_strchr(*buffer, '\n'))
 	{
 		temp_buffer = (char *)malloc((size_t)BUFFER_SIZE + 1);
 		if (!temp_buffer)
@@ -85,27 +85,27 @@ static ssize_t	line_read(char **buffer, int fd)
 
 char	*get_next_line(int fd)
 {
-	static char	*buffer;
+	static char	*buffer[FDS];
 	ssize_t		bytes_read;
 	char		*line;
 
 	if (fd < 0 || BUFFER_SIZE <= 0)
 		return (NULL);
-	if (!buffer)
-		buffer = NULL;
-	bytes_read = line_read(&buffer, fd);
+	if (!buffer[fd])
+		buffer[fd] = NULL;
+	bytes_read = line_read(&buffer[fd], fd);
 	if (bytes_read == -1)
 	{
-		free(buffer);
-		buffer = NULL;
-		return (NULL);
-	}	
-	else if (bytes_read <= 0 && (!buffer || buffer[0] == '\0'))
-	{
-		free(buffer);
-		buffer = NULL;
+		free(buffer[fd]);
+		buffer[fd] = NULL;
 		return (NULL);
 	}
-	line = line_extract(&buffer);
+	else if (bytes_read <= 0 && (!buffer[fd] || buffer[fd][0] == '\0'))
+	{
+		free(buffer[fd]);
+		buffer[fd] = NULL;
+		return (NULL);
+	}
+	line = line_extract(&buffer[fd]);
 	return (line);
 }

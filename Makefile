@@ -8,12 +8,12 @@ RM = rm
 RMF = rm -rf
 
 MINILIB = /usr/include/minilibx-linux/
-LIBFT = ./include/libft/
+LIBFT = ./include/
 
-MAKE_LIBFT = make files -C $(LIBFT)
-FCLEAN_LIBFT = make fclean -C $(LIBFT)
+MAKE_LIBFT = $(MAKE) -C $(LIBFT)
+FCLEAN_LIBFT = $(MAKE) fclean -C $(LIBFT)
 
-M_NAME = so_long
+NAME = so_long
 B_NAME = so_long_bonus
 
 SRC_DIR = src
@@ -66,10 +66,10 @@ OBJECTS = $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(MFILES))
 BFILES = $(addprefix $(BONUS_DIR)/, $(BSRCS))
 BONUS_OBJECTS = $(patsubst $(BONUS_DIR)/%.c, $(BONUS_OBJ_DIR)/%.o, $(BFILES))
 
-all: $(M_NAME)
+all: $(NAME)
 
-$(M_NAME): $(OBJECTS) $(LIBFT)/libft.a 
-	$(CC) -o $(M_NAME) $(OBJECTS) $(LIB_FLAGS)
+$(NAME): $(OBJECTS) $(LIBFT)/libft.a 
+	$(CC) -o $(NAME) $(OBJECTS) $(LIB_FLAGS)
 
 bonus: $(B_NAME)
 
@@ -92,7 +92,7 @@ clean:
 	$(RMF) $(OBJ_DIR) $(BONUS_OBJ_DIR)
 
 fclean: clean
-	$(RMF) $(M_NAME) $(B_NAME)
+	$(RMF) $(NAME) $(B_NAME)
 
 re: fclean all
 

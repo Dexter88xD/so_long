@@ -6,15 +6,13 @@
 /*   By: sohamdan <sohamdan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 11:11:35 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/02/22 22:09:19 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/02/25 23:11:22 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef SO_LONG_H
 # define SO_LONG_H
 
-# include "ft_printf/ft_printf.h"
-# include "get_next_line/get_next_line.h"
 # include "libft.h"
 # include "mlx.h"
 # include <X11/keysym.h>

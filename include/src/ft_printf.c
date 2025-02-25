@@ -6,11 +6,11 @@
 /*   By: sohamdan <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/12/23 23:50:08 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/01/19 22:24:22 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/02/09 14:31:50 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "ft_printf.h"
+#include "libft.h"
 
 static int	ft_puthex(unsigned long n, char c, int f)
 {
