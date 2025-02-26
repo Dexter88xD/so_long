@@ -6,7 +6,7 @@
 /*   By: sohamdan <sohamdan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2025/01/16 11:11:35 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/02/25 23:11:35 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/02/26 00:20:01 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -176,8 +176,6 @@ typedef struct s_move_coll
 
 typedef struct s_cleanup
 {
-	void			*cor_l_u_keys[8];
-	// declare all the frame loaders needed for all the locations
 	void			*mid_keys[8];
 	void			*enemy[4];
 	void			*exit[5];

@@ -8,7 +8,7 @@ RM = rm
 RMF = rm -rf
 
 MINILIB = /usr/include/minilibx-linux/
-LIBFT = ./include/
+LIBFT = ./libft/
 
 MAKE_LIBFT = $(MAKE) -C $(LIBFT)
 FCLEAN_LIBFT = $(MAKE) fclean -C $(LIBFT)

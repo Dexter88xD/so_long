@@ -52,173 +52,99 @@ sudo apt-get install libxext-dev libx11-dev
 ---
 ## File Structure
 ```
-Directory structure:
 └── dexter88xd-so_long/
     ├── README.md
     ├── LICENSE
     ├── Makefile
     ├── assets/
     ├── include/
-    │   └── libft/
-    │       ├── Makefile
-    │       ├── ft_atoi.c
-    │       ├── ft_bzero.c
-    │       ├── ft_calloc.c
-    │       ├── ft_isalnum.c
-    │       ├── ft_isalpha.c
-    │       ├── ft_isascii.c
-    │       ├── ft_isdigit.c
-    │       ├── ft_isprint.c
-    │       ├── ft_itoa.c
-    │       ├── ft_lstadd_back_bonus.c
-    │       ├── ft_lstadd_front_bonus.c
-    │       ├── ft_lstclear_bonus.c
-    │       ├── ft_lstdelone_bonus.c
-    │       ├── ft_lstiter_bonus.c
-    │       ├── ft_lstlast_bonus.c
-    │       ├── ft_lstmap_bonus.c
-    │       ├── ft_lstnew_bonus.c
-    │       ├── ft_lstsize_bonus.c
-    │       ├── ft_memchr.c
-    │       ├── ft_memcmp.c
-    │       ├── ft_memcpy.c
-    │       ├── ft_memmove.c
-    │       ├── ft_memset.c
-    │       ├── ft_putchar_fd.c
-    │       ├── ft_putendl_fd.c
-    │       ├── ft_putnbr_fd.c
-    │       ├── ft_putstr_fd.c
-    │       ├── ft_split.c
-    │       ├── ft_strchr.c
-    │       ├── ft_strdup.c
-    │       ├── ft_striteri.c
-    │       ├── ft_strjoin.c
-    │       ├── ft_strlcat.c
-    │       ├── ft_strlcpy.c
-    │       ├── ft_strlen.c
-    │       ├── ft_strmapi.c
-    │       ├── ft_strncmp.c
-    │       ├── ft_strnstr.c
-    │       ├── ft_strrchr.c
-    │       ├── ft_strtrim.c
-    │       ├── ft_substr.c
-    │       ├── ft_tolower.c
-    │       ├── ft_toupper.c
-    │       ├── libft.h
-    │       ├── ft_printf/
-    │       │   ├── ft_printf.c
-    │       │   └── ft_printf.h
-    │       └── get_next_line/
-    │           ├── get_next_line.c
-    │           ├── get_next_line.h
-    │           └── get_next_line_utils.c
+    │  ├── Makefile
+    │  ├── libft.h
+    │  └── src/
     ├── maps/
-    │   ├── 1337.ber
-    │   ├── ber
-    │   ├── empty_first_line.ber
-    │   ├── empty_last_line.ber
-    │   ├── map.ber
-    │   ├── map1.ber
-    │   ├── map2.ber
-    │   ├── map3.ber
-    │   ├── map4.ber
-    │   ├── map5.ber
-    │   ├── map6.ber
-    │   ├── map7.ber
-    │   ├── map_with_enemy.ber
-    │   ├── no_collectible.ber
-    │   ├── no_exit.ber
-    │   ├── no_map.ber
-    │   ├── no_path.ber
-    │   ├── no_path_to_collectibles.ber
-    │   ├── no_path_to_exit.ber
-    │   ├── no_player.ber
-    │   ├── no_walls.ber
-    │   ├── not_rectangular.ber
-    │   └── .ber
-    └── src/
-        ├── assign_path.c
-        ├── assign_player_path.c
-        ├── assign_player_pointer.c
-        ├── assign_pointer.c
-        ├── assigning_checking_pointers.c
-        ├── capturing_keys.c
-        ├── check_ber.c
-        ├── checking_map.c
-        ├── checking_player_pointers.c
-        ├── checking_pointers.c
-        ├── close_window.c
-        ├── destroy_assets_nbr1.c
-        ├── destroy_assets_nbr2.c
-        ├── main.c
-        ├── mapping.c
-        ├── moving_player.c
-        ├── moving_player_around_exit.c
-        ├── putting_collectible.c
-        ├── putting_left_player.c
-        ├── putting_map.c
-        ├── putting_right_player.c
-        ├── putting_road.c
-        ├── putting_wall.c
-        ├── so_long.h
-        └── bonus/
-            ├── assig_point_enemy_paths_bonus.c
-            ├── assign_collectible_path_f1234_bonus.c
-            ├── assign_collectible_path_f5678_bonus.c
-            ├── assign_enemy_path_f1_bonus.c
-            ├── assign_enemy_path_f2_bonus.c
-            ├── assign_enemy_path_f3_bonus.c
-            ├── assign_enemy_path_f4_bonus.c
-            ├── assign_enemy_pointer_bonus.c
-            ├── assign_path_bonus.c
-            ├── assign_player_path_f1_bonus.c
-            ├── assign_player_path_f2_bonus.c
-            ├── assign_player_path_f3_bonus.c
-            ├── assign_player_path_f4_bonus.c
-            ├── assign_player_pointer_bonus.c
-            ├── assign_pointer_bonus.c
-            ├── assigning_checking_pointers_bonus.c
-            ├── capturing_keys_bonus.c
-            ├── check_ber_bonus.c
-            ├── checking_enemy_pointers_bonus.c
-            ├── checking_key_pointers_bonus.c
-            ├── checking_map_bonus.c
-            ├── checking_player_pointers_bonus.c
-            ├── checking_pointers_bonus.c
-            ├── close_window_bonus.c
-            ├── destroy_enemy_f1_bonus.c
-            ├── destroy_enemy_f2_bonus.c
-            ├── destroy_enemy_f3_bonus.c
-            ├── destroy_enemy_f4_bonus.c
-            ├── destroy_keys_1_bonus.c
-            ├── destroy_keys_2_bonus.c
-            ├── destroy_keys_3_bonus.c
-            ├── destroy_keys_4_bonus.c
-            ├── destroy_keys_5_bonus.c
-            ├── destroy_keys_6_bonus.c
-            ├── destroy_keys_7_bonus.c
-            ├── destroy_keys_8_bonus.c
-            ├── destroy_player_f1_bonus.c
-            ├── destroy_player_f2_bonus.c
-            ├── destroy_player_f3_bonus.c
-            ├── destroy_player_f4_bonus.c
-            ├── destroy_wall_road_bonus.c
-            ├── display_exit_bonus.c
-            ├── main_bonus.c
-            ├── mapping_bonus.c
-            ├── moving_player_around_exit_bonus.c
-            ├── moving_player_bonus.c
-            ├── moving_player_how_bonus.c
-            ├── putting_animation_background_bonus.c
-            ├── putting_collectible_bonus.c
-            ├── putting_left_enemy_bonus.c
-            ├── putting_left_player_bonus.c
-            ├── putting_map_bonus.c
-            ├── putting_right_enemy_bonus.c
-            ├── putting_right_player_bonus.c
-            ├── putting_road_bonus.c
-            ├── putting_wall_bonus.c
-            └── so_long_bonus.h
+    ├── src/
+    │   ├── assign_path.c
+    │   ├── assign_player_path.c
+    │   ├── assign_player_pointer.c
+    │   ├── assign_pointer.c
+    │   ├── assigning_checking_pointers.c
+    │   ├── capturing_keys.c
+    │   ├── check_ber.c
+    │   ├── checking_map.c
+    │   ├── checking_player_pointers.c
+    │   ├── checking_pointers.c
+    │   ├── close_window.c
+    │   ├── destroy_assets_nbr1.c
+    │   ├── destroy_assets_nbr2.c
+    │   ├── main.c
+    │   ├── mapping.c
+    │   ├── moving_player.c
+    │   ├── moving_player_around_exit.c
+    │   ├── putting_collectible.c
+    │   ├── putting_left_player.c
+    │   ├── putting_map.c
+    │   ├── putting_right_player.c
+    │   ├── putting_road.c
+    │   ├── putting_wall.c
+    │   └── so_long.h
+    └── bonus/
+        ├── assig_point_enemy_paths_bonus.c
+        ├── assign_collectible_path_f1234_bonus.c
+        ├── assign_collectible_path_f5678_bonus.c
+        ├── assign_enemy_path_f1_bonus.c
+        ├── assign_enemy_path_f2_bonus.c
+        ├── assign_enemy_path_f3_bonus.c
+        ├── assign_enemy_path_f4_bonus.c
+        ├── assign_enemy_pointer_bonus.c
+        ├── assign_path_bonus.c
+        ├── assign_player_path_f1_bonus.c
+        ├── assign_player_path_f2_bonus.c
+        ├── assign_player_path_f3_bonus.c
+        ├── assign_player_path_f4_bonus.c
+        ├── assign_player_pointer_bonus.c
+        ├── assign_pointer_bonus.c
+        ├── assigning_checking_pointers_bonus.c
+        ├── capturing_keys_bonus.c
+        ├── check_ber_bonus.c
+        ├── checking_enemy_pointers_bonus.c
+        ├── checking_key_pointers_bonus.c
+        ├── checking_map_bonus.c
+        ├── checking_player_pointers_bonus.c
+        ├── checking_pointers_bonus.c
+        ├── close_window_bonus.c
+        ├── destroy_enemy_f1_bonus.c
+        ├── destroy_enemy_f2_bonus.c
+        ├── destroy_enemy_f3_bonus.c
+        ├── destroy_enemy_f4_bonus.c
+        ├── destroy_keys_1_bonus.c
+        ├── destroy_keys_2_bonus.c
+        ├── destroy_keys_3_bonus.c
+        ├── destroy_keys_4_bonus.c
+        ├── destroy_keys_5_bonus.c
+        ├── destroy_keys_6_bonus.c
+        ├── destroy_keys_7_bonus.c
+        ├── destroy_keys_8_bonus.c
+        ├── destroy_player_f1_bonus.c
+        ├── destroy_player_f2_bonus.c
+        ├── destroy_player_f3_bonus.c
+        ├── destroy_player_f4_bonus.c
+        ├── destroy_wall_road_bonus.c
+        ├── display_exit_bonus.c
+        ├── main_bonus.c
+        ├── mapping_bonus.c
+        ├── moving_player_around_exit_bonus.c
+        ├── moving_player_bonus.c
+        ├── moving_player_how_bonus.c
+        ├── putting_animation_background_bonus.c
+        ├── putting_collectible_bonus.c
+        ├── putting_left_enemy_bonus.c
+        ├── putting_left_player_bonus.c
+        ├── putting_map_bonus.c
+        ├── putting_right_enemy_bonus.c
+        ├── putting_right_player_bonus.c
+        ├── putting_road_bonus.c
+        ├── putting_wall_bonus.c
+        └── so_long_bonus.h
 ```
 
 ---
