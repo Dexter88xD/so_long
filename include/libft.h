@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: sohamdan <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: sohamdan <sohamdan@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/10/22 11:20:19 by sohamdan          #+#    #+#             */
-/*   Updated: 2025/01/19 21:54:48 by sohamdan         ###   ########.fr       */
+/*   Updated: 2025/02/25 15:46:21 by sohamdan         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,11 @@
 
 # include <unistd.h>
 # include <stdlib.h>
+# include <stdarg.h> //ft_printf
+# include <string.h> //get_next_line
+# include <fcntl.h>  //get_next_line
 
+/***********************LIBFT***********************************/
 int		ft_isalpha(int c);
 int		ft_isdigit(int c);
 int		ft_isalnum(int c);
@@ -81,5 +85,32 @@ void	ft_lstclear(t_list **lst, void (*del)(void*));
 void	ft_lstiter(t_list *lst, void (*f)(void *));
 
 int		ft_lstsize(t_list *lst);
+/*********************************************************/
+
+/***********************FT_PRINTF***********************************/
+
+int		ft_printf(const char *s, ...);
+
+/*********************************************************/
+
+/***********************GET_NEXT_LINE***********************************/
+# ifndef BUFFER_SIZE
+#  define BUFFER_SIZE 1
+# endif
+
+# ifndef FDS
+#  define FDS 1024
+# endif
+
+# if BUFFER_SIZE < 0
+#  undef BUFFER_SIZE
+#  define BUFFER_SIZE 0
+# endif
+
+char	*ft_strndup(const char *s, size_t len);
+char	*ft_custom_strchr(const char *s, int c);
+char	*get_next_line(int fd);
+
+/*********************************************************/
 
 #endif
