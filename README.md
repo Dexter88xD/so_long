@@ -57,7 +57,7 @@ sudo apt-get install libxext-dev libx11-dev
     ├── LICENSE
     ├── Makefile
     ├── assets/
-    ├── include/
+    ├── libft/
     │  ├── Makefile
     │  ├── libft.h
     │  └── src/
